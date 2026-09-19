@@ -1,0 +1,314 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>Contact - My Computer World</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+
+*{
+    box-sizing:border-box;
+}
+
+body{
+
+    margin:0;
+    font-family:Arial;
+    text-align:center;
+    color:white;
+    background:linear-gradient(135deg,#141e30,#243b55);
+
+}
+
+
+/* NAV */
+
+nav{
+
+    background:rgba(0,0,0,0.35);
+    padding:20px;
+
+}
+
+
+nav a{
+
+    color:white;
+    text-decoration:none;
+    margin:15px;
+    font-weight:bold;
+
+}
+
+
+nav a:hover{
+
+    color:#ffd700;
+
+}
+
+
+/* CONTACT BOX */
+
+.contact-box{
+
+    max-width:600px;
+    margin:60px auto;
+    padding:35px;
+
+    background:rgba(255,255,255,0.12);
+
+    border-radius:25px;
+
+    box-shadow:0 10px 30px rgba(0,0,0,0.3);
+
+}
+
+
+.contact-box h1{
+
+    font-size:40px;
+
+}
+
+
+.contact-box p{
+
+    font-size:18px;
+    line-height:1.6;
+
+}
+
+
+/* FORM */
+
+input,
+textarea{
+
+    width:90%;
+    padding:14px;
+    margin:10px;
+
+    border:none;
+    outline:none;
+
+    border-radius:20px;
+
+    font-size:16px;
+
+}
+
+
+textarea{
+
+    height:120px;
+    resize:none;
+
+}
+
+
+button{
+
+    padding:14px 35px;
+
+    border:none;
+
+    border-radius:30px;
+
+    background:linear-gradient(45deg,#ffd700,#ff9800);
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+    font-size:16px;
+
+}
+
+
+button:hover{
+
+    transform:scale(1.05);
+
+}
+
+
+/* SOCIAL */
+
+.social{
+
+    margin-top:30px;
+
+}
+
+
+.social a{
+
+    color:#ffd700;
+
+    text-decoration:none;
+
+    margin:10px;
+
+    font-size:18px;
+
+}
+
+
+/* FOOTER */
+
+footer{
+
+    margin-top:60px;
+
+    padding:20px;
+
+    background:rgba(0,0,0,0.35);
+
+}
+
+
+
+@media(max-width:600px){
+
+    .contact-box{
+
+        width:90%;
+
+    }
+
+    nav a{
+
+        display:inline-block;
+        margin:8px;
+
+    }
+
+}
+
+
+</style>
+
+
+</head>
+
+
+<body>
+
+
+<!-- NAVIGATION -->
+
+<nav>
+
+<a href="index.html">🏠 Home</a>
+
+<a href="about.html">👨‍💻 About</a>
+
+<a href="contact.html">📩 Contact</a>
+
+</nav>
+
+
+
+<!-- CONTACT -->
+
+<div class="contact-box">
+
+
+<h1>📩 Contact Me</h1>
+
+
+<p>
+
+If you want to contact me, fill this form.
+
+</p>
+
+
+
+<form>
+
+
+<input type="text" placeholder="Your Name">
+
+
+<input type="email" placeholder="Your Email">
+
+
+<input type="tel" placeholder="Mobile Number">
+
+
+
+<textarea placeholder="Your Message"></textarea>
+
+
+<br>
+
+
+<button onclick="sendMessage()">
+
+Send Message 🚀
+
+</button>
+
+
+</form>
+
+
+
+<div class="social">
+
+
+<h2>Connect With Me 🌐</h2>
+
+
+<a href="#">
+📷 Instagram
+</a>
+
+
+<a href="#">
+💻 LinkedIn
+</a>
+
+
+<a href="#">
+📘 Facebook
+</a>
+
+
+</div>
+
+
+</div>
+
+
+
+
+<footer>
+
+© 2026 My Computer World | Made with ❤️
+
+</footer>
+
+
+
+<script>
+
+
+function sendMessage(){
+
+alert("✅ Thank you! Your message has been submitted.");
+
+}
+
+
+</script>
+
+
+</body>
+
+</html>
