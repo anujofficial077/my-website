@@ -1,0 +1,1020 @@
+﻿```html
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>My Computer World</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            color: white;
+            background: linear-gradient(135deg, #141e30, #243b55);
+            transition: 0.4s;
+        }
+
+        /* NAVIGATION */
+
+        nav {
+            background: rgba(0,0,0,0.4);
+            padding: 18px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+
+        nav a {
+            color: white;
+            margin: 10px 15px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        nav a:hover {
+            color: #ffd700;
+        }
+
+        /* TOP TOOLS */
+
+        .tools {
+            padding: 15px;
+        }
+
+        .tools input {
+            padding: 12px;
+            width: 220px;
+            border: none;
+            border-radius: 20px;
+            outline: none;
+        }
+
+        .tool-button {
+            padding: 11px 18px;
+            margin: 5px;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        /* HERO */
+
+        .hero {
+            padding: 80px 20px;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 15px;
+        }
+
+        .hero p {
+            font-size: 22px;
+        }
+
+        .typing {
+            color: #ffd700;
+            font-weight: bold;
+            font-size: 25px;
+        }
+
+        /* COMMON BOX */
+
+        .box {
+            max-width: 850px;
+            margin: 40px auto;
+            padding: 35px 25px;
+            background: rgba(255,255,255,0.12);
+            border-radius: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        h2 {
+            font-size: 32px;
+            margin-bottom: 25px;
+        }
+
+        p {
+            font-size: 18px;
+            line-height: 1.6;
+        }
+
+        /* CARDS */
+
+        .cards {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .card {
+            width: 200px;
+            padding: 25px 15px;
+            background: rgba(255,255,255,0.12);
+            border-radius: 20px;
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            background: rgba(255,255,255,0.2);
+        }
+
+        .card h3 {
+            font-size: 22px;
+        }
+
+        .card p {
+            font-size: 16px;
+        }
+
+        /* PROFILE */
+
+        .profile {
+            max-width: 600px;
+            margin: auto;
+            padding: 25px;
+            background: rgba(255,255,255,0.12);
+            border-radius: 20px;
+        }
+
+        .download {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 13px 25px;
+            background: linear-gradient(45deg, #ffd700, #ff9800);
+            color: black;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: bold;
+        }
+
+        /* SKILLS */
+
+        .skill {
+            margin: 20px 0;
+            text-align: left;
+        }
+
+        .skill-name {
+            margin-bottom: 7px;
+            font-weight: bold;
+        }
+
+        .bar {
+            width: 100%;
+            height: 18px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        .progress {
+            height: 100%;
+            background: linear-gradient(90deg, #ffd700, #ff9800);
+            border-radius: 20px;
+        }
+
+        /* GALLERY */
+
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .photo {
+            width: 200px;
+            height: 140px;
+            background: rgba(255,255,255,0.15);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+        }
+
+        /* JOURNEY */
+
+        .journey {
+            padding: 15px;
+            margin: 15px 0;
+            background: rgba(255,255,255,0.08);
+            border-radius: 15px;
+        }
+
+        /* PROJECT */
+
+        .project-button {
+            display: inline-block;
+            padding: 13px 30px;
+            background: linear-gradient(45deg, #ffd700, #ff9800);
+            color: black;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: bold;
+        }
+
+        /* TOP BUTTON */
+
+        #topButton {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            width: 55px;
+            height: 55px;
+            border: none;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #ffd700, #ff9800);
+            color: black;
+            font-size: 24px;
+            font-weight: bold;
+            cursor: pointer;
+            display: none;
+            z-index: 9999;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.5);
+            transition: 0.3s;
+        }
+
+        #topButton:hover {
+            transform: translateY(-5px) scale(1.1);
+        }
+
+        /* FOOTER */
+
+        footer {
+            margin-top: 60px;
+            padding: 25px;
+            background: rgba(0,0,0,0.4);
+        }
+
+        /* LIGHT MODE */
+
+        body.light-mode {
+            color: #222;
+            background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+        }
+
+        body.light-mode nav,
+        body.light-mode footer {
+            background: rgba(255,255,255,0.6);
+        }
+
+        body.light-mode nav a {
+            color: #222;
+        }
+
+        body.light-mode .box,
+        body.light-mode .card,
+        body.light-mode .profile,
+        body.light-mode .journey,
+        body.light-mode .photo {
+            background: rgba(255,255,255,0.55);
+        }
+
+        /* MOBILE */
+
+        @media(max-width:600px) {
+
+            nav a {
+                display: inline-block;
+                margin: 7px;
+                font-size: 14px;
+            }
+
+            .hero h1 {
+                font-size: 35px;
+            }
+
+            .hero p {
+                font-size: 18px;
+            }
+
+            .tools input {
+                width: 90%;
+                margin-bottom: 8px;
+            }
+
+            .card {
+                width: 90%;
+            }
+
+            .photo {
+                width: 90%;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- NAVIGATION -->
+
+<nav>
+
+    <a href="index.html">🏠 Home</a>
+
+    <a href="about.html">👨‍💻 About</a>
+
+    <a href="contact.html">📩 Contact</a>
+
+</nav>
+
+
+<!-- TOP TOOLS -->
+
+<div class="tools">
+
+    <input
+        type="text"
+        id="searchBox"
+        placeholder="🔎 Search this page..."
+        onkeyup="searchPage()"
+    >
+
+    <button class="tool-button" onclick="showTime()">
+        🕒 Time
+    </button>
+
+    <button class="tool-button" onclick="musicDemo()">
+        🎵 Music
+    </button>
+
+    <button class="tool-button" onclick="toggleMode()">
+        🌙 Dark / ☀️ Light
+    </button>
+
+    <p id="time"></p>
+
+    <p>
+        👀 Visitors:
+        <span id="visitors">0</span>
+    </p>
+
+</div>
+
+
+<!-- HERO SECTION -->
+
+<section class="hero">
+
+    <h1>Welcome to My Computer World 🚀</h1>
+
+    <p>Hello! My name is <b>Anuj Maurya</b>.</p>
+
+    <p>
+        I am a Class 11 student and I am learning
+        Computer and ADCA.
+    </p>
+
+    <p class="typing" id="typing"></p>
+
+</section>
+
+
+<!-- WHAT I AM LEARNING -->
+
+<div class="box">
+
+    <h2>📚 What I Am Learning</h2>
+
+    <div class="cards">
+
+        <div class="card">
+            <h3>💻 Computer</h3>
+            <p>Learning computer basics and practical skills.</p>
+        </div>
+
+        <div class="card">
+            <h3>🌐 HTML & CSS</h3>
+            <p>Learning how to create and design websites.</p>
+        </div>
+
+        <div class="card">
+            <h3>📐 Mathematics</h3>
+            <p>Mathematics is one of my favorite subjects.</p>
+        </div>
+
+        <div class="card">
+            <h3>🎬 Editing</h3>
+            <p>Learning photo and video editing.</p>
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- ABOUT ME -->
+
+<div class="box">
+
+    <h2>👨‍💻 About Me</h2>
+
+    <p>
+        My name is Anuj Maurya.
+        I am a Class 11 student.
+    </p>
+
+    <p>
+        I am learning Computer and ADCA.
+        I enjoy learning about technology.
+    </p>
+
+    <p>
+        I also have an interest in Mathematics,
+        photography, editing and travelling.
+    </p>
+
+</div>
+
+
+<!-- PROFILE -->
+
+<div class="box">
+
+    <h2>📄 My Profile</h2>
+
+    <div class="profile">
+
+        <p><b>Name:</b> Anuj Maurya</p>
+
+        <p><b>Class:</b> 11</p>
+
+        <p><b>Course:</b> ADCA</p>
+
+        <p><b>Interest:</b> Mathematics</p>
+
+        <a class="download" href="profile.txt" download>
+            ⬇️ Download My Profile
+        </a>
+
+    </div>
+
+</div>
+
+
+<!-- SKILLS -->
+
+<div class="box">
+
+    <h2>🛠️ My Skills</h2>
+
+    <div class="skill">
+
+        <div class="skill-name">
+            💻 Computer
+        </div>
+
+        <div class="bar">
+            <div class="progress" style="width:85%;"></div>
+        </div>
+
+    </div>
+
+
+    <div class="skill">
+
+        <div class="skill-name">
+            🌐 HTML & CSS
+        </div>
+
+        <div class="bar">
+            <div class="progress" style="width:75%;"></div>
+        </div>
+
+    </div>
+
+
+    <div class="skill">
+
+        <div class="skill-name">
+            🎬 Photo & Video Editing
+        </div>
+
+        <div class="bar">
+            <div class="progress" style="width:80%;"></div>
+        </div>
+
+    </div>
+
+
+    <div class="skill">
+
+        <div class="skill-name">
+            📷 Photography
+        </div>
+
+        <div class="bar">
+            <div class="progress" style="width:70%;"></div>
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- MY INTERESTS -->
+
+<div class="box">
+
+    <h2>❤️ My Interests</h2>
+
+    <div class="cards">
+
+        <div class="card">
+            <h3>💻 Technology</h3>
+            <p>I like learning new things about computers.</p>
+        </div>
+
+        <div class="card">
+            <h3>📷 Photography</h3>
+            <p>I enjoy taking photos and using a camera.</p>
+        </div>
+
+        <div class="card">
+            <h3>🎬 Editing</h3>
+            <p>I enjoy photo and video editing.</p>
+        </div>
+
+        <div class="card">
+            <h3>✈️ Travelling</h3>
+            <p>I like travelling and exploring new places.</p>
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- GALLERY -->
+
+<div class="box">
+
+    <h2>📸 My Gallery</h2>
+
+    <div class="gallery">
+
+        <div class="photo">📷 Photo 1</div>
+
+        <div class="photo">📷 Photo 2</div>
+
+        <div class="photo">📷 Photo 3</div>
+
+        <div class="photo">📷 Photo 4</div>
+
+    </div>
+
+    <p>
+        You can add your photos here later.
+    </p>
+
+</div>
+
+
+<!-- HOBBIES -->
+
+<div class="box">
+
+    <h2>🎨 My Hobbies</h2>
+
+    <div class="cards">
+
+        <div class="card">
+            <h3>📷 Photography</h3>
+            <p>Taking and exploring photographs.</p>
+        </div>
+
+        <div class="card">
+            <h3>🎬 Editing</h3>
+            <p>Photo and video editing.</p>
+        </div>
+
+        <div class="card">
+            <h3>✈️ Travelling</h3>
+            <p>Exploring new places.</p>
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- LEARNING JOURNEY -->
+
+<div class="box">
+
+    <h2>🚀 My Learning Journey</h2>
+
+    <div class="journey">
+        <h3>📌 Step 1</h3>
+        <p>Started learning basic computer skills.</p>
+    </div>
+
+    <div class="journey">
+        <h3>📌 Step 2</h3>
+        <p>Started learning HTML and CSS.</p>
+    </div>
+
+    <div class="journey">
+        <h3>📌 Step 3</h3>
+        <p>Created my own personal website.</p>
+    </div>
+
+    <div class="journey">
+        <h3>📌 Step 4</h3>
+        <p>Continuing to learn web development.</p>
+    </div>
+
+</div>
+
+
+<!-- WHY I LIKE TECHNOLOGY -->
+
+<div class="box">
+
+    <h2>💡 Why I Like Technology</h2>
+
+    <p>
+        Technology makes our work easier and faster.
+    </p>
+
+    <p>
+        I enjoy learning how computers and websites work.
+    </p>
+
+    <p>
+        My goal is to keep improving my computer knowledge.
+    </p>
+
+</div>
+
+
+<!-- WORKPLACE EXPERIENCE -->
+
+<div class="box">
+
+    <h2>🖥️ Workplace Experience</h2>
+
+    <p>
+        I work at a computer shop where I get
+        practical computer-related experience.
+    </p>
+
+    <p>
+        This helps me understand computers,
+        software and everyday digital work better.
+    </p>
+
+</div>
+
+
+<!-- WORK SKILLS -->
+
+<div class="box">
+
+    <h2>⚙️ Work Skills</h2>
+
+    <div class="cards">
+
+        <div class="card">
+            <h3>⌨️ Typing</h3>
+            <p>Improving typing and computer work.</p>
+        </div>
+
+        <div class="card">
+            <h3>🖥️ Computer Work</h3>
+            <p>Learning practical computer tasks.</p>
+        </div>
+
+        <div class="card">
+            <h3>📁 File Management</h3>
+            <p>Working with files and folders.</p>
+        </div>
+
+        <div class="card">
+            <h3>🌐 Web Development</h3>
+            <p>Learning to create websites.</p>
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- FAVORITES -->
+
+<div class="box">
+
+    <h2>⭐ My Favorites</h2>
+
+    <p>📚 Favorite Subject: Mathematics</p>
+
+    <p>💻 Favorite Field: Computer & Technology</p>
+
+    <p>📷 Favorite Hobby: Photography</p>
+
+    <p>🎬 Favorite Activity: Photo & Video Editing</p>
+
+</div>
+
+
+<!-- FUTURE GOALS -->
+
+<div class="box">
+
+    <h2>🎯 My Future Goals</h2>
+
+    <p>
+        🚀 Improve my computer skills.
+    </p>
+
+    <p>
+        🌐 Learn advanced web development.
+    </p>
+
+    <p>
+        💻 Learn new technologies.
+    </p>
+
+    <p>
+        📚 Keep learning and growing.
+    </p>
+
+</div>
+
+
+<!-- PROJECT -->
+
+<div class="box">
+
+    <h2>🌐 My Project</h2>
+
+    <p>
+        I created this personal website using
+        HTML, CSS and JavaScript.
+    </p>
+
+    <p>
+        This website shows my learning journey,
+        skills, hobbies and interests.
+    </p>
+
+    <a class="project-button" href="project.html">
+        🚀 View My Project
+    </a>
+
+</div>
+
+
+<!-- THANKS -->
+
+<div class="box">
+
+    <h2>🙏 Thanks for Visiting</h2>
+
+    <p>
+        Thank you for visiting my website! 😊
+    </p>
+
+    <p>
+        Keep Learning • Keep Growing 🚀
+    </p>
+
+</div>
+
+
+<!-- TOP BUTTON -->
+
+<button id="topButton" onclick="goTop()">
+    ⬆️
+</button>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+    © 2026 My Computer World
+
+    <br><br>
+
+    Made with ❤️ by Anuj Maurya
+
+</footer>
+
+
+<!-- JAVASCRIPT -->
+
+<script>
+
+    /* TYPING EFFECT */
+
+    let text = [
+        "💻 Computer Learner",
+        "🌐 Web Development Learner",
+        "📷 Photography Lover",
+        "🎬 Photo & Video Editor",
+        "📚 ADCA Student"
+    ];
+
+    let textIndex = 0;
+    let charIndex = 0;
+
+    function typingEffect() {
+
+        let typing = document.getElementById("typing");
+
+        if (charIndex < text[textIndex].length) {
+
+            typing.innerHTML += text[textIndex].charAt(charIndex);
+
+            charIndex++;
+
+            setTimeout(typingEffect, 80);
+
+        } else {
+
+            setTimeout(() => {
+
+                typing.innerHTML = "";
+
+                charIndex = 0;
+
+                textIndex++;
+
+                if (textIndex >= text.length) {
+                    textIndex = 0;
+                }
+
+                typingEffect();
+
+            }, 1200);
+
+        }
+
+    }
+
+    typingEffect();
+
+
+    /* CLOCK */
+
+    function showTime() {
+
+        let now = new Date();
+
+        document.getElementById("time").innerHTML =
+            "🕒 Current Time: " + now.toLocaleTimeString();
+
+    }
+
+
+    setInterval(showTime, 1000);
+
+    showTime();
+
+
+    /* VISITOR COUNTER */
+
+    let visitors = localStorage.getItem("visitors");
+
+    if (visitors === null) {
+        visitors = 1;
+    } else {
+        visitors = Number(visitors) + 1;
+    }
+
+    localStorage.setItem("visitors", visitors);
+
+    document.getElementById("visitors").innerHTML = visitors;
+
+
+    /* MUSIC */
+
+    function musicDemo() {
+
+        alert("🎵 Music feature demo!\nYou can add your own music later. 😊");
+
+    }
+
+
+    /* DARK / LIGHT MODE */
+
+    function toggleMode() {
+
+        document.body.classList.toggle("light-mode");
+
+        if (document.body.classList.contains("light-mode")) {
+
+            localStorage.setItem("mode", "light");
+
+        } else {
+
+            localStorage.setItem("mode", "dark");
+
+        }
+
+    }
+
+
+    /* SAVE MODE */
+
+    let savedMode = localStorage.getItem("mode");
+
+    if (savedMode === "light") {
+
+        document.body.classList.add("light-mode");
+
+    }
+
+
+    /* SEARCH */
+
+    function searchPage() {
+
+        let search =
+            document.getElementById("searchBox").value.toLowerCase();
+
+        let text =
+            document.body.innerText.toLowerCase();
+
+        if (search === "") {
+            return;
+        }
+
+        if (text.includes(search)) {
+
+            window.find(search);
+
+        } else {
+
+            alert("❌ Text not found on this page.");
+
+        }
+
+    }
+
+
+    /* TOP BUTTON */
+
+    window.onscroll = function() {
+
+        let button =
+            document.getElementById("topButton");
+
+        if (
+            document.documentElement.scrollTop > 300 ||
+            document.body.scrollTop > 300
+        ) {
+
+            button.style.display = "block";
+
+        } else {
+
+            button.style.display = "none";
+
+        }
+
+    };
+
+
+    function goTop() {
+
+        window.scrollTo({
+
+            top: 0,
+
+            behavior: "smooth"
+
+        });
+
+    }
+
+</script>
+
+
+</body>
+
+</html>
+```
