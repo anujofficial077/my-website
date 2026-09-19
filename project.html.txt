@@ -1,0 +1,528 @@
+```html
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>My Project - My Computer World</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            color: white;
+            background: linear-gradient(135deg, #141e30, #243b55);
+        }
+
+        /* NAVIGATION */
+
+        nav {
+            background: rgba(0,0,0,0.4);
+            padding: 20px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 3px 15px rgba(0,0,0,0.3);
+        }
+
+        nav a {
+            color: white;
+            margin: 10px 15px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 16px;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: #ffd700;
+        }
+
+        /* HERO */
+
+        .hero {
+            padding: 70px 20px 40px;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 15px;
+        }
+
+        .hero p {
+            font-size: 20px;
+            line-height: 1.6;
+        }
+
+        .highlight {
+            color: #ffd700;
+            font-weight: bold;
+        }
+
+        /* COMMON BOX */
+
+        .box {
+            max-width: 850px;
+            margin: 35px auto;
+            padding: 35px 25px;
+            background: rgba(255,255,255,0.12);
+            border-radius: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            backdrop-filter: blur(8px);
+        }
+
+        .box h2 {
+            font-size: 32px;
+            margin-bottom: 20px;
+        }
+
+        .box p {
+            font-size: 18px;
+            line-height: 1.7;
+        }
+
+        /* CARDS */
+
+        .cards {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .card {
+            width: 210px;
+            padding: 25px 18px;
+            background: rgba(255,255,255,0.10);
+            border-radius: 20px;
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            background: rgba(255,255,255,0.20);
+        }
+
+        .card h3 {
+            font-size: 21px;
+        }
+
+        .card p {
+            font-size: 16px;
+        }
+
+        /* PROJECT DETAILS */
+
+        .project-icon {
+            font-size: 70px;
+            margin-bottom: 10px;
+        }
+
+        .technology {
+            display: inline-block;
+            padding: 12px 20px;
+            margin: 8px;
+            background: rgba(255,255,255,0.12);
+            border-radius: 25px;
+            font-weight: bold;
+        }
+
+        /* FEATURES */
+
+        .feature {
+            text-align: left;
+            max-width: 650px;
+            margin: 15px auto;
+            padding: 16px 20px;
+            background: rgba(255,255,255,0.08);
+            border-radius: 15px;
+        }
+
+        /* BUTTON */
+
+        .button {
+            display: inline-block;
+            margin: 15px 8px;
+            padding: 14px 30px;
+            background: linear-gradient(45deg, #ffd700, #ff9800);
+            color: #222;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .button:hover {
+            transform: scale(1.07);
+            box-shadow: 0 5px 20px rgba(255,215,0,0.4);
+        }
+
+        .secondary-button {
+            background: rgba(255,255,255,0.15);
+            color: white;
+        }
+
+        .secondary-button:hover {
+            background: rgba(255,255,255,0.25);
+            box-shadow: none;
+        }
+
+        /* TOP BUTTON */
+
+        #topButton {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            width: 55px;
+            height: 55px;
+            border: none;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #ffd700, #ff9800);
+            color: black;
+            font-size: 24px;
+            font-weight: bold;
+            cursor: pointer;
+            display: none;
+            z-index: 9999;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.5);
+            transition: 0.3s;
+        }
+
+        #topButton:hover {
+            transform: translateY(-5px) scale(1.1);
+        }
+
+        /* FOOTER */
+
+        footer {
+            margin-top: 60px;
+            padding: 25px;
+            background: rgba(0,0,0,0.4);
+        }
+
+        /* MOBILE */
+
+        @media(max-width:600px) {
+
+            nav a {
+                display: inline-block;
+                margin: 7px;
+                font-size: 14px;
+            }
+
+            .hero h1 {
+                font-size: 35px;
+            }
+
+            .hero p {
+                font-size: 18px;
+            }
+
+            .box {
+                width: 90%;
+            }
+
+            .card {
+                width: 90%;
+            }
+
+            .technology {
+                display: block;
+                margin: 10px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- NAVIGATION -->
+
+<nav>
+
+    <a href="index.html">?? Home</a>
+
+    <a href="about.html">????? About</a>
+
+    <a href="contact.html">?? Contact</a>
+
+</nav>
+
+
+<!-- HERO -->
+
+<section class="hero">
+
+    <div class="project-icon">
+        ??
+    </div>
+
+    <h1>My Personal Website</h1>
+
+    <p>
+        Welcome to my project page! ??
+    </p>
+
+    <p>
+        This website is a part of my
+        <span class="highlight">web development learning journey</span>.
+    </p>
+
+</section>
+
+
+<!-- ABOUT PROJECT -->
+
+<div class="box">
+
+    <h2>?? About This Project</h2>
+
+    <p>
+        I created this personal website to practice
+        HTML, CSS and JavaScript.
+    </p>
+
+    <p>
+        The website contains information about me,
+        my skills, hobbies, interests and learning journey.
+    </p>
+
+    <p>
+        This project helps me understand how
+        different parts of a website work together.
+    </p>
+
+</div>
+
+
+<!-- TECHNOLOGIES -->
+
+<div class="box">
+
+    <h2>?? Technologies Used</h2>
+
+    <div class="technology">
+        ?? HTML
+    </div>
+
+    <div class="technology">
+        ?? CSS
+    </div>
+
+    <div class="technology">
+        ? JavaScript
+    </div>
+
+</div>
+
+
+<!-- FEATURES -->
+
+<div class="box">
+
+    <h2>? Website Features</h2>
+
+    <div class="feature">
+        ?? <b>Home Page</b> — Personal introduction and website information.
+    </div>
+
+    <div class="feature">
+        ????? <b>About Page</b> — Information about me, my skills and hobbies.
+    </div>
+
+    <div class="feature">
+        ?? <b>Contact Page</b> — Contact form for visitors.
+    </div>
+
+    <div class="feature">
+        ?? <b>Dark / Light Mode</b> — Switch between website themes.
+    </div>
+
+    <div class="feature">
+        ?? <b>Search</b> — Search content on the Home page.
+    </div>
+
+    <div class="feature">
+        ?? <b>Live Clock</b> — Shows the current time.
+    </div>
+
+    <div class="feature">
+        ?? <b>Top Button</b> — Quickly return to the top of the page.
+    </div>
+
+    <div class="feature">
+        ?? <b>Profile Download</b> — Download my profile information.
+    </div>
+
+</div>
+
+
+<!-- LEARNING -->
+
+<div class="box">
+
+    <h2>?? What I Learned</h2>
+
+    <div class="cards">
+
+        <div class="card">
+
+            <h3>HTML</h3>
+
+            <p>
+                I learned how to create
+                the structure of web pages.
+            </p>
+
+        </div>
+
+
+        <div class="card">
+
+            <h3>CSS</h3>
+
+            <p>
+                I learned how to style
+                and design web pages.
+            </p>
+
+        </div>
+
+
+        <div class="card">
+
+            <h3>JavaScript</h3>
+
+            <p>
+                I learned basic interactions
+                and website functions.
+            </p>
+
+        </div>
+
+
+        <div class="card">
+
+            <h3>Web Design</h3>
+
+            <p>
+                I learned how different
+                website sections work together.
+            </p>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- FUTURE PLANS -->
+
+<div class="box">
+
+    <h2>?? Future Plans</h2>
+
+    <p>
+        I want to continue improving this website
+        and learn more advanced web development.
+    </p>
+
+    <p>
+        I also want to learn new technologies
+        and create more useful projects.
+    </p>
+
+</div>
+
+
+<!-- BUTTONS -->
+
+<a class="button" href="index.html">
+    ?? Back to Home
+</a>
+
+<a class="button secondary-button" href="contact.html">
+    ?? Contact Me
+</a>
+
+
+<!-- TOP BUTTON -->
+
+<button id="topButton" onclick="goTop()">
+    ??
+</button>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+    © 2026 My Computer World
+
+    <br><br>
+
+    Made with ?? by Anuj Maurya
+
+</footer>
+
+
+<script>
+
+    /* TOP BUTTON */
+
+    window.onscroll = function() {
+
+        let button =
+            document.getElementById("topButton");
+
+        if (
+            document.documentElement.scrollTop > 300 ||
+            document.body.scrollTop > 300
+        ) {
+
+            button.style.display = "block";
+
+        } else {
+
+            button.style.display = "none";
+
+        }
+
+    };
+
+
+    function goTop() {
+
+        window.scrollTo({
+
+            top: 0,
+
+            behavior: "smooth"
+
+        });
+
+    }
+
+</script>
+
+
+</body>
+
+</html>
+```
