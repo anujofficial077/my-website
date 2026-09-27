@@ -1,12 +1,14 @@
-﻿```html
+```html
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
 
-    <title>My Computer World</title>
+    <meta charset="UTF-8">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>My Computer World | Anuj Maurya</title>
 
     <style>
 
@@ -18,101 +20,261 @@
         body {
             margin: 0;
             font-family: Arial, sans-serif;
-            text-align: center;
             color: white;
-            background: linear-gradient(135deg, #141e30, #243b55);
-            transition: 0.4s;
+            background:
+                radial-gradient(circle at top left, #243b55, transparent 35%),
+                linear-gradient(135deg, #080f1c, #142b45, #07111f);
+            transition: 0.5s;
+            overflow-x: hidden;
         }
 
-        /* NAVIGATION */
+        /* ================= NAVBAR ================= */
 
         nav {
-            background: rgba(0,0,0,0.4);
-            padding: 18px;
             position: sticky;
             top: 0;
-            z-index: 1000;
-            backdrop-filter: blur(10px);
+            z-index: 9999;
+            padding: 16px 10px;
+            text-align: center;
+            background: rgba(0, 0, 0, 0.45);
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
         }
 
         nav a {
+            display: inline-block;
             color: white;
-            margin: 10px 15px;
             text-decoration: none;
             font-weight: bold;
-            font-size: 16px;
+            margin: 6px 14px;
+            padding: 8px 12px;
+            border-radius: 20px;
+            transition: 0.3s;
         }
 
         nav a:hover {
+            background: rgba(255,215,0,0.15);
             color: #ffd700;
+            transform: translateY(-2px);
         }
 
-        /* TOP TOOLS */
+        /* ================= TOOLS ================= */
 
         .tools {
-            padding: 15px;
+            text-align: center;
+            padding: 18px 10px;
         }
 
         .tools input {
-            padding: 12px;
-            width: 220px;
+            width: 230px;
+            padding: 12px 18px;
             border: none;
-            border-radius: 20px;
             outline: none;
+            border-radius: 30px;
+            font-size: 15px;
+            margin: 5px;
         }
 
         .tool-button {
+            border: none;
             padding: 11px 18px;
             margin: 5px;
-            border: none;
-            border-radius: 20px;
+            border-radius: 30px;
             cursor: pointer;
+            font-weight: bold;
+            transition: 0.3s;
+            background: linear-gradient(45deg, #ffd700, #ff9800);
+            color: #111;
+        }
+
+        .tool-button:hover {
+            transform: translateY(-3px) scale(1.03);
+            box-shadow: 0 8px 20px rgba(255,193,7,0.3);
+        }
+
+        #time {
+            color: #ffd700;
             font-weight: bold;
         }
 
-        /* HERO */
+        /* ================= HERO ================= */
 
         .hero {
-            padding: 80px 20px;
+            min-height: 720px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 70px 20px;
+            position: relative;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            width: 350px;
+            height: 350px;
+            border-radius: 50%;
+            background: rgba(0, 174, 255, 0.12);
+            filter: blur(40px);
+            top: 100px;
+            z-index: -1;
+        }
+
+        .hero-photo {
+            width: 210px;
+            height: 210px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 5px solid #ffd700;
+            box-shadow:
+                0 0 25px rgba(255,215,0,0.45),
+                0 15px 45px rgba(0,0,0,0.5);
+            animation: floating 4s ease-in-out infinite;
+        }
+
+        @keyframes floating {
+
+            0%, 100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-15px);
+            }
+
+        }
+
+        .photo-name {
+            margin-top: 15px;
+            color: #ffd700;
+            font-weight: bold;
+            font-size: 18px;
         }
 
         .hero h1 {
-            font-size: 48px;
-            margin-bottom: 15px;
+            font-size: 52px;
+            margin: 25px 0 12px;
+            animation: fadeDown 1s ease;
+        }
+
+        .hero h1 span {
+            color: #ffd700;
         }
 
         .hero p {
-            font-size: 22px;
+            font-size: 20px;
+            max-width: 750px;
+            line-height: 1.7;
+            margin: 8px auto;
         }
 
         .typing {
             color: #ffd700;
-            font-weight: bold;
             font-size: 25px;
+            font-weight: bold;
+            min-height: 35px;
         }
 
-        /* COMMON BOX */
+        @keyframes fadeDown {
+
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+        }
+
+        /* ================= HERO BUTTONS ================= */
+
+        .hero-buttons {
+            margin-top: 25px;
+        }
+
+        .main-button {
+            display: inline-block;
+            padding: 14px 28px;
+            margin: 7px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            color: #111;
+            background: linear-gradient(45deg, #ffd700, #ff9800);
+            box-shadow: 0 8px 25px rgba(255,193,7,0.25);
+            transition: 0.3s;
+        }
+
+        .main-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(255,193,7,0.4);
+        }
+
+        .secondary-button {
+            display: inline-block;
+            padding: 14px 28px;
+            margin: 7px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            color: white;
+            border: 1px solid rgba(255,255,255,0.3);
+            background: rgba(255,255,255,0.08);
+            transition: 0.3s;
+        }
+
+        .secondary-button:hover {
+            background: rgba(255,255,255,0.18);
+            transform: translateY(-5px);
+        }
+
+        /* ================= BOX ================= */
 
         .box {
-            max-width: 850px;
-            margin: 40px auto;
-            padding: 35px 25px;
-            background: rgba(255,255,255,0.12);
-            border-radius: 25px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            max-width: 950px;
+            margin: 45px auto;
+            padding: 40px 25px;
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 28px;
+            box-shadow: 0 15px 45px rgba(0,0,0,0.25);
+            backdrop-filter: blur(12px);
+            opacity: 0;
+            transform: translateY(40px);
+            transition: 0.8s;
+        }
+
+        .box.show {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         h2 {
             font-size: 32px;
-            margin-bottom: 25px;
+            margin-bottom: 28px;
+        }
+
+        h2::after {
+            content: "";
+            display: block;
+            width: 70px;
+            height: 4px;
+            margin: 12px auto;
+            border-radius: 5px;
+            background: linear-gradient(90deg, #ffd700, #ff9800);
         }
 
         p {
             font-size: 18px;
-            line-height: 1.6;
+            line-height: 1.7;
         }
 
-        /* CARDS */
+        /* ================= CARDS ================= */
 
         .cards {
             display: flex;
@@ -122,157 +284,190 @@
         }
 
         .card {
-            width: 200px;
-            padding: 25px 15px;
-            background: rgba(255,255,255,0.12);
-            border-radius: 20px;
-            transition: 0.3s;
+            width: 210px;
+            padding: 25px 18px;
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 22px;
+            transition: 0.35s;
         }
 
         .card:hover {
-            transform: translateY(-8px);
-            background: rgba(255,255,255,0.2);
+            transform: translateY(-10px);
+            background: rgba(255,255,255,0.15);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.25);
         }
 
         .card h3 {
-            font-size: 22px;
+            font-size: 21px;
         }
 
         .card p {
-            font-size: 16px;
+            font-size: 15px;
         }
 
-        /* PROFILE */
+        /* ================= PROFILE ================= */
 
         .profile {
-            max-width: 600px;
+            max-width: 620px;
             margin: auto;
-            padding: 25px;
-            background: rgba(255,255,255,0.12);
-            border-radius: 20px;
+            padding: 28px;
+            background: rgba(255,255,255,0.07);
+            border-radius: 22px;
         }
 
-        .download {
+        .profile p {
+            margin: 13px 0;
+        }
+
+        .download,
+        .project-button {
             display: inline-block;
             margin-top: 15px;
             padding: 13px 25px;
             background: linear-gradient(45deg, #ffd700, #ff9800);
             color: black;
             text-decoration: none;
-            border-radius: 25px;
+            border-radius: 30px;
             font-weight: bold;
+            transition: 0.3s;
         }
 
-        /* SKILLS */
+        .download:hover,
+        .project-button:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 25px rgba(255,193,7,0.3);
+        }
+
+        /* ================= SKILLS ================= */
 
         .skill {
-            margin: 20px 0;
+            margin: 24px 0;
             text-align: left;
         }
 
         .skill-name {
-            margin-bottom: 7px;
+            margin-bottom: 8px;
             font-weight: bold;
         }
 
         .bar {
             width: 100%;
             height: 18px;
-            background: rgba(255,255,255,0.2);
+            background: rgba(255,255,255,0.12);
             border-radius: 20px;
             overflow: hidden;
         }
 
         .progress {
             height: 100%;
-            background: linear-gradient(90deg, #ffd700, #ff9800);
             border-radius: 20px;
+            background: linear-gradient(90deg, #ffd700, #ff9800);
+            animation: progressAnimation 2s ease;
         }
 
-        /* GALLERY */
+        @keyframes progressAnimation {
+
+            from {
+                width: 0 !important;
+            }
+
+        }
+
+        /* ================= GALLERY ================= */
 
         .gallery {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 15px;
+            gap: 18px;
         }
 
         .photo {
-            width: 200px;
-            height: 140px;
-            background: rgba(255,255,255,0.15);
-            border-radius: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 18px;
+            width: 210px;
+            height: 150px;
+            border-radius: 18px;
+            overflow: hidden;
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: 0.35s;
         }
 
-        /* JOURNEY */
+        .photo:hover {
+            transform: scale(1.05);
+        }
+
+        .photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* ================= JOURNEY ================= */
 
         .journey {
-            padding: 15px;
+            padding: 20px;
             margin: 15px 0;
-            background: rgba(255,255,255,0.08);
+            text-align: left;
+            background: rgba(255,255,255,0.06);
+            border-left: 4px solid #ffd700;
             border-radius: 15px;
+            transition: 0.3s;
         }
 
-        /* PROJECT */
-
-        .project-button {
-            display: inline-block;
-            padding: 13px 30px;
-            background: linear-gradient(45deg, #ffd700, #ff9800);
-            color: black;
-            text-decoration: none;
-            border-radius: 25px;
-            font-weight: bold;
+        .journey:hover {
+            transform: translateX(8px);
+            background: rgba(255,255,255,0.11);
         }
 
-        /* TOP BUTTON */
+        /* ================= TOP BUTTON ================= */
 
         #topButton {
             position: fixed;
-            bottom: 25px;
-            right: 25px;
+            right: 22px;
+            bottom: 22px;
             width: 55px;
             height: 55px;
             border: none;
             border-radius: 50%;
             background: linear-gradient(45deg, #ffd700, #ff9800);
             color: black;
-            font-size: 24px;
-            font-weight: bold;
+            font-size: 23px;
             cursor: pointer;
             display: none;
             z-index: 9999;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.5);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.4);
             transition: 0.3s;
         }
 
         #topButton:hover {
-            transform: translateY(-5px) scale(1.1);
+            transform: scale(1.12);
         }
 
-        /* FOOTER */
+        /* ================= FOOTER ================= */
 
         footer {
-            margin-top: 60px;
-            padding: 25px;
-            background: rgba(0,0,0,0.4);
+            margin-top: 70px;
+            padding: 30px 15px;
+            background: rgba(0,0,0,0.45);
+            line-height: 1.8;
         }
 
-        /* LIGHT MODE */
+        .footer-name {
+            color: #ffd700;
+            font-weight: bold;
+        }
+
+        /* ================= LIGHT MODE ================= */
 
         body.light-mode {
             color: #222;
-            background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+            background: linear-gradient(135deg, #eef2f3, #c9d6e5);
         }
 
         body.light-mode nav,
         body.light-mode footer {
-            background: rgba(255,255,255,0.6);
+            background: rgba(255,255,255,0.65);
         }
 
         body.light-mode nav a {
@@ -282,32 +477,48 @@
         body.light-mode .box,
         body.light-mode .card,
         body.light-mode .profile,
-        body.light-mode .journey,
-        body.light-mode .photo {
+        body.light-mode .journey {
             background: rgba(255,255,255,0.55);
         }
 
-        /* MOBILE */
+        body.light-mode .secondary-button {
+            color: #222;
+        }
+
+        /* ================= MOBILE ================= */
 
         @media(max-width:600px) {
 
             nav a {
-                display: inline-block;
-                margin: 7px;
-                font-size: 14px;
+                margin: 4px;
+                padding: 7px 8px;
+                font-size: 13px;
+            }
+
+            .hero {
+                min-height: 650px;
+                padding: 50px 15px;
+            }
+
+            .hero-photo {
+                width: 170px;
+                height: 170px;
             }
 
             .hero h1 {
-                font-size: 35px;
+                font-size: 34px;
             }
 
             .hero p {
-                font-size: 18px;
+                font-size: 17px;
+            }
+
+            .typing {
+                font-size: 20px;
             }
 
             .tools input {
                 width: 90%;
-                margin-bottom: 8px;
             }
 
             .card {
@@ -316,6 +527,12 @@
 
             .photo {
                 width: 90%;
+                height: 220px;
+            }
+
+            .box {
+                width: 92%;
+                padding: 30px 18px;
             }
 
         }
@@ -328,7 +545,7 @@
 <body>
 
 
-<!-- NAVIGATION -->
+<!-- ================= NAVIGATION ================= -->
 
 <nav>
 
@@ -341,7 +558,7 @@
 </nav>
 
 
-<!-- TOP TOOLS -->
+<!-- ================= TOOLS ================= -->
 
 <div class="tools">
 
@@ -374,25 +591,55 @@
 </div>
 
 
-<!-- HERO SECTION -->
+<!-- ================= HERO ================= -->
 
 <section class="hero">
 
-    <h1>Welcome to My Computer World 🚀</h1>
+    <img
+        class="hero-photo"
+        src="myphoto.jpg.jpg"
+        alt="Anuj Maurya"
+    >
 
-    <p>Hello! My name is <b>Anuj Maurya</b>.</p>
+    <div class="photo-name">
+        📸 Anuj Maurya
+    </div>
+
+    <h1>
+        Welcome to <span>My Computer World</span> 🚀
+    </h1>
 
     <p>
-        I am a Class 11 student and I am learning
-        Computer and ADCA.
+        Hello! My name is <b>Anuj Maurya</b>.
+    </p>
+
+    <p>
+        I am a Class 11 student learning
+        Computer, ADCA and Web Development.
     </p>
 
     <p class="typing" id="typing"></p>
 
+    <div class="hero-buttons">
+
+        <a class="main-button" href="about.html">
+            👨‍💻 About Me
+        </a>
+
+        <a class="secondary-button" href="#skills">
+            🛠️ My Skills
+        </a>
+
+        <a class="secondary-button" href="contact.html">
+            📩 Contact Me
+        </a>
+
+    </div>
+
 </section>
 
 
-<!-- WHAT I AM LEARNING -->
+<!-- ================= LEARNING ================= -->
 
 <div class="box">
 
@@ -402,22 +649,34 @@
 
         <div class="card">
             <h3>💻 Computer</h3>
-            <p>Learning computer basics and practical skills.</p>
+            <p>
+                Learning computer basics
+                and practical skills.
+            </p>
         </div>
 
         <div class="card">
             <h3>🌐 HTML & CSS</h3>
-            <p>Learning how to create and design websites.</p>
+            <p>
+                Learning how to create
+                and design websites.
+            </p>
         </div>
 
         <div class="card">
             <h3>📐 Mathematics</h3>
-            <p>Mathematics is one of my favorite subjects.</p>
+            <p>
+                Mathematics is one of
+                my favorite subjects.
+            </p>
         </div>
 
         <div class="card">
             <h3>🎬 Editing</h3>
-            <p>Learning photo and video editing.</p>
+            <p>
+                Learning photo and
+                video editing.
+            </p>
         </div>
 
     </div>
@@ -425,7 +684,7 @@
 </div>
 
 
-<!-- ABOUT ME -->
+<!-- ================= ABOUT ================= -->
 
 <div class="box">
 
@@ -437,19 +696,19 @@
     </p>
 
     <p>
-        I am learning Computer and ADCA.
-        I enjoy learning about technology.
+        I am learning Computer and ADCA
+        and enjoy learning about technology.
     </p>
 
     <p>
-        I also have an interest in Mathematics,
+        I am also interested in Mathematics,
         photography, editing and travelling.
     </p>
 
 </div>
 
 
-<!-- PROFILE -->
+<!-- ================= PROFILE ================= -->
 
 <div class="box">
 
@@ -474,9 +733,9 @@
 </div>
 
 
-<!-- SKILLS -->
+<!-- ================= SKILLS ================= -->
 
-<div class="box">
+<div class="box" id="skills">
 
     <h2>🛠️ My Skills</h2>
 
@@ -534,7 +793,7 @@
 </div>
 
 
-<!-- MY INTERESTS -->
+<!-- ================= INTERESTS ================= -->
 
 <div class="box">
 
@@ -544,22 +803,34 @@
 
         <div class="card">
             <h3>💻 Technology</h3>
-            <p>I like learning new things about computers.</p>
+            <p>
+                I like learning new things
+                about computers.
+            </p>
         </div>
 
         <div class="card">
             <h3>📷 Photography</h3>
-            <p>I enjoy taking photos and using a camera.</p>
+            <p>
+                I enjoy taking photos
+                and using a camera.
+            </p>
         </div>
 
         <div class="card">
             <h3>🎬 Editing</h3>
-            <p>I enjoy photo and video editing.</p>
+            <p>
+                I enjoy photo and
+                video editing.
+            </p>
         </div>
 
         <div class="card">
             <h3>✈️ Travelling</h3>
-            <p>I like travelling and exploring new places.</p>
+            <p>
+                I like travelling and
+                exploring new places.
+            </p>
         </div>
 
     </div>
@@ -567,7 +838,7 @@
 </div>
 
 
-<!-- GALLERY -->
+<!-- ================= GALLERY ================= -->
 
 <div class="box">
 
@@ -575,24 +846,35 @@
 
     <div class="gallery">
 
-        <div class="photo">📷 Photo 1</div>
+        <div class="photo">
+            <img
+                src="myphoto.jpg.jpg"
+                alt="Anuj Maurya Photo"
+            >
+        </div>
 
-        <div class="photo">📷 Photo 2</div>
+        <div class="photo">
+            📷 Photo 2
+        </div>
 
-        <div class="photo">📷 Photo 3</div>
+        <div class="photo">
+            📷 Photo 3
+        </div>
 
-        <div class="photo">📷 Photo 4</div>
+        <div class="photo">
+            📷 Photo 4
+        </div>
 
     </div>
 
     <p>
-        You can add your photos here later.
+        My personal photo 📸
     </p>
 
 </div>
 
 
-<!-- HOBBIES -->
+<!-- ================= HOBBIES ================= -->
 
 <div class="box">
 
@@ -602,17 +884,24 @@
 
         <div class="card">
             <h3>📷 Photography</h3>
-            <p>Taking and exploring photographs.</p>
+            <p>
+                Taking and exploring
+                photographs.
+            </p>
         </div>
 
         <div class="card">
             <h3>🎬 Editing</h3>
-            <p>Photo and video editing.</p>
+            <p>
+                Photo and video editing.
+            </p>
         </div>
 
         <div class="card">
             <h3>✈️ Travelling</h3>
-            <p>Exploring new places.</p>
+            <p>
+                Exploring new places.
+            </p>
         </div>
 
     </div>
@@ -620,65 +909,90 @@
 </div>
 
 
-<!-- LEARNING JOURNEY -->
+<!-- ================= JOURNEY ================= -->
 
 <div class="box">
 
     <h2>🚀 My Learning Journey</h2>
 
     <div class="journey">
+
         <h3>📌 Step 1</h3>
-        <p>Started learning basic computer skills.</p>
+
+        <p>
+            Started learning basic
+            computer skills.
+        </p>
+
     </div>
 
     <div class="journey">
+
         <h3>📌 Step 2</h3>
-        <p>Started learning HTML and CSS.</p>
+
+        <p>
+            Started learning HTML and CSS.
+        </p>
+
     </div>
 
     <div class="journey">
+
         <h3>📌 Step 3</h3>
-        <p>Created my own personal website.</p>
+
+        <p>
+            Created my own personal website.
+        </p>
+
     </div>
 
     <div class="journey">
+
         <h3>📌 Step 4</h3>
-        <p>Continuing to learn web development.</p>
+
+        <p>
+            Continuing to learn
+            web development.
+        </p>
+
     </div>
 
 </div>
 
 
-<!-- WHY I LIKE TECHNOLOGY -->
+<!-- ================= TECHNOLOGY ================= -->
 
 <div class="box">
 
     <h2>💡 Why I Like Technology</h2>
 
     <p>
-        Technology makes our work easier and faster.
+        Technology makes our work
+        easier and faster.
     </p>
 
     <p>
-        I enjoy learning how computers and websites work.
+        I enjoy learning how computers
+        and websites work.
     </p>
 
     <p>
-        My goal is to keep improving my computer knowledge.
+        My goal is to keep improving
+        my computer knowledge.
     </p>
 
 </div>
 
 
-<!-- WORKPLACE EXPERIENCE -->
+<!-- ================= WORK EXPERIENCE ================= -->
 
 <div class="box">
 
     <h2>🖥️ Workplace Experience</h2>
 
     <p>
-        I work at a computer shop where I get
-        practical computer-related experience.
+        I work at a computer shop where
+        I get practical computer-related experience.
     </p>
 
     <p>
@@ -689,7 +1003,7 @@
 </div>
 
 
-<!-- WORK SKILLS -->
+<!-- ================= WORK SKILLS ================= -->
 
 <div class="box">
 
@@ -699,22 +1013,33 @@
 
         <div class="card">
             <h3>⌨️ Typing</h3>
-            <p>Improving typing and computer work.</p>
+            <p>
+                Improving typing and
+                computer work.
+            </p>
         </div>
 
         <div class="card">
             <h3>🖥️ Computer Work</h3>
-            <p>Learning practical computer tasks.</p>
+            <p>
+                Learning practical
+                computer tasks.
+            </p>
         </div>
 
         <div class="card">
             <h3>📁 File Management</h3>
-            <p>Working with files and folders.</p>
+            <p>
+                Working with files
+                and folders.
+            </p>
         </div>
 
         <div class="card">
             <h3>🌐 Web Development</h3>
-            <p>Learning to create websites.</p>
+            <p>
+                Learning to create websites.
+            </p>
         </div>
 
     </div>
@@ -722,7 +1047,7 @@
 </div>
 
 
-<!-- FAVORITES -->
+<!-- ================= FAVORITES ================= -->
 
 <div class="box">
 
@@ -739,40 +1064,32 @@
 </div>
 
 
-<!-- FUTURE GOALS -->
+<!-- ================= GOALS ================= -->
 
 <div class="box">
 
     <h2>🎯 My Future Goals</h2>
 
-    <p>
-        🚀 Improve my computer skills.
-    </p>
+    <p>🚀 Improve my computer skills.</p>
 
-    <p>
-        🌐 Learn advanced web development.
-    </p>
+    <p>🌐 Learn advanced web development.</p>
 
-    <p>
-        💻 Learn new technologies.
-    </p>
+    <p>💻 Learn new technologies.</p>
 
-    <p>
-        📚 Keep learning and growing.
-    </p>
+    <p>📚 Keep learning and growing.</p>
 
 </div>
 
 
-<!-- PROJECT -->
+<!-- ================= PROJECT ================= -->
 
 <div class="box">
 
     <h2>🌐 My Project</h2>
 
     <p>
-        I created this personal website using
-        HTML, CSS and JavaScript.
+        I created this personal website
+        using HTML, CSS and JavaScript.
     </p>
 
     <p>
@@ -787,7 +1104,7 @@
 </div>
 
 
-<!-- THANKS -->
+<!-- ================= THANKS ================= -->
 
 <div class="box">
 
@@ -804,31 +1121,34 @@
 </div>
 
 
-<!-- TOP BUTTON -->
+<!-- ================= TOP BUTTON ================= -->
 
 <button id="topButton" onclick="goTop()">
     ⬆️
 </button>
 
 
-<!-- FOOTER -->
+<!-- ================= FOOTER ================= -->
 
 <footer>
 
     © 2026 My Computer World
 
-    <br><br>
+    <br>
 
-    Made with ❤️ by Anuj Maurya
+    Made with ❤️ by
+    <span class="footer-name">
+        Anuj Maurya
+    </span>
 
 </footer>
 
 
-<!-- JAVASCRIPT -->
+<!-- ================= JAVASCRIPT ================= -->
 
 <script>
 
-    /* TYPING EFFECT */
+    /* ================= TYPING EFFECT ================= */
 
     let text = [
         "💻 Computer Learner",
@@ -843,19 +1163,21 @@
 
     function typingEffect() {
 
-        let typing = document.getElementById("typing");
+        let typing =
+            document.getElementById("typing");
 
         if (charIndex < text[textIndex].length) {
 
-            typing.innerHTML += text[textIndex].charAt(charIndex);
+            typing.innerHTML +=
+                text[textIndex].charAt(charIndex);
 
             charIndex++;
 
-            setTimeout(typingEffect, 80);
+            setTimeout(typingEffect, 70);
 
         } else {
 
-            setTimeout(() => {
+            setTimeout(function() {
 
                 typing.innerHTML = "";
 
@@ -878,126 +1200,205 @@
     typingEffect();
 
 
-    /* CLOCK */
+    /* ================= CLOCK ================= */
 
     function showTime() {
 
         let now = new Date();
 
         document.getElementById("time").innerHTML =
-            "🕒 Current Time: " + now.toLocaleTimeString();
+            "🕒 Current Time: " +
+            now.toLocaleTimeString();
 
     }
-
 
     setInterval(showTime, 1000);
 
     showTime();
 
 
-    /* VISITOR COUNTER */
+    /* ================= VISITOR COUNTER ================= */
 
-    let visitors = localStorage.getItem("visitors");
+    let visitors =
+        localStorage.getItem("visitors");
 
     if (visitors === null) {
+
         visitors = 1;
+
     } else {
-        visitors = Number(visitors) + 1;
+
+        visitors =
+            Number(visitors) + 1;
+
     }
 
-    localStorage.setItem("visitors", visitors);
+    localStorage.setItem(
+        "visitors",
+        visitors
+    );
 
-    document.getElementById("visitors").innerHTML = visitors;
+    document.getElementById(
+        "visitors"
+    ).innerHTML = visitors;
 
 
-    /* MUSIC */
+    /* ================= MUSIC ================= */
 
     function musicDemo() {
 
-        alert("🎵 Music feature demo!\nYou can add your own music later. 😊");
+        alert(
+            "🎵 Music feature demo!\n\n" +
+            "You can add your own music later. 😊"
+        );
 
     }
 
 
-    /* DARK / LIGHT MODE */
+    /* ================= DARK LIGHT MODE ================= */
 
     function toggleMode() {
 
-        document.body.classList.toggle("light-mode");
+        document.body.classList.toggle(
+            "light-mode"
+        );
 
-        if (document.body.classList.contains("light-mode")) {
+        if (
+            document.body.classList.contains(
+                "light-mode"
+            )
+        ) {
 
-            localStorage.setItem("mode", "light");
+            localStorage.setItem(
+                "mode",
+                "light"
+            );
 
         } else {
 
-            localStorage.setItem("mode", "dark");
+            localStorage.setItem(
+                "mode",
+                "dark"
+            );
 
         }
 
     }
 
 
-    /* SAVE MODE */
+    /* ================= LOAD SAVED MODE ================= */
 
-    let savedMode = localStorage.getItem("mode");
+    let savedMode =
+        localStorage.getItem("mode");
 
     if (savedMode === "light") {
 
-        document.body.classList.add("light-mode");
+        document.body.classList.add(
+            "light-mode"
+        );
 
     }
 
 
-    /* SEARCH */
+    /* ================= SEARCH ================= */
 
     function searchPage() {
 
         let search =
-            document.getElementById("searchBox").value.toLowerCase();
-
-        let text =
-            document.body.innerText.toLowerCase();
+            document
+            .getElementById("searchBox")
+            .value
+            .toLowerCase();
 
         if (search === "") {
             return;
         }
 
-        if (text.includes(search)) {
+        let pageText =
+            document.body.innerText
+            .toLowerCase();
+
+        if (pageText.includes(search)) {
 
             window.find(search);
 
         } else {
 
-            alert("❌ Text not found on this page.");
+            alert(
+                "❌ Text not found on this page."
+            );
 
         }
 
     }
 
 
-    /* TOP BUTTON */
+    /* ================= SCROLL ANIMATION ================= */
 
-    window.onscroll = function() {
+    function revealBoxes() {
 
-        let button =
-            document.getElementById("topButton");
+        let boxes =
+            document.querySelectorAll(".box");
 
-        if (
-            document.documentElement.scrollTop > 300 ||
-            document.body.scrollTop > 300
-        ) {
+        boxes.forEach(function(box) {
 
-            button.style.display = "block";
+            let position =
+                box.getBoundingClientRect().top;
 
-        } else {
+            let screenHeight =
+                window.innerHeight;
 
-            button.style.display = "none";
+            if (
+                position <
+                screenHeight - 80
+            ) {
+
+                box.classList.add("show");
+
+            }
+
+        });
+
+    }
+
+    window.addEventListener(
+        "scroll",
+        revealBoxes
+    );
+
+    revealBoxes();
+
+
+    /* ================= TOP BUTTON ================= */
+
+    window.addEventListener(
+        "scroll",
+        function() {
+
+            let button =
+                document.getElementById(
+                    "topButton"
+                );
+
+            if (
+                window.scrollY > 300
+            ) {
+
+                button.style.display =
+                    "block";
+
+            } else {
+
+                button.style.display =
+                    "none";
+
+            }
 
         }
+    );
 
-    };
 
+    /* ================= GO TOP ================= */
 
     function goTop() {
 
