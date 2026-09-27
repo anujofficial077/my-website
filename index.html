@@ -28,7 +28,7 @@
             overflow-x: hidden;
         }
 
-        /* ================= NAVBAR ================= */
+        /* ================= NAVIGATION ================= */
 
         nav {
             position: sticky;
@@ -36,7 +36,7 @@
             z-index: 9999;
             padding: 16px 10px;
             text-align: center;
-            background: rgba(0, 0, 0, 0.45);
+            background: rgba(0,0,0,0.45);
             backdrop-filter: blur(15px);
             border-bottom: 1px solid rgba(255,255,255,0.1);
         }
@@ -83,7 +83,7 @@
             cursor: pointer;
             font-weight: bold;
             transition: 0.3s;
-            background: linear-gradient(45deg, #ffd700, #ff9800);
+            background: linear-gradient(45deg,#ffd700,#ff9800);
             color: #111;
         }
 
@@ -116,7 +116,7 @@
             width: 350px;
             height: 350px;
             border-radius: 50%;
-            background: rgba(0, 174, 255, 0.12);
+            background: rgba(0,174,255,0.12);
             filter: blur(40px);
             top: 100px;
             z-index: -1;
@@ -136,7 +136,7 @@
 
         @keyframes floating {
 
-            0%, 100% {
+            0%,100% {
                 transform: translateY(0);
             }
 
@@ -197,24 +197,7 @@
             margin-top: 25px;
         }
 
-        .main-button {
-            display: inline-block;
-            padding: 14px 28px;
-            margin: 7px;
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: bold;
-            color: #111;
-            background: linear-gradient(45deg, #ffd700, #ff9800);
-            box-shadow: 0 8px 25px rgba(255,193,7,0.25);
-            transition: 0.3s;
-        }
-
-        .main-button:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 30px rgba(255,193,7,0.4);
-        }
-
+        .main-button,
         .secondary-button {
             display: inline-block;
             padding: 14px 28px;
@@ -222,18 +205,88 @@
             border-radius: 30px;
             text-decoration: none;
             font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .main-button {
+            color: #111;
+            background: linear-gradient(45deg,#ffd700,#ff9800);
+            box-shadow: 0 8px 25px rgba(255,193,7,0.25);
+        }
+
+        .main-button:hover,
+        .secondary-button:hover {
+            transform: translateY(-5px);
+        }
+
+        .secondary-button {
             color: white;
             border: 1px solid rgba(255,255,255,0.3);
             background: rgba(255,255,255,0.08);
-            transition: 0.3s;
         }
 
         .secondary-button:hover {
             background: rgba(255,255,255,0.18);
-            transform: translateY(-5px);
         }
 
-        /* ================= BOX ================= */
+        /* ================= STATS ================= */
+
+        .stats {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 18px;
+            margin-top: 35px;
+            width: 100%;
+            max-width: 850px;
+        }
+
+        .stat-card {
+            width: 190px;
+            padding: 20px 12px;
+            border-radius: 20px;
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.12);
+            backdrop-filter: blur(10px);
+            transition: 0.35s;
+            animation: statAppear 1s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-8px);
+            background: rgba(255,255,255,0.15);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.3);
+        }
+
+        .stat-icon {
+            font-size: 30px;
+        }
+
+        .stat-card h3 {
+            margin: 8px 0 5px;
+            color: #ffd700;
+        }
+
+        .stat-card p {
+            font-size: 14px;
+            margin: 0;
+        }
+
+        @keyframes statAppear {
+
+            from {
+                opacity: 0;
+                transform: translateY(25px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+        }
+
+        /* ================= COMMON BOX ================= */
 
         .box {
             max-width: 950px;
@@ -266,7 +319,7 @@
             height: 4px;
             margin: 12px auto;
             border-radius: 5px;
-            background: linear-gradient(90deg, #ffd700, #ff9800);
+            background: linear-gradient(90deg,#ffd700,#ff9800);
         }
 
         p {
@@ -325,7 +378,7 @@
             display: inline-block;
             margin-top: 15px;
             padding: 13px 25px;
-            background: linear-gradient(45deg, #ffd700, #ff9800);
+            background: linear-gradient(45deg,#ffd700,#ff9800);
             color: black;
             text-decoration: none;
             border-radius: 30px;
@@ -362,7 +415,7 @@
         .progress {
             height: 100%;
             border-radius: 20px;
-            background: linear-gradient(90deg, #ffd700, #ff9800);
+            background: linear-gradient(90deg,#ffd700,#ff9800);
             animation: progressAnimation 2s ease;
         }
 
@@ -430,7 +483,7 @@
             height: 55px;
             border: none;
             border-radius: 50%;
-            background: linear-gradient(45deg, #ffd700, #ff9800);
+            background: linear-gradient(45deg,#ffd700,#ff9800);
             color: black;
             font-size: 23px;
             cursor: pointer;
@@ -462,7 +515,7 @@
 
         body.light-mode {
             color: #222;
-            background: linear-gradient(135deg, #eef2f3, #c9d6e5);
+            background: linear-gradient(135deg,#eef2f3,#c9d6e5);
         }
 
         body.light-mode nav,
@@ -477,7 +530,8 @@
         body.light-mode .box,
         body.light-mode .card,
         body.light-mode .profile,
-        body.light-mode .journey {
+        body.light-mode .journey,
+        body.light-mode .stat-card {
             background: rgba(255,255,255,0.55);
         }
 
@@ -496,7 +550,7 @@
             }
 
             .hero {
-                min-height: 650px;
+                min-height: 720px;
                 padding: 50px 15px;
             }
 
@@ -533,6 +587,11 @@
             .box {
                 width: 92%;
                 padding: 30px 18px;
+            }
+
+            .stat-card {
+                width: 90%;
+                max-width: 260px;
             }
 
         }
@@ -620,6 +679,9 @@
 
     <p class="typing" id="typing"></p>
 
+
+    <!-- HERO BUTTONS -->
+
     <div class="hero-buttons">
 
         <a class="main-button" href="about.html">
@@ -633,6 +695,76 @@
         <a class="secondary-button" href="contact.html">
             📩 Contact Me
         </a>
+
+        <a class="secondary-button" href="#project">
+            🚀 Explore My Work
+        </a>
+
+    </div>
+
+
+    <!-- PROFESSIONAL STATS -->
+
+    <div class="stats">
+
+        <div class="stat-card">
+
+            <div class="stat-icon">
+                🎓
+            </div>
+
+            <h3>Class 11</h3>
+
+            <p>
+                Student
+            </p>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <div class="stat-icon">
+                💻
+            </div>
+
+            <h3>Computer</h3>
+
+            <p>
+                ADCA & Technology
+            </p>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <div class="stat-icon">
+                📷
+            </div>
+
+            <h3>Photography</h3>
+
+            <p>
+                Creative Interest
+            </p>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <div class="stat-icon">
+                🌐
+            </div>
+
+            <h3>Web Development</h3>
+
+            <p>
+                Learning & Building
+            </p>
+
+        </div>
 
     </div>
 
@@ -847,10 +979,12 @@
     <div class="gallery">
 
         <div class="photo">
+
             <img
                 src="myphoto.jpg.jpg"
                 alt="Anuj Maurya Photo"
             >
+
         </div>
 
         <div class="photo">
@@ -1083,7 +1217,7 @@
 
 <!-- ================= PROJECT ================= -->
 
-<div class="box">
+<div class="box" id="project">
 
     <h2>🌐 My Project</h2>
 
@@ -1148,7 +1282,7 @@
 
 <script>
 
-    /* ================= TYPING EFFECT ================= */
+    /* TYPING EFFECT */
 
     let text = [
         "💻 Computer Learner",
@@ -1173,7 +1307,7 @@
 
             charIndex++;
 
-            setTimeout(typingEffect, 70);
+            setTimeout(typingEffect,70);
 
         } else {
 
@@ -1191,7 +1325,7 @@
 
                 typingEffect();
 
-            }, 1200);
+            },1200);
 
         }
 
@@ -1200,7 +1334,7 @@
     typingEffect();
 
 
-    /* ================= CLOCK ================= */
+    /* CLOCK */
 
     function showTime() {
 
@@ -1212,12 +1346,12 @@
 
     }
 
-    setInterval(showTime, 1000);
+    setInterval(showTime,1000);
 
     showTime();
 
 
-    /* ================= VISITOR COUNTER ================= */
+    /* VISITOR COUNTER */
 
     let visitors =
         localStorage.getItem("visitors");
@@ -1243,7 +1377,7 @@
     ).innerHTML = visitors;
 
 
-    /* ================= MUSIC ================= */
+    /* MUSIC */
 
     function musicDemo() {
 
@@ -1255,7 +1389,7 @@
     }
 
 
-    /* ================= DARK LIGHT MODE ================= */
+    /* DARK / LIGHT MODE */
 
     function toggleMode() {
 
@@ -1286,7 +1420,7 @@
     }
 
 
-    /* ================= LOAD SAVED MODE ================= */
+    /* LOAD SAVED MODE */
 
     let savedMode =
         localStorage.getItem("mode");
@@ -1300,7 +1434,7 @@
     }
 
 
-    /* ================= SEARCH ================= */
+    /* SEARCH */
 
     function searchPage() {
 
@@ -1333,7 +1467,7 @@
     }
 
 
-    /* ================= SCROLL ANIMATION ================= */
+    /* SCROLL ANIMATION */
 
     function revealBoxes() {
 
@@ -1369,7 +1503,7 @@
     revealBoxes();
 
 
-    /* ================= TOP BUTTON ================= */
+    /* TOP BUTTON */
 
     window.addEventListener(
         "scroll",
@@ -1380,9 +1514,7 @@
                     "topButton"
                 );
 
-            if (
-                window.scrollY > 300
-            ) {
+            if (window.scrollY > 300) {
 
                 button.style.display =
                     "block";
@@ -1398,7 +1530,7 @@
     );
 
 
-    /* ================= GO TOP ================= */
+    /* GO TOP */
 
     function goTop() {
 
