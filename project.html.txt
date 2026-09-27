@@ -1,244 +1,585 @@
-```html
+ ```html
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
 
-    <title>My Project - My Computer World</title>
+    <meta charset="UTF-8">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>My Projects | My Computer World</title>
+
 
     <style>
 
         * {
+            margin: 0;
+            padding: 0;
             box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        html {
             scroll-behavior: smooth;
         }
 
         body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            text-align: center;
+            min-height: 100vh;
             color: white;
             background: linear-gradient(135deg, #141e30, #243b55);
+            transition: 0.4s;
         }
 
-        /* NAVIGATION */
+
+        /* LIGHT MODE */
+
+        body.light {
+            color: #111;
+            background: linear-gradient(135deg, #e0eafc, #cfdef3);
+        }
+
+
+        /* NAVBAR */
 
         nav {
-            background: rgba(0,0,0,0.4);
-            padding: 20px;
             position: sticky;
             top: 0;
             z-index: 1000;
-            backdrop-filter: blur(10px);
-            box-shadow: 0 3px 15px rgba(0,0,0,0.3);
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            padding: 15px 6%;
+
+            background: rgba(0, 0, 0, 0.45);
+            backdrop-filter: blur(12px);
         }
 
-        nav a {
+        body.light nav {
+            background: rgba(255, 255, 255, 0.55);
+        }
+
+
+        .logo {
+            font-size: 22px;
+            font-weight: bold;
+            color: #ffd700;
+        }
+
+
+        nav ul {
+            list-style: none;
+
+            display: flex;
+            gap: 22px;
+        }
+
+
+        nav ul li a {
             color: white;
-            margin: 10px 15px;
             text-decoration: none;
             font-weight: bold;
-            font-size: 16px;
             transition: 0.3s;
         }
 
-        nav a:hover {
+        body.light nav ul li a {
+            color: #111;
+        }
+
+
+        nav ul li a:hover {
             color: #ffd700;
         }
+
+
+        /* THEME BUTTON */
+
+        #themeBtn {
+            position: fixed;
+
+            top: 75px;
+            right: 20px;
+
+            z-index: 999;
+
+            width: 45px;
+            height: 45px;
+
+            border: none;
+            border-radius: 50%;
+
+            background: #ffd700;
+            color: #111;
+
+            font-size: 20px;
+
+            cursor: pointer;
+
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
 
         /* HERO */
 
         .hero {
-            padding: 70px 20px 40px;
+            text-align: center;
+            padding: 70px 20px 45px;
         }
+
+
+        .hero-photo {
+            width: 145px;
+            height: 145px;
+
+            object-fit: cover;
+
+            border-radius: 50%;
+
+            border: 5px solid #ffd700;
+
+            box-shadow:
+                0 0 30px rgba(255,215,0,0.35);
+
+            animation: float 3s ease-in-out infinite;
+        }
+
+
+        @keyframes float {
+
+            0%, 100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+
+        }
+
 
         .hero h1 {
-            font-size: 48px;
-            margin-bottom: 15px;
+            margin-top: 22px;
+            font-size: 42px;
         }
+
 
         .hero p {
-            font-size: 20px;
-            line-height: 1.6;
-        }
-
-        .highlight {
-            color: #ffd700;
-            font-weight: bold;
-        }
-
-        /* COMMON BOX */
-
-        .box {
-            max-width: 850px;
-            margin: 35px auto;
-            padding: 35px 25px;
-            background: rgba(255,255,255,0.12);
-            border-radius: 25px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-            backdrop-filter: blur(8px);
-        }
-
-        .box h2 {
-            font-size: 32px;
-            margin-bottom: 20px;
-        }
-
-        .box p {
+            margin-top: 12px;
             font-size: 18px;
+            opacity: 0.9;
+        }
+
+
+        /* CONTAINER */
+
+        .container {
+            width: 90%;
+            max-width: 1150px;
+
+            margin: auto;
+
+            padding-bottom: 60px;
+        }
+
+
+        /* INTRO BOX */
+
+        .intro {
+            text-align: center;
+
+            background: rgba(255,255,255,0.10);
+
+            border: 1px solid rgba(255,255,255,0.15);
+
+            backdrop-filter: blur(12px);
+
+            padding: 30px;
+
+            border-radius: 20px;
+
+            margin-bottom: 35px;
+
+            box-shadow:
+                0 10px 30px rgba(0,0,0,0.2);
+        }
+
+
+        body.light .intro,
+        body.light .project-card {
+            background: rgba(255,255,255,0.55);
+
+            border: 1px solid rgba(0,0,0,0.08);
+        }
+
+
+        .intro h2 {
+            color: #ffd700;
+            margin-bottom: 12px;
+        }
+
+
+        .intro p {
             line-height: 1.7;
         }
 
-        /* CARDS */
 
-        .cards {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 20px;
+        /* PROJECT GRID */
+
+        .projects {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 25px;
         }
 
-        .card {
-            width: 210px;
-            padding: 25px 18px;
-            background: rgba(255,255,255,0.10);
+
+        /* PROJECT CARD */
+
+        .project-card {
+
+            position: relative;
+
+            overflow: hidden;
+
+            background:
+                rgba(255,255,255,0.10);
+
+            border:
+                1px solid rgba(255,255,255,0.15);
+
             border-radius: 20px;
-            transition: 0.3s;
+
+            padding: 30px 25px;
+
+            min-height: 300px;
+
+            display: flex;
+
+            flex-direction: column;
+
+            justify-content: space-between;
+
+            backdrop-filter: blur(12px);
+
+            box-shadow:
+                0 10px 30px rgba(0,0,0,0.2);
+
+            transition:
+                transform 0.3s,
+                box-shadow 0.3s;
         }
 
-        .card:hover {
-            transform: translateY(-8px);
-            background: rgba(255,255,255,0.20);
+
+        .project-card:hover {
+
+            transform:
+                translateY(-10px);
+
+            box-shadow:
+                0 18px 40px rgba(0,0,0,0.3);
         }
 
-        .card h3 {
-            font-size: 21px;
-        }
-
-        .card p {
-            font-size: 16px;
-        }
-
-        /* PROJECT DETAILS */
 
         .project-icon {
-            font-size: 70px;
-            margin-bottom: 10px;
+
+            width: 70px;
+            height: 70px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 18px;
+
+            background:
+                rgba(255,215,0,0.15);
+
+            font-size: 38px;
+
+            margin-bottom: 20px;
         }
 
-        .technology {
+
+        .project-card h3 {
+
+            font-size: 23px;
+
+            color: #ffd700;
+
+            margin-bottom: 12px;
+        }
+
+
+        .project-card p {
+
+            line-height: 1.6;
+
+            opacity: 0.9;
+
+            margin-bottom: 20px;
+        }
+
+
+        /* PROJECT TAG */
+
+        .tag {
+
             display: inline-block;
-            padding: 12px 20px;
-            margin: 8px;
-            background: rgba(255,255,255,0.12);
-            border-radius: 25px;
-            font-weight: bold;
+
+            padding: 6px 12px;
+
+            border-radius: 20px;
+
+            background:
+                rgba(255,215,0,0.15);
+
+            color: #ffd700;
+
+            font-size: 13px;
+
+            margin-bottom: 15px;
         }
 
-        /* FEATURES */
-
-        .feature {
-            text-align: left;
-            max-width: 650px;
-            margin: 15px auto;
-            padding: 16px 20px;
-            background: rgba(255,255,255,0.08);
-            border-radius: 15px;
-        }
 
         /* BUTTON */
 
-        .button {
+        .project-btn {
+
             display: inline-block;
-            margin: 15px 8px;
-            padding: 14px 30px;
-            background: linear-gradient(45deg, #ffd700, #ff9800);
-            color: #222;
+
+            text-align: center;
+
             text-decoration: none;
-            border-radius: 30px;
+
+            padding: 11px 18px;
+
+            border-radius: 10px;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    #ffd700,
+                    #ff9800
+                );
+
+            color: #111;
+
             font-weight: bold;
+
             transition: 0.3s;
-        }
 
-        .button:hover {
-            transform: scale(1.07);
-            box-shadow: 0 5px 20px rgba(255,215,0,0.4);
-        }
-
-        .secondary-button {
-            background: rgba(255,255,255,0.15);
-            color: white;
-        }
-
-        .secondary-button:hover {
-            background: rgba(255,255,255,0.25);
-            box-shadow: none;
-        }
-
-        /* TOP BUTTON */
-
-        #topButton {
-            position: fixed;
-            bottom: 25px;
-            right: 25px;
-            width: 55px;
-            height: 55px;
-            border: none;
-            border-radius: 50%;
-            background: linear-gradient(45deg, #ffd700, #ff9800);
-            color: black;
-            font-size: 24px;
-            font-weight: bold;
             cursor: pointer;
-            display: none;
-            z-index: 9999;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.5);
+
+            border: none;
+
+            font-size: 15px;
+        }
+
+
+        .project-btn:hover {
+
+            transform:
+                translateY(-3px);
+
+            box-shadow:
+                0 8px 20px
+                rgba(255,152,0,0.35);
+        }
+
+
+        /* FUTURE PROJECT */
+
+        .future {
+
+            border:
+                1px dashed
+                rgba(255,215,0,0.5);
+        }
+
+
+        /* STATS */
+
+        .stats {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, 1fr);
+
+            gap: 18px;
+
+            margin-top: 40px;
+        }
+
+
+        .stat {
+
+            text-align: center;
+
+            padding: 22px;
+
+            border-radius: 16px;
+
+            background:
+                rgba(255,255,255,0.10);
+
+            backdrop-filter: blur(10px);
+        }
+
+
+        body.light .stat {
+            background:
+                rgba(255,255,255,0.55);
+        }
+
+
+        .stat h3 {
+
+            font-size: 30px;
+
+            color: #ffd700;
+
+            margin-bottom: 5px;
+        }
+
+
+        .stat p {
+            font-size: 14px;
+        }
+
+
+        /* NAVIGATION BUTTONS */
+
+        .buttons {
+
+            text-align: center;
+
+            margin-top: 40px;
+        }
+
+
+        .buttons a {
+
+            display: inline-block;
+
+            text-decoration: none;
+
+            margin: 7px;
+
+            padding: 12px 20px;
+
+            border-radius: 10px;
+
+            background: #ffd700;
+
+            color: #111;
+
+            font-weight: bold;
+
             transition: 0.3s;
         }
 
-        #topButton:hover {
-            transform: translateY(-5px) scale(1.1);
+
+        .buttons a:hover {
+
+            transform:
+                translateY(-3px);
+
+            background: #ff9800;
         }
+
 
         /* FOOTER */
 
         footer {
-            margin-top: 60px;
-            padding: 25px;
-            background: rgba(0,0,0,0.4);
+
+            text-align: center;
+
+            padding: 25px 15px;
+
+            margin-top: 30px;
+
+            background:
+                rgba(0,0,0,0.3);
         }
+
+
+        body.light footer {
+
+            background:
+                rgba(255,255,255,0.45);
+        }
+
 
         /* MOBILE */
 
-        @media(max-width:600px) {
+        @media (max-width: 900px) {
 
-            nav a {
-                display: inline-block;
-                margin: 7px;
-                font-size: 14px;
+            .projects {
+
+                grid-template-columns:
+                    repeat(2, 1fr);
             }
+
+            .stats {
+
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+
+        }
+
+
+        @media (max-width: 650px) {
+
+            nav {
+
+                flex-direction: column;
+
+                gap: 12px;
+            }
+
+
+            nav ul {
+
+                gap: 12px;
+
+                flex-wrap: wrap;
+
+                justify-content: center;
+            }
+
 
             .hero h1 {
-                font-size: 35px;
+
+                font-size: 32px;
             }
 
-            .hero p {
-                font-size: 18px;
+
+            .projects {
+
+                grid-template-columns: 1fr;
             }
 
-            .box {
-                width: 90%;
+
+            .stats {
+
+                grid-template-columns: 1fr 1fr;
             }
 
-            .card {
-                width: 90%;
-            }
 
-            .technology {
-                display: block;
-                margin: 10px;
+            #themeBtn {
+
+                top: 130px;
+
+                right: 15px;
             }
 
         }
@@ -251,275 +592,583 @@
 <body>
 
 
-<!-- NAVIGATION -->
+    <!-- NAVBAR -->
 
-<nav>
+    <nav>
 
-    <a href="index.html">?? Home</a>
-
-    <a href="about.html">????? About</a>
-
-    <a href="contact.html">?? Contact</a>
-
-</nav>
+        <div class="logo">
+            💻 My Computer World
+        </div>
 
 
-<!-- HERO -->
+        <ul>
 
-<section class="hero">
+            <li>
+                <a href="index.html">
+                    🏠 Home
+                </a>
+            </li>
 
-    <div class="project-icon">
-        ??
-    </div>
+            <li>
+                <a href="about.html">
+                    👤 About
+                </a>
+            </li>
 
-    <h1>My Personal Website</h1>
+            <li>
+                <a href="contact.html">
+                    📞 Contact
+                </a>
+            </li>
 
-    <p>
-        Welcome to my project page! ??
-    </p>
+        </ul>
 
-    <p>
-        This website is a part of my
-        <span class="highlight">web development learning journey</span>.
-    </p>
-
-</section>
-
-
-<!-- ABOUT PROJECT -->
-
-<div class="box">
-
-    <h2>?? About This Project</h2>
-
-    <p>
-        I created this personal website to practice
-        HTML, CSS and JavaScript.
-    </p>
-
-    <p>
-        The website contains information about me,
-        my skills, hobbies, interests and learning journey.
-    </p>
-
-    <p>
-        This project helps me understand how
-        different parts of a website work together.
-    </p>
-
-</div>
+    </nav>
 
 
-<!-- TECHNOLOGIES -->
+    <!-- DARK / LIGHT -->
 
-<div class="box">
+    <button
+        id="themeBtn"
+        onclick="toggleTheme()">
 
-    <h2>?? Technologies Used</h2>
+        🌙
 
-    <div class="technology">
-        ?? HTML
-    </div>
-
-    <div class="technology">
-        ?? CSS
-    </div>
-
-    <div class="technology">
-        ? JavaScript
-    </div>
-
-</div>
+    </button>
 
 
-<!-- FEATURES -->
 
-<div class="box">
+    <!-- HERO -->
 
-    <h2>? Website Features</h2>
+    <section class="hero">
 
-    <div class="feature">
-        ?? <b>Home Page</b> � Personal introduction and website information.
-    </div>
-
-    <div class="feature">
-        ????? <b>About Page</b> � Information about me, my skills and hobbies.
-    </div>
-
-    <div class="feature">
-        ?? <b>Contact Page</b> � Contact form for visitors.
-    </div>
-
-    <div class="feature">
-        ?? <b>Dark / Light Mode</b> � Switch between website themes.
-    </div>
-
-    <div class="feature">
-        ?? <b>Search</b> � Search content on the Home page.
-    </div>
-
-    <div class="feature">
-        ?? <b>Live Clock</b> � Shows the current time.
-    </div>
-
-    <div class="feature">
-        ?? <b>Top Button</b> � Quickly return to the top of the page.
-    </div>
-
-    <div class="feature">
-        ?? <b>Profile Download</b> � Download my profile information.
-    </div>
-
-</div>
+        <img
+            src="myphoto.jpg.jpg"
+            alt="Anuj Maurya"
+            class="hero-photo"
+        >
 
 
-<!-- LEARNING -->
+        <h1>
+            🚀 My Projects
+        </h1>
 
-<div class="box">
 
-    <h2>?? What I Learned</h2>
+        <p>
+            Explore my learning, creative and computer projects.
+        </p>
 
-    <div class="cards">
+    </section>
 
-        <div class="card">
 
-            <h3>HTML</h3>
+
+    <div class="container">
+
+
+        <!-- INTRO -->
+
+        <div class="intro">
+
+            <h2>
+                🌐 Welcome to My Project World
+            </h2>
+
 
             <p>
-                I learned how to create
-                the structure of web pages.
+
+                This page contains the projects I am creating
+                while learning computers, web development,
+                photography, photo editing and video editing.
+
+                More projects will be added as I continue learning.
+
             </p>
 
         </div>
 
 
-        <div class="card">
 
-            <h3>CSS</h3>
+        <!-- PROJECTS -->
 
-            <p>
-                I learned how to style
-                and design web pages.
-            </p>
+        <div class="projects">
+
+
+            <!-- PROJECT 1 -->
+
+            <div class="project-card">
+
+                <div>
+
+                    <div class="project-icon">
+                        🌐
+                    </div>
+
+
+                    <span class="tag">
+                        Web Development
+                    </span>
+
+
+                    <h3>
+                        My Personal Website
+                    </h3>
+
+
+                    <p>
+
+                        My personal website created using
+                        HTML and CSS. It includes my profile,
+                        skills, hobbies, projects and contact page.
+
+                    </p>
+
+                </div>
+
+
+                <a
+                    href="index.html"
+                    class="project-btn">
+
+                    👀 View Website
+
+                </a>
+
+            </div>
+
+
+
+            <!-- PROJECT 2 -->
+
+            <div class="project-card">
+
+                <div>
+
+                    <div class="project-icon">
+                        💻
+                    </div>
+
+
+                    <span class="tag">
+                        HTML & CSS
+                    </span>
+
+
+                    <h3>
+                        Web Design
+                    </h3>
+
+
+                    <p>
+
+                        Learning how websites work and creating
+                        stylish pages using HTML, CSS and basic
+                        JavaScript.
+
+                    </p>
+
+                </div>
+
+
+                <button
+                    class="project-btn"
+                    onclick="comingSoon('Web Design')">
+
+                    🚀 Explore
+
+                </button>
+
+            </div>
+
+
+
+            <!-- PROJECT 3 -->
+
+            <div class="project-card">
+
+                <div>
+
+                    <div class="project-icon">
+                        📸
+                    </div>
+
+
+                    <span class="tag">
+                        Photography
+                    </span>
+
+
+                    <h3>
+                        Photography
+                    </h3>
+
+
+                    <p>
+
+                        Photography is one of my hobbies.
+                        I enjoy capturing people, places,
+                        events and memorable moments.
+
+                    </p>
+
+                </div>
+
+
+                <button
+                    class="project-btn"
+                    onclick="comingSoon('Photography')">
+
+                    📷 View Work
+
+                </button>
+
+            </div>
+
+
+
+            <!-- PROJECT 4 -->
+
+            <div class="project-card">
+
+                <div>
+
+                    <div class="project-icon">
+                        🎨
+                    </div>
+
+
+                    <span class="tag">
+                        Photo Editing
+                    </span>
+
+
+                    <h3>
+                        Photo Editing
+                    </h3>
+
+
+                    <p>
+
+                        Creative photo editing and image
+                        enhancement using different editing
+                        tools and techniques.
+
+                    </p>
+
+                </div>
+
+
+                <button
+                    class="project-btn"
+                    onclick="comingSoon('Photo Editing')">
+
+                    🎨 Explore
+
+                </button>
+
+            </div>
+
+
+
+            <!-- PROJECT 5 -->
+
+            <div class="project-card">
+
+                <div>
+
+                    <div class="project-icon">
+                        🎬
+                    </div>
+
+
+                    <span class="tag">
+                        Video Editing
+                    </span>
+
+
+                    <h3>
+                        Video Editing
+                    </h3>
+
+
+                    <p>
+
+                        Learning video editing and creating
+                        short videos for social media and
+                        personal projects.
+
+                    </p>
+
+                </div>
+
+
+                <button
+                    class="project-btn"
+                    onclick="comingSoon('Video Editing')">
+
+                    🎬 View Work
+
+                </button>
+
+            </div>
+
+
+
+            <!-- PROJECT 6 -->
+
+            <div class="project-card">
+
+                <div>
+
+                    <div class="project-icon">
+                        🖥️
+                    </div>
+
+
+                    <span class="tag">
+                        Computer & ADCA
+                    </span>
+
+
+                    <h3>
+                        Computer Learning
+                    </h3>
+
+
+                    <p>
+
+                        Learning computer basics, ADCA,
+                        technology, web development and
+                        useful computer skills.
+
+                    </p>
+
+                </div>
+
+
+                <button
+                    class="project-btn"
+                    onclick="comingSoon('Computer Learning')">
+
+                    💻 Explore
+
+                </button>
+
+            </div>
+
+
+
+            <!-- FUTURE PROJECT -->
+
+            <div class="project-card future">
+
+                <div>
+
+                    <div class="project-icon">
+                        🔮
+                    </div>
+
+
+                    <span class="tag">
+                        Coming Soon
+                    </span>
+
+
+                    <h3>
+                        Future Project
+                    </h3>
+
+
+                    <p>
+
+                        A new project will be added here
+                        as I learn more about computers,
+                        technology and web development.
+
+                    </p>
+
+                </div>
+
+
+                <button
+                    class="project-btn"
+                    onclick="comingSoon('Future Project')">
+
+                    ✨ Coming Soon
+
+                </button>
+
+            </div>
 
         </div>
 
 
-        <div class="card">
 
-            <h3>JavaScript</h3>
+        <!-- STATS -->
 
-            <p>
-                I learned basic interactions
-                and website functions.
-            </p>
+        <div class="stats">
+
+
+            <div class="stat">
+
+                <h3>
+                    01
+                </h3>
+
+                <p>
+                    Live Website
+                </p>
+
+            </div>
+
+
+            <div class="stat">
+
+                <h3>
+                    05+
+                </h3>
+
+                <p>
+                    Skills
+                </p>
+
+            </div>
+
+
+            <div class="stat">
+
+                <h3>
+                    11
+                </h3>
+
+                <p>
+                    Class
+                </p>
+
+            </div>
+
+
+            <div class="stat">
+
+                <h3>
+                    ∞
+                </h3>
+
+                <p>
+                    Future Ideas
+                </p>
+
+            </div>
 
         </div>
 
 
-        <div class="card">
 
-            <h3>Web Design</h3>
+        <!-- NAVIGATION -->
 
-            <p>
-                I learned how different
-                website sections work together.
-            </p>
+        <div class="buttons">
+
+            <a href="index.html">
+                🏠 Home
+            </a>
+
+
+            <a href="about.html">
+                👤 About Me
+            </a>
+
+
+            <a href="contact.html">
+                📞 Contact
+            </a>
 
         </div>
 
     </div>
 
-</div>
 
 
-<!-- FUTURE PLANS -->
+    <!-- FOOTER -->
 
-<div class="box">
+    <footer>
 
-    <h2>?? Future Plans</h2>
+        <p>
+            © 2026 My Computer World | Made with ❤️
+        </p>
 
-    <p>
-        I want to continue improving this website
-        and learn more advanced web development.
-    </p>
-
-    <p>
-        I also want to learn new technologies
-        and create more useful projects.
-    </p>
-
-</div>
+    </footer>
 
 
-<!-- BUTTONS -->
 
-<a class="button" href="index.html">
-    ?? Back to Home
-</a>
-
-<a class="button secondary-button" href="contact.html">
-    ?? Contact Me
-</a>
+    <script>
 
 
-<!-- TOP BUTTON -->
+        /* DARK / LIGHT MODE */
 
-<button id="topButton" onclick="goTop()">
-    ??
-</button>
+        function toggleTheme() {
 
-
-<!-- FOOTER -->
-
-<footer>
-
-    � 2026 My Computer World
-
-    <br><br>
-
-    Made with ?? by Anuj Maurya
-
-</footer>
+            document.body.classList.toggle("light");
 
 
-<script>
+            const button =
+                document.getElementById("themeBtn");
 
-    /* TOP BUTTON */
 
-    window.onscroll = function() {
+            if (
+                document.body.classList.contains("light")
+            ) {
 
-        let button =
-            document.getElementById("topButton");
+                button.innerHTML = "☀️";
 
-        if (
-            document.documentElement.scrollTop > 300 ||
-            document.body.scrollTop > 300
-        ) {
+                localStorage.setItem(
+                    "theme",
+                    "light"
+                );
 
-            button.style.display = "block";
+            } else {
 
-        } else {
+                button.innerHTML = "🌙";
 
-            button.style.display = "none";
+                localStorage.setItem(
+                    "theme",
+                    "dark"
+                );
+
+            }
 
         }
 
-    };
 
 
-    function goTop() {
+        /* LOAD SAVED THEME */
 
-        window.scrollTo({
+        if (
+            localStorage.getItem("theme") === "light"
+        ) {
 
-            top: 0,
+            document.body.classList.add("light");
 
-            behavior: "smooth"
+            document.getElementById(
+                "themeBtn"
+            ).innerHTML = "☀️";
 
-        });
+        }
 
-    }
 
-</script>
+
+        /* COMING SOON */
+
+        function comingSoon(projectName) {
+
+            alert(
+                "🚀 " +
+                projectName +
+                " project is coming soon!\n\n" +
+                "I am still working and learning. 😊"
+            );
+
+        }
+
+    </script>
 
 
 </body>
