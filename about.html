@@ -1,12 +1,15 @@
-﻿```html
+ ```html
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
 
-    <title>About Me - My Computer World</title>
+    <meta charset="UTF-8">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>About Me | Anuj Maurya</title>
 
     <style>
 
@@ -18,184 +21,233 @@
         body {
             margin: 0;
             font-family: Arial, sans-serif;
-            text-align: center;
             color: white;
-            background: linear-gradient(135deg, #141e30, #243b55);
+            text-align: center;
+            background:
+                radial-gradient(circle at top left, #243b55, transparent 35%),
+                linear-gradient(135deg, #080f1c, #142b45, #07111f);
+            overflow-x: hidden;
         }
 
         /* NAVIGATION */
 
         nav {
-            background: rgba(0,0,0,0.4);
-            padding: 20px;
             position: sticky;
             top: 0;
-            z-index: 1000;
-            backdrop-filter: blur(10px);
-            box-shadow: 0 3px 15px rgba(0,0,0,0.3);
+            z-index: 9999;
+            padding: 16px 10px;
+            background: rgba(0,0,0,0.45);
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
         }
 
         nav a {
+            display: inline-block;
             color: white;
-            margin: 10px 15px;
             text-decoration: none;
             font-weight: bold;
-            font-size: 16px;
+            margin: 6px 14px;
+            padding: 8px 12px;
+            border-radius: 20px;
             transition: 0.3s;
         }
 
         nav a:hover {
             color: #ffd700;
+            background: rgba(255,215,0,0.12);
+            transform: translateY(-2px);
         }
 
         /* HERO */
 
-        .hero {
-            padding: 70px 20px 40px;
+        .about-hero {
+            padding: 70px 20px 50px;
         }
 
-        .hero h1 {
+        .about-photo {
+            width: 210px;
+            height: 210px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 5px solid #ffd700;
+            box-shadow:
+                0 0 30px rgba(255,215,0,0.45),
+                0 15px 40px rgba(0,0,0,0.5);
+            animation: floating 4s ease-in-out infinite;
+        }
+
+        @keyframes floating {
+
+            0%,100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-15px);
+            }
+
+        }
+
+        .about-hero h1 {
             font-size: 48px;
-            margin-bottom: 15px;
+            margin: 25px 0 10px;
         }
 
-        .hero p {
-            font-size: 21px;
-            line-height: 1.6;
-        }
-
-        .highlight {
+        .about-hero h1 span {
             color: #ffd700;
-            font-weight: bold;
+        }
+
+        .about-hero p {
+            font-size: 20px;
+            line-height: 1.6;
         }
 
         /* COMMON BOX */
 
         .box {
-            max-width: 850px;
-            margin: 35px auto;
+            max-width: 900px;
+            margin: 40px auto;
             padding: 35px 25px;
-            background: rgba(255,255,255,0.12);
-            border-radius: 25px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-            backdrop-filter: blur(8px);
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 28px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.25);
+            backdrop-filter: blur(12px);
+            opacity: 0;
+            transform: translateY(35px);
+            transition: 0.8s;
         }
 
-        .box h2 {
-            font-size: 32px;
-            margin-bottom: 20px;
+        .box.show {
+            opacity: 1;
+            transform: translateY(0);
         }
 
-        .box p {
+        h2 {
+            font-size: 30px;
+            margin-bottom: 25px;
+        }
+
+        h2::after {
+            content: "";
+            display: block;
+            width: 70px;
+            height: 4px;
+            margin: 12px auto;
+            border-radius: 5px;
+            background: linear-gradient(90deg,#ffd700,#ff9800);
+        }
+
+        p {
             font-size: 18px;
             line-height: 1.7;
         }
 
-        /* CARDS */
+        /* INFO CARDS */
 
         .cards {
             display: flex;
-            flex-wrap: wrap;
             justify-content: center;
-            gap: 20px;
+            flex-wrap: wrap;
+            gap: 18px;
         }
 
         .card {
-            width: 210px;
-            padding: 25px 18px;
-            background: rgba(255,255,255,0.10);
+            width: 200px;
+            padding: 25px 15px;
             border-radius: 20px;
-            transition: 0.3s;
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: 0.35s;
         }
 
         .card:hover {
             transform: translateY(-8px);
-            background: rgba(255,255,255,0.20);
+            background: rgba(255,255,255,0.15);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.3);
+        }
+
+        .card-icon {
+            font-size: 35px;
         }
 
         .card h3 {
-            font-size: 21px;
+            color: #ffd700;
         }
 
         .card p {
-            font-size: 16px;
+            font-size: 15px;
         }
 
-        /* INFO */
+        /* JOURNEY */
 
-        .info {
-            max-width: 600px;
-            margin: auto;
+        .journey {
             text-align: left;
+            padding: 20px;
+            margin: 15px 0;
+            background: rgba(255,255,255,0.06);
+            border-left: 4px solid #ffd700;
+            border-radius: 15px;
+            transition: 0.3s;
         }
 
-        .info p {
-            padding: 12px 18px;
-            margin: 10px 0;
-            background: rgba(255,255,255,0.08);
-            border-radius: 12px;
+        .journey:hover {
+            transform: translateX(8px);
+            background: rgba(255,255,255,0.12);
+        }
+
+        .journey h3 {
+            color: #ffd700;
         }
 
         /* GOAL */
 
         .goal {
-            border: 1px solid rgba(255,215,0,0.3);
+            padding: 25px;
+            border-radius: 22px;
+            background: linear-gradient(
+                135deg,
+                rgba(255,215,0,0.15),
+                rgba(255,152,0,0.08)
+            );
+            border: 1px solid rgba(255,215,0,0.25);
         }
 
-        .goal p {
-            font-size: 20px;
+        .goal-icon {
+            font-size: 45px;
         }
 
         /* BUTTON */
 
         .button {
             display: inline-block;
-            margin-top: 20px;
-            padding: 13px 30px;
-            background: linear-gradient(45deg, #ffd700, #ff9800);
-            color: #222;
-            text-decoration: none;
+            margin-top: 15px;
+            padding: 14px 28px;
             border-radius: 30px;
+            text-decoration: none;
             font-weight: bold;
+            color: #111;
+            background: linear-gradient(45deg,#ffd700,#ff9800);
             transition: 0.3s;
         }
 
         .button:hover {
-            transform: scale(1.07);
-            box-shadow: 0 5px 20px rgba(255,215,0,0.4);
-        }
-
-        /* TOP BUTTON */
-
-        #topButton {
-            position: fixed;
-            bottom: 25px;
-            right: 25px;
-            width: 55px;
-            height: 55px;
-            border: none;
-            border-radius: 50%;
-            background: linear-gradient(45deg, #ffd700, #ff9800);
-            color: black;
-            font-size: 24px;
-            font-weight: bold;
-            cursor: pointer;
-            display: none;
-            z-index: 9999;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.5);
-            transition: 0.3s;
-        }
-
-        #topButton:hover {
-            transform: translateY(-5px) scale(1.1);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(255,193,7,0.35);
         }
 
         /* FOOTER */
 
         footer {
-            margin-top: 60px;
-            padding: 25px;
-            background: rgba(0,0,0,0.4);
+            margin-top: 70px;
+            padding: 30px 15px;
+            background: rgba(0,0,0,0.45);
+            line-height: 1.8;
+        }
+
+        .name {
+            color: #ffd700;
+            font-weight: bold;
         }
 
         /* MOBILE */
@@ -203,21 +255,31 @@
         @media(max-width:600px) {
 
             nav a {
-                display: inline-block;
-                margin: 7px;
-                font-size: 14px;
+                margin: 4px;
+                padding: 7px 8px;
+                font-size: 13px;
             }
 
-            .hero h1 {
+            .about-hero {
+                padding: 50px 15px 30px;
+            }
+
+            .about-photo {
+                width: 170px;
+                height: 170px;
+            }
+
+            .about-hero h1 {
                 font-size: 35px;
             }
 
-            .hero p {
-                font-size: 18px;
+            .about-hero p {
+                font-size: 17px;
             }
 
             .box {
-                width: 90%;
+                width: 92%;
+                padding: 30px 18px;
             }
 
             .card {
@@ -247,85 +309,50 @@
 </nav>
 
 
-<!-- HERO -->
+<!-- ABOUT HERO -->
 
-<section class="hero">
+<section class="about-hero">
 
-    <h1>👨‍💻 About Me</h1>
+    <img
+        class="about-photo"
+        src="myphoto.jpg.jpg"
+        alt="Anuj Maurya"
+    >
+
+    <h1>
+        About <span>Me</span> 👨‍💻
+    </h1>
 
     <p>
-        Welcome to my personal website! 🚀
+        Welcome to my personal profile.
     </p>
 
     <p>
-        I am <span class="highlight">Anuj Maurya</span>,
-        a Class 11 student who loves learning about computers and technology.
+        I am <b>Anuj Maurya</b>, a Class 11 student
+        who enjoys learning computers and technology.
     </p>
 
 </section>
 
 
-<!-- PERSONAL INFORMATION -->
+<!-- QUICK INFO -->
 
 <div class="box">
 
-    <h2>🙋‍♂️ Who I Am</h2>
-
-    <div class="info">
-
-        <p>👤 <b>Name:</b> Anuj Maurya</p>
-
-        <p>🎓 <b>Class:</b> 11</p>
-
-        <p>💻 <b>Course:</b> ADCA</p>
-
-        <p>📐 <b>Favorite Subject:</b> Mathematics</p>
-
-        <p>💡 <b>Field of Interest:</b> Computer & Technology</p>
-
-    </div>
-
-</div>
-
-
-<!-- MY STORY -->
-
-<div class="box">
-
-    <h2>📖 My Story</h2>
-
-    <p>
-        I am a student who enjoys learning new things
-        and improving my computer knowledge.
-    </p>
-
-    <p>
-        I am learning Computer and ADCA, and I have also
-        started learning HTML, CSS and basic web development.
-    </p>
-
-    <p>
-        Creating my own website is one of the steps
-        in my journey of learning technology. 🚀
-    </p>
-
-</div>
-
-
-<!-- MY SKILLS -->
-
-<div class="box">
-
-    <h2>🛠️ My Skills</h2>
+    <h2>📋 Quick Information</h2>
 
     <div class="cards">
 
         <div class="card">
 
-            <h3>💻 Computer</h3>
+            <div class="card-icon">
+                🎓
+            </div>
+
+            <h3>Class</h3>
 
             <p>
-                Computer basics and practical computer work.
+                Class 11
             </p>
 
         </div>
@@ -333,10 +360,14 @@
 
         <div class="card">
 
-            <h3>🌐 HTML & CSS</h3>
+            <div class="card-icon">
+                💻
+            </div>
+
+            <h3>Course</h3>
 
             <p>
-                Learning website structure and design.
+                Computer & ADCA
             </p>
 
         </div>
@@ -344,10 +375,14 @@
 
         <div class="card">
 
-            <h3>🎬 Editing</h3>
+            <div class="card-icon">
+                📐
+            </div>
+
+            <h3>Interest</h3>
 
             <p>
-                Photo and video editing skills.
+                Mathematics
             </p>
 
         </div>
@@ -355,10 +390,14 @@
 
         <div class="card">
 
-            <h3>📷 Photography</h3>
+            <div class="card-icon">
+                📷
+            </div>
+
+            <h3>Hobby</h3>
 
             <p>
-                Photography and camera-related interest.
+                Photography
             </p>
 
         </div>
@@ -368,20 +407,50 @@
 </div>
 
 
-<!-- HOBBIES -->
+<!-- ABOUT -->
 
 <div class="box">
 
-    <h2>🎨 My Hobbies</h2>
+    <h2>👨‍💻 Who I Am</h2>
+
+    <p>
+        My name is Anuj Maurya.
+        I am currently studying in Class 11.
+    </p>
+
+    <p>
+        I am learning Computer and ADCA
+        and developing my practical computer skills.
+    </p>
+
+    <p>
+        I am interested in technology,
+        web development, photography,
+        photo editing, video editing and travelling.
+    </p>
+
+</div>
+
+
+<!-- MY INTERESTS -->
+
+<div class="box">
+
+    <h2>❤️ My Interests</h2>
 
     <div class="cards">
 
         <div class="card">
 
-            <h3>📷 Photography</h3>
+            <div class="card-icon">
+                💻
+            </div>
+
+            <h3>Technology</h3>
 
             <p>
-                I enjoy taking photographs and using a camera.
+                Learning new things
+                about computers.
             </p>
 
         </div>
@@ -389,10 +458,15 @@
 
         <div class="card">
 
-            <h3>🎬 Photo & Video Editing</h3>
+            <div class="card-icon">
+                🌐
+            </div>
+
+            <h3>Web Development</h3>
 
             <p>
-                I enjoy creating and editing photos and videos.
+                Creating and designing
+                websites.
             </p>
 
         </div>
@@ -400,77 +474,35 @@
 
         <div class="card">
 
-            <h3>✈️ Travelling</h3>
+            <div class="card-icon">
+                📷
+            </div>
+
+            <h3>Photography</h3>
 
             <p>
-                I like exploring new places and experiences.
+                Taking photos and
+                learning camera skills.
+            </p>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="card-icon">
+                🎬
+            </div>
+
+            <h3>Editing</h3>
+
+            <p>
+                Photo and video editing.
             </p>
 
         </div>
 
     </div>
-
-</div>
-
-
-<!-- PRACTICAL EXPERIENCE -->
-
-<div class="box">
-
-    <h2>🖥️ Practical Experience</h2>
-
-    <p>
-        I work at a computer shop where I get
-        practical experience with computers and
-        everyday digital work.
-    </p>
-
-    <p>
-        This experience helps me understand
-        computer-related tasks in a practical way.
-    </p>
-
-</div>
-
-
-<!-- WHY TECHNOLOGY -->
-
-<div class="box">
-
-    <h2>💡 Why I Like Technology</h2>
-
-    <p>
-        Technology is an important part of modern life.
-    </p>
-
-    <p>
-        I like learning how computers, websites
-        and digital tools work.
-    </p>
-
-    <p>
-        Every new skill I learn gives me an opportunity
-        to create something useful. 🚀
-    </p>
-
-</div>
-
-
-<!-- MY GOAL -->
-
-<div class="box goal">
-
-    <h2>🎯 My Goal</h2>
-
-    <p>
-        My goal is to improve my computer skills,
-        learn new technologies and become better
-        at web development.
-    </p>
-
-    <p>
-        📚 Keep Learning • 💻 Keep Practicing • 🚀 Keep Growing
-    </p>
 
 </div>
 
@@ -481,72 +513,135 @@
 
     <h2>🚀 My Learning Journey</h2>
 
-    <div class="cards">
+    <div class="journey">
 
-        <div class="card">
+        <h3>📌 Step 1 — Computer Basics</h3>
 
-            <h3>1️⃣ Computer</h3>
+        <p>
+            Started learning basic computer
+            operations and practical skills.
+        </p>
 
-            <p>
-                Started learning computer basics.
-            </p>
-
-        </div>
-
-
-        <div class="card">
-
-            <h3>2️⃣ ADCA</h3>
-
-            <p>
-                Learning computer applications through ADCA.
-            </p>
-
-        </div>
+    </div>
 
 
-        <div class="card">
+    <div class="journey">
 
-            <h3>3️⃣ Web Development</h3>
+        <h3>📌 Step 2 — ADCA</h3>
 
-            <p>
-                Started creating websites using HTML and CSS.
-            </p>
+        <p>
+            Started learning Computer and ADCA
+            to improve my practical knowledge.
+        </p>
 
-        </div>
+    </div>
 
 
-        <div class="card">
+    <div class="journey">
 
-            <h3>4️⃣ Future</h3>
+        <h3>📌 Step 3 — HTML & CSS</h3>
 
-            <p>
-                Planning to learn more technologies.
-            </p>
+        <p>
+            Started creating websites using
+            HTML and CSS.
+        </p>
 
-        </div>
+    </div>
+
+
+    <div class="journey">
+
+        <h3>📌 Step 4 — Personal Website</h3>
+
+        <p>
+            Created and published my own
+            personal website.
+        </p>
+
+    </div>
+
+
+    <div class="journey">
+
+        <h3>📌 Step 5 — Keep Learning</h3>
+
+        <p>
+            Continuing to learn web development,
+            technology and new computer skills.
+        </p>
 
     </div>
 
 </div>
 
 
-<!-- HOME BUTTON -->
+<!-- WORK EXPERIENCE -->
 
-<a class="button" href="index.html">
+<div class="box">
 
-    🏠 Back to Home
+    <h2>🖥️ Practical Experience</h2>
 
-</a>
+    <p>
+        I get practical experience working
+        with computers and everyday digital tasks.
+    </p>
+
+    <p>
+        This helps me understand computer work,
+        files, software and other digital activities.
+    </p>
+
+</div>
 
 
-<!-- TOP BUTTON -->
+<!-- FUTURE GOAL -->
 
-<button id="topButton" onclick="goTop()">
+<div class="box">
 
-    ⬆️
+    <h2>🎯 My Goal</h2>
 
-</button>
+    <div class="goal">
+
+        <div class="goal-icon">
+            🚀
+        </div>
+
+        <p>
+            My goal is to improve my computer skills,
+            learn new technologies and become better
+            at web development and digital work.
+        </p>
+
+        <p>
+            I want to keep learning,
+            keep practicing and keep growing.
+        </p>
+
+    </div>
+
+</div>
+
+
+<!-- BACK BUTTON -->
+
+<div class="box">
+
+    <h2>🌐 Explore My Website</h2>
+
+    <p>
+        Want to see more about my work,
+        skills and projects?
+    </p>
+
+    <a class="button" href="index.html">
+        🏠 Back to Home
+    </a>
+
+    <a class="button" href="contact.html">
+        📩 Contact Me
+    </a>
+
+</div>
 
 
 <!-- FOOTER -->
@@ -555,50 +650,54 @@
 
     © 2026 My Computer World
 
-    <br><br>
+    <br>
 
-    Made with ❤️ by Anuj Maurya
+    Made with ❤️ by
+    <span class="name">
+        Anuj Maurya
+    </span>
 
 </footer>
 
 
+<!-- JAVASCRIPT -->
+
 <script>
 
+    /* SCROLL ANIMATION */
 
-/* TOP BUTTON */
+    function revealBoxes() {
 
-window.onscroll = function() {
+        let boxes =
+            document.querySelectorAll(".box");
 
-    let button = document.getElementById("topButton");
+        boxes.forEach(function(box) {
 
-    if (
-        document.documentElement.scrollTop > 300 ||
-        document.body.scrollTop > 300
-    ) {
+            let position =
+                box.getBoundingClientRect().top;
 
-        button.style.display = "block";
+            let screenHeight =
+                window.innerHeight;
 
-    } else {
+            if (
+                position <
+                screenHeight - 80
+            ) {
 
-        button.style.display = "none";
+                box.classList.add("show");
+
+            }
+
+        });
 
     }
 
-};
+    window.addEventListener(
+        "scroll",
+        revealBoxes
+    );
 
-
-function goTop() {
-
-    window.scrollTo({
-
-        top: 0,
-
-        behavior: "smooth"
-
-    });
-
-}
-
+    revealBoxes();
 
 </script>
 
