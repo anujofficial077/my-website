@@ -1,10 +1,11 @@
-﻿<!DOCTYPE html>
+ <!DOCTYPE html>
 
 <html lang="en">
 
 <head>
 
 <meta charset="UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Projects | My Computer World</title>
@@ -23,6 +24,8 @@ body {
     color: white;
     background: linear-gradient(135deg, #141e30, #243b55);
 }
+
+/* NAVIGATION */
 
 nav {
     position: sticky;
@@ -48,7 +51,10 @@ nav a:hover,
 nav a.active {
     background: #ff9800;
     color: black;
+    transform: translateY(-2px);
 }
+
+/* HERO */
 
 .hero {
     text-align: center;
@@ -58,12 +64,16 @@ nav a.active {
 .hero h1 {
     font-size: 45px;
     margin-bottom: 15px;
+    animation: fadeDown 1s ease;
 }
 
 .hero p {
     font-size: 18px;
     color: #ddd;
+    animation: fadeUp 1s ease;
 }
+
+/* PROJECT CARDS */
 
 .projects {
     max-width: 1100px;
@@ -82,11 +92,13 @@ nav a.active {
     border: 1px solid rgba(255,255,255,0.15);
     box-shadow: 0 10px 30px rgba(0,0,0,0.25);
     transition: 0.4s;
+    animation: fadeUp 1s ease;
 }
 
 .card:hover {
-    transform: translateY(-10px);
+    transform: translateY(-10px) scale(1.02);
     background: rgba(255,255,255,0.16);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.35);
 }
 
 .icon {
@@ -105,6 +117,8 @@ nav a.active {
     margin-bottom: 20px;
 }
 
+/* BUTTON */
+
 .btn {
     display: inline-block;
     padding: 11px 20px;
@@ -113,7 +127,15 @@ nav a.active {
     text-decoration: none;
     font-weight: bold;
     border-radius: 25px;
+    transition: 0.3s;
 }
+
+.btn:hover {
+    transform: scale(1.08);
+    box-shadow: 0 5px 15px rgba(255,193,7,0.4);
+}
+
+/* QUOTE */
 
 .quote {
     max-width: 850px;
@@ -122,6 +144,7 @@ nav a.active {
     text-align: center;
     border-radius: 20px;
     background: rgba(0,0,0,0.25);
+    border: 1px solid rgba(255,255,255,0.10);
 }
 
 .quote h2 {
@@ -133,6 +156,8 @@ nav a.active {
     color: #ddd;
     font-size: 17px;
 }
+
+/* FOOTER */
 
 footer {
     margin-top: 50px;
@@ -146,167 +171,27 @@ footer span {
     color: #ff9800;
 }
 
-@media (max-width: 600px) {
+/* ANIMATIONS */
 
-    .hero h1 {
-        font-size: 32px;
+@keyframes fadeUp {
+
+    from {
+        opacity: 0;
+        transform: translateY(30px);
     }
 
-    nav a {
-        padding: 8px 11px;
-        margin: 3px;
-        font-size: 14px;
+    to {
+        opacity: 1;
+        transform: translateY(0);
     }
 
 }
 
-</style>
+@keyframes fadeDown {
 
-</head>
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
 
-<body>
-
-<nav>
-
-```
-<a href="index.html">Home</a>
-
-<a href="about.html">About</a>
-
-<a href="project.html" class="active">Projects</a>
-
-<a href="contact.html">Contact</a>
-```
-
-</nav>
-
-<section class="hero">
-
-```
-<h1>My Projects</h1>
-
-<p>Welcome to my learning and creative project world.</p>
-```
-
-</section>
-
-<section class="projects">
-
-```
-<div class="card">
-
-    <div class="icon">💻</div>
-
-    <h2>Computer Learning</h2>
-
-    <p>
-        Learning computer fundamentals, software,
-        internet, file management and practical computer skills.
-    </p>
-
-    <a href="#" class="btn">Learning</a>
-
-</div>
-
-<div class="card">
-
-    <div class="icon">🌐</div>
-
-    <h2>My Website</h2>
-
-    <p>
-        A personal website created using HTML and CSS
-        while learning web development.
-    </p>
-
-    <a href="index.html" class="btn">Visit Home</a>
-
-</div>
-
-<div class="card">
-
-    <div class="icon">📸</div>
-
-    <h2>Photography</h2>
-
-    <p>
-        Exploring photography, camera settings,
-        family photography and creative photos.
-    </p>
-
-    <a href="#" class="btn">Coming Soon</a>
-
-</div>
-
-<div class="card">
-
-    <div class="icon">🎬</div>
-
-    <h2>Photo & Video Editing</h2>
-
-    <p>
-        Learning photo editing, video editing,
-        creative effects and social media content.
-    </p>
-
-    <a href="#" class="btn">Coming Soon</a>
-
-</div>
-
-<div class="card">
-
-    <div class="icon">📐</div>
-
-    <h2>Mathematics</h2>
-
-    <p>
-        Mathematics is one of my favorite subjects.
-        I enjoy learning and practicing different concepts.
-    </p>
-
-    <a href="#" class="btn">My Subject</a>
-
-</div>
-
-<div class="card">
-
-    <div class="icon">🧑‍💻</div>
-
-    <h2>ADCA Learning</h2>
-
-    <p>
-        Developing practical computer knowledge through
-        ADCA and hands-on learning.
-    </p>
-
-    <a href="#" class="btn">In Progress</a>
-
-</div>
-```
-
-</section>
-
-<section class="quote">
-
-```
-<h2>Keep Learning, Keep Creating</h2>
-
-<p>
-    Every project is a small step toward a bigger dream.
-</p>
-```
-
-</section>
-
-<footer>
-
-```
-© 2026 <span>My Computer World</span> |
-Made with ❤️ by Anuj Maurya
-```
-
-</footer>
-
-</body>
-
-</html>
+   
