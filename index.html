@@ -2,658 +2,309 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>My Computer World | Anuj Maurya</title>
-
-    <style>
-
-        :root {
-            --bg1: #141e30;
-            --bg2: #243b55;
-            --card: rgba(255,255,255,0.10);
-            --text: white;
-            --accent: #ffd700;
-            --button: #ff9800;
-        }
-
-        body.light {
-            --bg1: #eaf2ff;
-            --bg2: #c9dcf5;
-            --card: rgba(255,255,255,0.75);
-            --text: #172033;
-            --accent: #d68900;
-            --button: #ff9800;
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: Arial, sans-serif;
-            color: var(--text);
-            background: linear-gradient(135deg, var(--bg1), var(--bg2));
-            min-height: 100vh;
-            transition: 0.4s;
-        }
-
-        /* NAVBAR */
-
-        nav {
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            background: rgba(0,0,0,0.45);
-            backdrop-filter: blur(10px);
-            padding: 15px;
-            text-align: center;
-        }
-
-        nav a {
-            color: white;
-            text-decoration: none;
-            margin: 0 10px;
-            font-weight: bold;
-            transition: 0.3s;
-        }
-
-        nav a:hover {
-            color: var(--accent);
-        }
-
-        /* MODE BUTTON */
-
-        .mode-btn {
-            position: fixed;
-            right: 20px;
-            top: 75px;
-            z-index: 1001;
-            border: none;
-            border-radius: 50%;
-            width: 45px;
-            height: 45px;
-            cursor: pointer;
-            font-size: 20px;
-            background: var(--accent);
-        }
-
-        /* HERO */
-
-        .hero {
-            text-align: center;
-            padding: 70px 20px 40px;
-            animation: fadeIn 1.2s ease;
-        }
-
-        .hero h1 {
-            font-size: 42px;
-            margin-bottom: 15px;
-        }
-
-        .hero h1 span {
-            color: var(--accent);
-        }
-
-        .hero p {
-            font-size: 18px;
-            line-height: 1.7;
-        }
-
-        /* PROFILE PHOTO */
-
-        .profile {
-            width: 170px;
-            height: 170px;
-            border-radius: 50%;
-            object-fit: cover;
-            margin: 25px auto;
-            display: block;
-            border: 5px solid var(--accent);
-            box-shadow: 0 0 30px rgba(255,215,0,0.5);
-            animation: float 3s infinite ease-in-out;
-        }
-
-        /* BUTTONS */
-
-        .buttons {
-            margin-top: 25px;
-        }
-
-        .btn {
-            display: inline-block;
-            background: var(--button);
-            color: white;
-            text-decoration: none;
-            padding: 12px 20px;
-            margin: 7px;
-            border-radius: 25px;
-            font-weight: bold;
-            transition: 0.3s;
-        }
-
-        .btn:hover {
-            transform: translateY(-4px) scale(1.04);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
-        }
-
-        /* TIME + VISITOR */
-
-        .info-box {
-            text-align: center;
-            margin: 25px auto;
-            max-width: 600px;
-            padding: 18px;
-            background: var(--card);
-            border-radius: 18px;
-            backdrop-filter: blur(10px);
-        }
-
-        .info-box p {
-            margin: 8px;
-            font-size: 17px;
-        }
-
-        /* CARDS */
-
-        .section {
-            max-width: 1100px;
-            margin: auto;
-            padding: 50px 20px;
-        }
-
-        .section h2 {
-            text-align: center;
-            color: var(--accent);
-            margin-bottom: 30px;
-            font-size: 30px;
-        }
-
-        .cards {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 20px;
-        }
-
-        .card {
-            background: var(--card);
-            padding: 25px;
-            border-radius: 20px;
-            text-align: center;
-            backdrop-filter: blur(10px);
-            transition: 0.3s;
-        }
-
-        .card:hover {
-            transform: translateY(-8px);
-        }
-
-        .card h3 {
-            margin-bottom: 12px;
-            color: var(--accent);
-        }
-
-        .card p {
-            line-height: 1.6;
-        }
-
-        /* SKILLS */
-
-        .skill {
-            margin: 20px 0;
-        }
-
-        .skill-title {
-            margin-bottom: 7px;
-        }
-
-        .bar {
-            height: 12px;
-            background: rgba(255,255,255,0.2);
-            border-radius: 20px;
-            overflow: hidden;
-        }
-
-        .fill {
-            height: 100%;
-            background: var(--accent);
-            border-radius: 20px;
-        }
-
-        /* QUOTE */
-
-        .quote {
-            text-align: center;
-            padding: 50px 20px;
-            font-size: 22px;
-            font-style: italic;
-        }
-
-        /* TOP BUTTON */
-
-        #topBtn {
-            display: none;
-            position: fixed;
-            right: 20px;
-            bottom: 25px;
-            width: 48px;
-            height: 48px;
-            border: none;
-            border-radius: 50%;
-            background: var(--button);
-            color: white;
-            font-size: 20px;
-            cursor: pointer;
-            z-index: 999;
-        }
-
-        /* FOOTER */
-
-        footer {
-            text-align: center;
-            padding: 25px;
-            background: rgba(0,0,0,0.3);
-            margin-top: 30px;
-        }
-
-        /* ANIMATIONS */
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes float {
-            0%,100% {
-                transform: translateY(0);
-            }
-
-            50% {
-                transform: translateY(-10px);
-            }
-        }
-
-        /* MOBILE */
-
-        @media(max-width:600px) {
-
-            nav a {
-                display: inline-block;
-                margin: 5px;
-                font-size: 14px;
-            }
-
-            .hero h1 {
-                font-size: 30px;
-            }
-
-            .hero p {
-                font-size: 16px;
-            }
-
-            .mode-btn {
-                top: 120px;
-            }
-        }
-
-    </style>
-</head>
-
-<body>
 
-    <!-- NAVIGATION -->
+<meta charset="UTF-8">
 
-    <nav>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <a href="index.html">🏠 Home</a>
-        <a href="about.html">👤 About</a>
-        <a href="project.html">💻 Projects</a>
-        <a href="gallery.html">📸 Gallery</a>
-        <a href="contact.html">📞 Contact</a>
+<title>My Computer World | Anuj Maurya</title>
 
-    </nav>
+<style>
 
-    <!-- DARK / LIGHT BUTTON -->
+/* =========================
+   BASIC
+========================= */
 
-    <button class="mode-btn" onclick="toggleMode()" id="modeButton">
-        🌙
-    </button>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
+html {
+    scroll-behavior: smooth;
+}
 
-    <!-- HERO -->
+:root {
+    --bg1: #141e30;
+    --bg2: #243b55;
+    --card: rgba(255,255,255,0.10);
+    --text: white;
+    --accent: #ffd700;
+    --button: #ff9800;
+}
 
-    <section class="hero">
+body.light {
+    --bg1: #eaf2ff;
+    --bg2: #c9dcf5;
+    --card: rgba(255,255,255,0.75);
+    --text: #172033;
+    --accent: #d68900;
+    --button: #ff9800;
+}
 
-        <h1>
-            Welcome to <span>My Computer World</span> 🚀
-        </h1>
+body {
 
-        <img src="myphoto.jpg" class="profile" alt="Anuj Maurya">
+    font-family: Arial, sans-serif;
 
-        <p>
-            Hello! I am <b>Anuj Maurya</b>.
-            I am a Class 11 student learning
-            <b>Computer & ADCA</b>.
-        </p>
+    color: var(--text);
 
-        <p>
-            💻 Mathematics | 📸 Photography |
-            🎬 Editing | ✈️ Travelling
-        </p>
+    background:
+        linear-gradient(135deg, var(--bg1), var(--bg2));
 
-        <div class="buttons">
+    min-height: 100vh;
 
-            <a href="about.html" class="btn">
-                👤 About Me
-            </a>
+    overflow-x: hidden;
 
-            <a href="project.html" class="btn">
-                💻 My Projects
-            </a>
+    transition: 0.4s;
+}
 
-            <a href="gallery.html" class="btn">
-                📸 View Gallery
-            </a>
 
-        </div>
+/* =========================
+   ANIMATED BACKGROUND
+========================= */
 
-    </section>
+.background {
 
+    position: fixed;
 
-    <!-- TIME + VISITOR -->
+    width: 100%;
+    height: 100%;
 
-    <div class="info-box">
+    top: 0;
+    left: 0;
 
-        <p>
-            🕒 Current Time:
-            <b id="liveTime">Loading...</b>
-        </p>
+    overflow: hidden;
 
-        <p>
-            👀 Visits on this device:
-            <b id="visitorCount">0</b>
-        </p>
+    z-index: -1;
+}
 
-    </div>
+.circle {
 
+    position: absolute;
 
-    <!-- LEARNING -->
+    width: 120px;
+    height: 120px;
 
-    <section class="section">
+    border-radius: 50%;
 
-        <h2>📚 My Learning</h2>
+    background: rgba(255,255,255,0.08);
 
-        <div class="cards">
+    animation: moveCircle 12s infinite linear;
+}
 
-            <div class="card">
+.circle:nth-child(1) {
+    left: 10%;
+    top: 20%;
+    animation-duration: 14s;
+}
 
-                <h3>💻 Computer</h3>
+.circle:nth-child(2) {
+    left: 70%;
+    top: 10%;
+    width: 180px;
+    height: 180px;
+    animation-duration: 18s;
+}
 
-                <p>
-                    Learning computer basics,
-                    software and practical computer skills.
-                </p>
+.circle:nth-child(3) {
+    left: 50%;
+    top: 70%;
+    width: 100px;
+    height: 100px;
+    animation-duration: 11s;
+}
 
-            </div>
+.circle:nth-child(4) {
+    left: 85%;
+    top: 65%;
+    width: 150px;
+    height: 150px;
+    animation-duration: 16s;
+}
 
+@keyframes moveCircle {
 
-            <div class="card">
+    0% {
+        transform: translate(0,0) rotate(0deg);
+    }
 
-                <h3>🌐 HTML & CSS</h3>
+    50% {
+        transform: translate(80px,-60px) rotate(180deg);
+    }
 
-                <p>
-                    Creating and designing
-                    my own websites.
-                </p>
+    100% {
+        transform: translate(0,0) rotate(360deg);
+    }
+}
 
-            </div>
 
+/* =========================
+   NAVBAR
+========================= */
 
-            <div class="card">
+nav {
 
-                <h3>📐 Mathematics</h3>
+    position: sticky;
 
-                <p>
-                    Mathematics is one of my
-                    favourite subjects.
-                </p>
+    top: 0;
 
-            </div>
+    z-index: 1000;
 
+    padding: 15px;
 
-            <div class="card">
+    text-align: center;
 
-                <h3>🎬 Editing</h3>
+    background: rgba(0,0,0,0.45);
 
-                <p>
-                    Learning photo and video
-                    editing techniques.
-                </p>
+    backdrop-filter: blur(12px);
+}
 
-            </div>
+nav a {
 
-        </div>
+    color: white;
 
-    </section>
+    text-decoration: none;
 
+    margin: 0 9px;
 
-    <!-- SKILLS -->
+    font-weight: bold;
 
-    <section class="section">
+    transition: 0.3s;
+}
 
-        <h2>⚡ My Skills</h2>
+nav a:hover {
 
+    color: var(--accent);
 
-        <div class="skill">
+    text-shadow:
+        0 0 10px var(--accent);
+}
 
-            <div class="skill-title">
-                💻 Computer — 85%
-            </div>
 
-            <div class="bar">
-                <div class="fill" style="width:85%;"></div>
-            </div>
+/* =========================
+   MODE BUTTON
+========================= */
 
-        </div>
+.mode-btn {
 
+    position: fixed;
 
-        <div class="skill">
+    right: 20px;
 
-            <div class="skill-title">
-                🌐 HTML & CSS — 75%
-            </div>
+    top: 70px;
 
-            <div class="bar">
-                <div class="fill" style="width:75%;"></div>
-            </div>
+    z-index: 1001;
 
-        </div>
+    width: 45px;
 
+    height: 45px;
 
-        <div class="skill">
+    border: none;
 
-            <div class="skill-title">
-                🎬 Photo & Video Editing — 80%
-            </div>
+    border-radius: 50%;
 
-            <div class="bar">
-                <div class="fill" style="width:80%;"></div>
-            </div>
+    cursor: pointer;
 
-        </div>
+    font-size: 20px;
 
+    background: var(--accent);
 
-        <div class="skill">
+    box-shadow:
+        0 0 15px rgba(255,215,0,0.5);
+}
 
-            <div class="skill-title">
-                📸 Photography — 70%
-            </div>
 
-            <div class="bar">
-                <div class="fill" style="width:70%;"></div>
-            </div>
+/* =========================
+   HERO
+========================= */
 
-        </div>
+.hero {
 
-    </section>
+    text-align: center;
 
+    padding: 80px 20px 50px;
 
-    <!-- QUOTE -->
+    animation: heroAppear 1.2s ease;
+}
 
-    <div class="quote">
+@keyframes heroAppear {
 
-        🚀 "Learn Today, Create Tomorrow."
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
 
-    </div>
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
 
+.hero h1 {
 
-    <!-- TOP BUTTON -->
+    font-size: 45px;
 
-    <button id="topBtn" onclick="goTop()">
-        ⬆️
-    </button>
+    margin-bottom: 15px;
+}
 
+.hero h1 span {
 
-    <!-- FOOTER -->
+    color: var(--accent);
 
-    <footer>
+    text-shadow:
+        0 0 15px rgba(255,215,0,0.5);
+}
 
-        <p>
-            © 2026 My Computer World
-        </p>
+.hero p {
 
-        <p>
-            Made with ❤️ by Anuj Maurya
-        </p>
+    font-size: 18px;
 
-    </footer>
+    line-height: 1.8;
+}
 
 
-    <!-- JAVASCRIPT -->
+/* =========================
+   PROFILE PHOTO
+========================= */
 
-    <script>
+.photo-box {
 
-        /* LIVE TIME */
+    width: 190px;
 
-        function updateTime() {
+    height: 190px;
 
-            let now = new Date();
+    margin: 30px auto;
 
-            let time = now.toLocaleTimeString(
-                "en-IN",
-                {
-                    timeZone: "Asia/Kolkata"
-                }
-            );
+    padding: 6px;
 
-            document.getElementById("liveTime").innerText = time;
+    border-radius: 50%;
 
-        }
+    background:
+        linear-gradient(
+            45deg,
+            #ffd700,
+            #ff9800,
+            #00d4ff,
+            #ffd700
+        );
 
-        updateTime();
+    background-size: 300% 300%;
 
-        setInterval(updateTime, 1000);
+    animation:
+        gradientMove 5s infinite linear,
+        floating 3s infinite ease-in-out;
 
+    box-shadow:
+        0 0 30px rgba(255,215,0,0.5);
+}
 
-        /* DARK / LIGHT MODE */
+.photo-box img {
 
-        function toggleMode() {
+    width: 100%;
 
-            document.body.classList.toggle("light");
+    height: 100%;
 
-            let button = document.getElementById("modeButton");
+    border-radius: 50%;
 
-            if (document.body.classList.contains("light")) {
-
-                button.innerText = "☀️";
-
-                localStorage.setItem("theme", "light");
-
-            } else {
-
-                button.innerText = "🌙";
-
-                localStorage.setItem("theme", "dark");
-
-            }
-
-        }
-
-
-        /* REMEMBER MODE */
-
-        if (localStorage.getItem("theme") === "light") {
-
-            document.body.classList.add("light");
-
-            document.getElementById("modeButton").innerText = "☀️";
-
-        }
-
-
-        /* VISITOR COUNTER */
-
-        let visits = localStorage.getItem("siteVisits");
-
-        if (visits === null) {
-
-            visits = 1;
-
-        } else {
-
-            visits = Number(visits) + 1;
-
-        }
-
-        localStorage.setItem("siteVisits", visits);
-
-        document.getElementById("visitorCount").innerText = visits;
-
-
-        /* BACK TO TOP */
-
-        let topButton = document.getElementById("topBtn");
-
-        window.onscroll = function() {
-
-            if (document.documentElement.scrollTop > 300) {
-
-                topButton.style.display = "block";
-
-            } else {
-
-                topButton.style.display = "none";
-
-            }
-
-        };
-
-
-        function goTop() {
-
-            window.scrollTo({
-                top: 0,
-                behavior: "smooth"
-            });
-
-        }
-
-    </script>
-
-</body>
-
-</html>
+    object-fit: cover
