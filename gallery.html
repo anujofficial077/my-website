@@ -1,0 +1,390 @@
+﻿```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Gallery | My Computer World</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
+
+body{
+    min-height:100vh;
+    color:white;
+    background:linear-gradient(135deg,#141e30,#243b55);
+}
+
+/* NAVIGATION */
+
+nav{
+    position:sticky;
+    top:0;
+    z-index:1000;
+    width:100%;
+    padding:15px 10px;
+    text-align:center;
+    background:rgba(0,0,0,0.75);
+    box-shadow:0 3px 15px rgba(0,0,0,0.4);
+}
+
+nav a{
+    display:inline-block;
+    margin:5px;
+    padding:10px 16px;
+    color:white;
+    text-decoration:none;
+    border-radius:25px;
+    transition:0.3s;
+    font-weight:bold;
+}
+
+nav a:hover{
+    background:#ff9800;
+    color:black;
+    transform:translateY(-2px);
+}
+
+nav a.active{
+    background:#ffd700;
+    color:black;
+}
+
+/* HERO */
+
+.hero{
+    text-align:center;
+    padding:65px 20px 40px;
+}
+
+.hero h1{
+    font-size:45px;
+    margin-bottom:15px;
+    animation:fadeDown 1s ease;
+}
+
+.hero p{
+    font-size:18px;
+    color:#ddd;
+    animation:fadeUp 1.2s ease;
+}
+
+/* GALLERY */
+
+.gallery{
+    max-width:1100px;
+    margin:auto;
+    padding:20px;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:25px;
+}
+
+.photo-card{
+    overflow:hidden;
+    border-radius:20px;
+    background:rgba(255,255,255,0.10);
+    border:1px solid rgba(255,255,255,0.18);
+    box-shadow:0 10px 30px rgba(0,0,0,0.30);
+    transition:0.4s;
+    animation:cardShow 0.8s ease;
+}
+
+.photo-card:hover{
+    transform:translateY(-8px);
+    box-shadow:0 15px 35px rgba(0,0,0,0.45);
+}
+
+.photo-card img{
+    width:100%;
+    height:280px;
+    object-fit:cover;
+    display:block;
+    transition:0.5s;
+}
+
+.photo-card:hover img{
+    transform:scale(1.08);
+}
+
+.photo-info{
+    padding:18px;
+    text-align:center;
+}
+
+.photo-info h2{
+    color:#ffd700;
+    margin-bottom:8px;
+}
+
+.photo-info p{
+    color:#ddd;
+    line-height:1.5;
+}
+
+/* MESSAGE */
+
+.message{
+    max-width:850px;
+    margin:50px auto;
+    padding:30px;
+    text-align:center;
+    border-radius:20px;
+    background:rgba(0,0,0,0.25);
+}
+
+.message h2{
+    color:#ffd700;
+    margin-bottom:12px;
+}
+
+.message p{
+    color:#ddd;
+    line-height:1.6;
+}
+
+/* FOOTER */
+
+footer{
+    margin-top:50px;
+    padding:25px;
+    text-align:center;
+    background:rgba(0,0,0,0.45);
+    color:#ccc;
+}
+
+footer span{
+    color:#ff9800;
+}
+
+/* ANIMATIONS */
+
+@keyframes fadeDown{
+
+    from{
+        opacity:0;
+        transform:translateY(-30px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+
+}
+
+@keyframes fadeUp{
+
+    from{
+        opacity:0;
+        transform:translateY(30px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+
+}
+
+@keyframes cardShow{
+
+    from{
+        opacity:0;
+        transform:translateY(30px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+
+}
+
+/* MOBILE */
+
+@media(max-width:600px){
+
+    .hero h1{
+        font-size:32px;
+    }
+
+    nav a{
+        padding:8px 11px;
+        margin:3px;
+        font-size:14px;
+    }
+
+    .photo-card img{
+        height:230px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- NAVIGATION -->
+
+<nav>
+
+<a href="index.html">Home</a>
+
+<a href="about.html">About</a>
+
+<a href="project.html">Projects</a>
+
+<a href="gallery.html" class="active">Gallery</a>
+
+<a href="contact.html">Contact</a>
+
+</nav>
+
+
+<!-- HERO -->
+
+<section class="hero">
+
+<h1>📸 My Photography Gallery</h1>
+
+<p>
+Some beautiful moments captured through my camera.
+</p>
+
+</section>
+
+
+<!-- PHOTO GALLERY -->
+
+<section class="gallery">
+
+
+<!-- PHOTO 1 -->
+
+<div class="photo-card">
+
+<img src="photo1.jpg" alt="Photo 1">
+
+<div class="photo-info">
+
+<h2>Photo 1</h2>
+
+<p>
+A beautiful moment captured through my camera.
+</p>
+
+</div>
+
+</div>
+
+
+<!-- PHOTO 2 -->
+
+<div class="photo-card">
+
+<img src="photo2.jpg" alt="Photo 2">
+
+<div class="photo-info">
+
+<h2>Photo 2</h2>
+
+<p>
+A special moment from my photography collection.
+</p>
+
+</div>
+
+</div>
+
+
+<!-- PHOTO 3 -->
+
+<div class="photo-card">
+
+<img src="photo3.jpg" alt="Photo 3">
+
+<div class="photo-info">
+
+<h2>Photo 3</h2>
+
+<p>
+Exploring photography and creative moments.
+</p>
+
+</div>
+
+</div>
+
+
+<!-- PHOTO 4 -->
+
+<div class="photo-card">
+
+<img src="photo4.jpg" alt="Photo 4">
+
+<div class="photo-info">
+
+<h2>Photo 4</h2>
+
+<p>
+Another memorable photograph from my collection.
+</p>
+
+</div>
+
+</div>
+
+
+</section>
+
+
+<!-- MESSAGE -->
+
+<section class="message">
+
+<h2>📷 Photography is about moments</h2>
+
+<p>
+
+I enjoy capturing beautiful moments, family memories
+and interesting scenes through photography.
+This gallery will be updated with more photographs.
+
+</p>
+
+</section>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+© 2026
+
+<span>My Computer World</span>
+
+|
+
+Made with ❤️ by Anuj Maurya
+
+</footer>
+
+
+</body>
+
+</html>
+```
