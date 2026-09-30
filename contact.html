@@ -313,6 +313,53 @@
             </form>
 
         </div>
+<!-- FEEDBACK SECTION -->
+<div class="card">
+
+    <h2>⭐ Give Your Feedback</h2>
+
+    <form action="https://formspree.io/f/mqpannko" method="POST">
+
+        <label for="rating">Your Rating</label>
+
+        <select id="rating" name="rating" required style="
+            width:100%;
+            padding:14px;
+            border:none;
+            border-radius:10px;
+            font-size:16px;
+            outline:none;
+        ">
+            <option value="">Choose your rating</option>
+            <option value="5 Stars">⭐⭐⭐⭐⭐ Excellent</option>
+            <option value="4 Stars">⭐⭐⭐⭐ Very Good</option>
+            <option value="3 Stars">⭐⭐⭐ Good</option>
+            <option value="2 Stars">⭐⭐ Needs Improvement</option>
+            <option value="1 Star">⭐ Need More Improvement</option>
+        </select>
+
+        <label for="feedback">Your Feedback</label>
+
+        <textarea
+            id="feedback"
+            name="feedback"
+            placeholder="Write your feedback..."
+            required
+        ></textarea>
+
+        <input
+            type="hidden"
+            name="subject"
+            value="Website Feedback - My Computer World"
+        >
+
+        <button type="submit">
+            ⭐ Submit Feedback
+        </button>
+
+    </form>
+
+</div>
 
         <!-- QUICK LINKS -->
         <div class="card">
