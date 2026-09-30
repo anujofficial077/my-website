@@ -1,580 +1,521 @@
  <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
 
-<meta charset="UTF-8">
-
-<title>My Computer World</title>
-
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<style>
-
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    scroll-behavior:smooth;
-}
-
-body{
-    font-family:Arial,sans-serif;
-    background:linear-gradient(135deg,#141e30,#243b55);
-    color:white;
-    min-height:100vh;
-    transition:0.4s;
-    overflow-x:hidden;
-}
-
-/* Background */
-
-.circle{
-    position:fixed;
-    border-radius:50%;
-    background:rgba(255,255,255,0.06);
-    animation:moveCircle 12s infinite alternate;
-    z-index:-1;
-}
-
-.circle1{
-    width:250px;
-    height:250px;
-    top:10%;
-    left:-80px;
-}
-
-.circle2{
-    width:300px;
-    height:300px;
-    bottom:5%;
-    right:-100px;
-}
-
-@keyframes moveCircle{
-
-    from{
-        transform:translateY(0) translateX(0);
-    }
-
-    to{
-        transform:translateY(-60px) translateX(40px);
-    }
-
-}
-
-/* Navigation */
-
-nav{
-    position:sticky;
-    top:0;
-    z-index:1000;
-    background:rgba(10,20,35,0.92);
-    backdrop-filter:blur(10px);
-    padding:15px 20px;
-    box-shadow:0 3px 15px rgba(0,0,0,0.3);
-}
-
-nav ul{
-    list-style:none;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    gap:8px;
-    flex-wrap:wrap;
-}
-
-nav a{
-    color:white;
-    text-decoration:none;
-    font-weight:bold;
-    padding:8px 14px;
-    border-radius:20px;
-    transition:0.3s;
-}
-
-nav a:hover{
-    color:#ffd700;
-    background:rgba(255,255,255,0.1);
-}
-
-nav a.active{
-    color:#ffd700;
-    background:rgba(255,215,0,0.15);
-    box-shadow:0 0 12px rgba(255,215,0,0.25);
-}
-
-/* Search */
-
-.search-box{
-    max-width:650px;
-    margin:25px auto 5px;
-    padding:0 20px;
-    position:relative;
-}
-
-.search-input{
-    width:100%;
-    padding:14px 50px 14px 20px;
-    border:none;
-    outline:none;
-    border-radius:30px;
-    background:rgba(255,255,255,0.12);
-    color:white;
-    font-size:16px;
-    border:1px solid rgba(255,255,255,0.2);
-    box-shadow:0 5px 20px rgba(0,0,0,0.2);
-}
-
-.search-input::placeholder{
-    color:#ccc;
-}
-
-.search-btn{
-    position:absolute;
-    right:25px;
-    top:5px;
-    border:none;
-    background:linear-gradient(45deg,#ffd700,#ff9800);
-    width:42px;
-    height:42px;
-    border-radius:50%;
-    cursor:pointer;
-    font-size:18px;
-}
-
-.search-result{
-    display:none;
-    max-width:610px;
-    margin:10px auto;
-    padding:12px 18px;
-    background:rgba(0,0,0,0.35);
-    border-radius:12px;
-    text-align:center;
-    color:#ffd700;
-}
-
-/* Hero */
-
-.hero{
-    text-align:center;
-    padding:60px 20px 50px;
-    animation:fadeIn 1.2s ease;
-}
-
-.hero h1{
-    font-size:45px;
-    margin-bottom:15px;
-    color:#ffd700;
-    text-shadow:0 0 15px rgba(255,215,0,0.3);
-}
-
-.hero h2{
-    font-size:24px;
-    margin-bottom:10px;
-}
-
-.typing{
-    color:#ff9800;
-    font-size:21px;
-    font-weight:bold;
-    min-height:30px;
-    margin:15px 0;
-}
-
-.hero p{
-    font-size:17px;
-    color:#ddd;
-    line-height:1.7;
-}
-
-/* Profile */
-
-.profile-box{
-    width:180px;
-    height:180px;
-    margin:30px auto;
-    padding:6px;
-    border-radius:50%;
-    background:linear-gradient(45deg,#ffd700,#ff9800,#00c6ff);
-    animation:glow 3s infinite alternate;
-}
-
-.profile-box img{
-    width:100%;
-    height:100%;
-    object-fit:cover;
-    border-radius:50%;
-    border:5px solid #141e30;
-}
-
-@keyframes glow{
-
-    from{
-        box-shadow:0 0 15px rgba(255,215,0,0.3);
-    }
-
-    to{
-        box-shadow:0 0 35px rgba(255,215,0,0.8);
-    }
-
-}
-
-/* Buttons */
-
-.btn-box{
-    margin-top:25px;
-}
-
-.btn{
-    display:inline-block;
-    text-decoration:none;
-    color:#111;
-    background:linear-gradient(45deg,#ffd700,#ff9800);
-    padding:12px 22px;
-    margin:7px;
-    border-radius:25px;
-    font-weight:bold;
-    transition:0.3s;
-    box-shadow:0 5px 15px rgba(255,152,0,0.25);
-}
-
-.btn:hover{
-    transform:translateY(-4px) scale(1.03);
-    box-shadow:0 8px 20px rgba(255,215,0,0.4);
-}
-
-/* Sections */
-
-section{
-    max-width:1100px;
-    margin:auto;
-    padding:50px 20px;
-}
-
-.section-title{
-    text-align:center;
-    color:#ffd700;
-    font-size:32px;
-    margin-bottom:30px;
-}
-
-/* Cards */
-
-.cards{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-    gap:20px;
-}
-
-.card{
-    background:rgba(255,255,255,0.08);
-    border:1px solid rgba(255,255,255,0.12);
-    border-radius:18px;
-    padding:25px;
-    text-align:center;
-    backdrop-filter:blur(8px);
-    transition:0.3s;
-}
-
-.card:hover{
-    transform:translateY(-8px);
-    background:rgba(255,255,255,0.13);
-    box-shadow:0 10px 25px rgba(0,0,0,0.25);
-}
-
-.card .icon{
-    font-size:42px;
-    margin-bottom:15px;
-}
-
-.card h3{
-    color:#ffd700;
-    margin-bottom:10px;
-}
-
-.card p{
-    color:#ddd;
-    line-height:1.6;
-}
-
-/* Skills */
-
-.skills-container{
-    max-width:850px;
-    margin:auto;
-}
-
-.skill{
-    margin-bottom:25px;
-}
-
-.skill-top{
-    display:flex;
-    justify-content:space-between;
-    margin-bottom:8px;
-    font-weight:bold;
-}
-
-.skill-top span:last-child{
-    color:#ffd700;
-}
-
-.skill-bar{
-    width:100%;
-    height:14px;
-    background:rgba(255,255,255,0.12);
-    border-radius:20px;
-    overflow:hidden;
-}
-
-.skill-fill{
-    height:100%;
-    border-radius:20px;
-    background:linear-gradient(90deg,#ffd700,#ff9800);
-    animation:skillLoad 2s ease;
-}
-
-.computer{
-    width:85%;
-}
-
-.html{
-    width:75%;
-}
-
-.editing{
-    width:80%;
-}
-
-.photography{
-    width:70%;
-}
-
-.math{
-    width:90%;
-}
-
-@keyframes skillLoad{
-
-    from{
-        width:0;
-    }
-
-}
-
-/* Learning */
-
-.learning-box:hover{
-    transform:translateY(-8px) scale(1.02);
-}
-
-.learning-icon{
-    display:inline-block;
-    animation:floatIcon 2s infinite ease-in-out;
-}
-
-@keyframes floatIcon{
-
-    0%,100%{
-        transform:translateY(0);
-    }
-
-    50%{
-        transform:translateY(-7px);
-    }
-
-}
-
-/* Stats */
-
-.stats{
-    display:flex;
-    justify-content:center;
-    gap:25px;
-    flex-wrap:wrap;
-}
-
-.stat{
-    min-width:170px;
-    padding:20px;
-    text-align:center;
-    background:rgba(255,255,255,0.08);
-    border-radius:15px;
-}
-
-.stat-number{
-    font-size:27px;
-    color:#ffd700;
-    font-weight:bold;
-}
-
-.stat-label{
-    margin-top:7px;
-    color:#ddd;
-}
-
-/* Quote */
-
-.quote{
-    max-width:850px;
-    margin:20px auto;
-    padding:25px;
-    text-align:center;
-    background:rgba(255,215,0,0.08);
-    border-left:4px solid #ffd700;
-    border-radius:12px;
-    color:#eee;
-    font-size:19px;
-    line-height:1.6;
-}
-
-/* Footer */
-
-footer{
-    text-align:center;
-    padding:30px 20px;
-    margin-top:30px;
-    background:rgba(0,0,0,0.25);
-    color:#ccc;
-}
-
-footer strong{
-    color:#ffd700;
-}
-
-/* Theme */
-
-.theme-btn{
-    position:fixed;
-    right:20px;
-    bottom:75px;
-    border:none;
-    background:linear-gradient(45deg,#ffd700,#ff9800);
-    padding:12px 15px;
-    border-radius:50%;
-    cursor:pointer;
-    font-size:18px;
-    z-index:999;
-}
-
-/* Top Button */
-
-#topBtn{
-    display:none;
-    position:fixed;
-    bottom:20px;
-    right:20px;
-    border:none;
-    background:linear-gradient(45deg,#ffd700,#ff9800);
-    color:#111;
-    font-size:18px;
-    font-weight:bold;
-    width:45px;
-    height:45px;
-    border-radius:50%;
-    cursor:pointer;
-    z-index:999;
-}
-
-/* Light Mode */
-
-body.light{
-    background:linear-gradient(135deg,#e8f0ff,#ffffff);
-    color:#222;
-}
-
-body.light nav{
-    background:rgba(255,255,255,0.94);
-}
-
-body.light nav a{
-    color:#222;
-}
-
-body.light .hero p,
-body.light .card p,
-body.light .quote,
-body.light .stat-label{
-    color:#333;
-}
-
-body.light .card,
-body.light .stat{
-    background:rgba(0,0,0,0.05);
-}
-
-body.light .skill-top span:first-child{
-    color:#222;
-}
-
-body.light footer{
-    background:rgba(0,0,0,0.08);
-    color:#333;
-}
-
-body.light .search-input{
-    color:#222;
-    background:rgba(0,0,0,0.06);
-}
-
-body.light .search-input::placeholder{
-    color:#555;
-}
-
-/* Animation */
-
-@keyframes fadeIn{
-
-    from{
-        opacity:0;
-        transform:translateY(20px);
-    }
-
-    to{
-        opacity:1;
-        transform:translateY(0);
-    }
-
-}
-
-/* Mobile */
-
-@media(max-width:600px){
-
-    .hero h1{
-        font-size:32px;
-    }
-
-    .hero h2{
-        font-size:20px;
-    }
-
-    nav ul{
-        gap:4px;
-    }
-
-    nav a{
-        font-size:13px;
-        padding:7px 9px;
-    }
-
-    .profile-box{
-        width:150px;
-        height:150px;
-    }
-
-    .section-title{
-        font-size:27px;
-    }
-
-    .btn{
-        padding:10px 16px;
-    }
-
-}
-
-</style>
+    <title>My Computer World</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #141e30, #243b55);
+            color: white;
+            min-height: 100vh;
+            transition: 0.4s;
+        }
+
+        /* NAVBAR */
+
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(0, 0, 0, 0.75);
+            backdrop-filter: blur(10px);
+            padding: 15px;
+            text-align: center;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 12px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: #ffd700;
+        }
+
+        nav a.active {
+            color: #ff9800;
+            border-bottom: 2px solid #ff9800;
+            padding-bottom: 5px;
+        }
+
+        /* SEARCH */
+
+        .search-box {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .search-input {
+            width: 65%;
+            max-width: 450px;
+            padding: 12px;
+            border: none;
+            border-radius: 25px;
+            outline: none;
+            font-size: 15px;
+        }
+
+        .search-btn {
+            padding: 12px 20px;
+            margin-left: 5px;
+            border: none;
+            border-radius: 25px;
+            background: #ff9800;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .search-btn:hover {
+            background: #ffd700;
+            color: black;
+        }
+
+        #searchResult {
+            margin-top: 10px;
+            color: #ffd700;
+            font-weight: bold;
+        }
+
+        /* HERO */
+
+        .hero {
+            text-align: center;
+            padding: 45px 20px;
+        }
+
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 4px solid #ffd700;
+            box-shadow: 0 0 25px rgba(255, 215, 0, 0.5);
+            animation: float 3s infinite ease-in-out;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        .hero h1 {
+            margin-top: 20px;
+            font-size: 38px;
+        }
+
+        .hero h2 {
+            margin-top: 10px;
+            color: #ffd700;
+        }
+
+        .typing {
+            margin-top: 15px;
+            font-size: 20px;
+            font-weight: bold;
+            color: #ff9800;
+            min-height: 28px;
+        }
+
+        .date-time {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 20px;
+            border: 1px solid #ffd700;
+            border-radius: 15px;
+            background: rgba(255, 255, 255, 0.08);
+            color: #ffd700;
+            line-height: 1.8;
+        }
+
+        /* BUTTONS */
+
+        .btn {
+            display: inline-block;
+            margin: 15px 5px;
+            padding: 12px 22px;
+            border-radius: 25px;
+            background: linear-gradient(45deg, #ff9800, #ffd700);
+            color: black;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            transform: scale(1.07);
+            box-shadow: 0 0 15px #ffd700;
+        }
+
+        /* COMMON SECTION */
+
+        section {
+            padding: 45px 20px;
+            text-align: center;
+        }
+
+        section h2 {
+            font-size: 30px;
+            margin-bottom: 25px;
+            color: #ffd700;
+        }
+
+        /* GLASS BOX */
+
+        .glass-box {
+            max-width: 900px;
+            margin: auto;
+            padding: 25px;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 20px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+        }
+
+        /* QUICK ACCESS */
+
+        .quick-grid {
+            max-width: 1000px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+            gap: 18px;
+        }
+
+        .quick-card {
+            padding: 22px;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 18px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            transition: 0.3s;
+        }
+
+        .quick-card:hover {
+            transform: translateY(-7px);
+            background: rgba(255, 255, 255, 0.14);
+        }
+
+        .quick-card a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .quick-card .icon {
+            font-size: 35px;
+            margin-bottom: 10px;
+        }
+
+        /* LEARNING JOURNEY */
+
+        .cards {
+            max-width: 1100px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            padding: 25px;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        .card .icon {
+            font-size: 40px;
+            margin-bottom: 12px;
+        }
+
+        .card h3 {
+            color: #ffd700;
+            margin-bottom: 10px;
+        }
+
+        .card p {
+            line-height: 1.6;
+        }
+
+        /* WHAT I'M LEARNING */
+
+        .learning-now {
+            max-width: 1100px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+        }
+
+        .learning-now-card {
+            padding: 25px;
+            background: linear-gradient(
+                145deg,
+                rgba(255, 152, 0, 0.12),
+                rgba(255, 255, 255, 0.07)
+            );
+            border: 1px solid rgba(255, 215, 0, 0.25);
+            border-radius: 20px;
+            transition: 0.3s;
+        }
+
+        .learning-now-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 10px 25px rgba(255, 152, 0, 0.2);
+        }
+
+        .learning-now-icon {
+            font-size: 42px;
+            margin-bottom: 12px;
+        }
+
+        .learning-now-card h3 {
+            color: #ffd700;
+            margin-bottom: 10px;
+        }
+
+        .learning-now-card p {
+            line-height: 1.6;
+            color: #eeeeee;
+        }
+
+        .learning-tag {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 6px 12px;
+            border-radius: 20px;
+            background: rgba(255, 152, 0, 0.2);
+            color: #ffd700;
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        /* SKILLS */
+
+        .skills {
+            max-width: 800px;
+            margin: auto;
+            text-align: left;
+        }
+
+        .skill {
+            margin-bottom: 20px;
+        }
+
+        .skill-name {
+            margin-bottom: 7px;
+            font-weight: bold;
+        }
+
+        .skill-bar {
+            width: 100%;
+            height: 15px;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        .skill-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #ff9800, #ffd700);
+            border-radius: 20px;
+        }
+
+        /* ACHIEVEMENTS */
+
+        .achievement-grid {
+            max-width: 1000px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+        }
+
+        .achievement {
+            padding: 25px;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            transition: 0.3s;
+        }
+
+        .achievement:hover {
+            transform: scale(1.04);
+        }
+
+        .achievement h3 {
+            color: #ffd700;
+            margin: 10px 0;
+        }
+
+        .achievement-icon {
+            font-size: 38px;
+        }
+
+        /* STATS */
+
+        .stats {
+            max-width: 900px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 20px;
+        }
+
+        .stat {
+            padding: 25px;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 20px;
+        }
+
+        .stat h3 {
+            font-size: 35px;
+            color: #ffd700;
+        }
+
+        /* QUOTE */
+
+        .quote {
+            max-width: 800px;
+            margin: auto;
+            font-size: 21px;
+            font-style: italic;
+            line-height: 1.7;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 20px;
+        }
+
+        /* DARK/LIGHT MODE BUTTON */
+
+        .mode-btn {
+            position: fixed;
+            right: 20px;
+            bottom: 75px;
+            width: 45px;
+            height: 45px;
+            border: none;
+            border-radius: 50%;
+            background: #ffd700;
+            color: black;
+            cursor: pointer;
+            font-size: 20px;
+            z-index: 999;
+        }
+
+        /* TOP BUTTON */
+
+        #topBtn {
+            display: none;
+            position: fixed;
+            right: 20px;
+            bottom: 20px;
+            width: 45px;
+            height: 45px;
+            border: none;
+            border-radius: 50%;
+            background: #ff9800;
+            color: white;
+            cursor: pointer;
+            font-size: 20px;
+            z-index: 999;
+        }
+
+        /* FOOTER */
+
+        footer {
+            margin-top: 30px;
+            padding: 25px;
+            text-align: center;
+            background: rgba(0, 0, 0, 0.5);
+            color: #ddd;
+        }
+
+        footer span {
+            color: #ff9800;
+        }
+
+        /* LIGHT MODE */
+
+        body.light {
+            background: linear-gradient(135deg, #e8f0ff, #ffffff);
+            color: #222;
+        }
+
+        body.light nav {
+            background: rgba(255, 255, 255, 0.9);
+        }
+
+        body.light nav a {
+            color: #222;
+        }
+
+        body.light .card,
+        body.light .quick-card,
+        body.light .achievement,
+        body.light .stat,
+        body.light .glass-box,
+        body.light .quote,
+        body.light .learning-now-card {
+            background: rgba(0, 0, 0, 0.05);
+            border-color: rgba(0, 0, 0, 0.1);
+        }
+
+        body.light .learning-now-card p {
+            color: #333;
+        }
+
+        /* MOBILE */
+
+        @media (max-width: 600px) {
+
+            nav a {
+                margin: 5px;
+                font-size: 14px;
+            }
+
+            .hero h1 {
+                font-size: 28px;
+            }
+
+            .search-input {
+                width: 70%;
+            }
+
+            section h2 {
+                font-size: 25px;
+            }
+
+        }
+
+    </style>
 
 </head>
 
@@ -582,811 +523,960 @@ body.light .search-input::placeholder{
 <body>
 
 
-<div class="circle circle1"></div>
-<div class="circle circle2"></div>
-
-
-<!-- Navigation -->
+<!-- NAVBAR -->
 
 <nav>
 
-<ul>
+    <a href="index.html" class="active">🏠 Home</a>
 
-<li>
-<a href="index.html" class="active">🏠 Home</a>
-</li>
+    <a href="about.html">👤 About</a>
 
-<li>
-<a href="about.html">👤 About</a>
-</li>
+    <a href="project.html">💻 Projects</a>
 
-<li>
-<a href="project.html">💻 Projects</a>
-</li>
+    <a href="gallery.html">📸 Gallery</a>
 
-<li>
-<a href="gallery.html">📸 Gallery</a>
-</li>
-
-<li>
-<a href="contact.html">📞 Contact</a>
-</li>
-
-</ul>
+    <a href="contact.html">📞 Contact</a>
 
 </nav>
 
 
-<!-- Search -->
+<!-- SEARCH -->
 
 <div class="search-box">
 
-<input
-type="text"
-id="searchInput"
-class="search-input"
-placeholder="🔍 Search Computer, Photography, Editing..."
-onkeyup="searchWebsite(event)"
->
+    <input
+        type="text"
+        id="searchInput"
+        class="search-input"
+        placeholder="🔍 Search Computer, Photography, Editing..."
+        onkeyup="searchWebsite(event)"
+    >
 
-<button class="search-btn" onclick="searchWebsite()">
-🔍
-</button>
+    <button class="search-btn" onclick="searchWebsite()">Search</button>
+
+    <div id="searchResult"></div>
 
 </div>
 
-<div id="searchResult" class="search-result"></div>
 
-
-<!-- Hero -->
+<!-- HERO -->
 
 <div class="hero">
 
-<h1>
-Welcome to My Computer World 🚀
-</h1>
+    <img
+        src="myphoto.jpg"
+        alt="Anuj Maurya"
+        class="profile-img"
+    >
 
-<h2>
-Hi, I'm Anuj Maurya 👋
-</h2>
+    <h1>Welcome to My Computer World 🚀</h1>
 
-<div class="typing" id="typingText">
-💻 Computer Learner
-</div>
+    <h2>Anuj Maurya</h2>
 
-<p>
-Class 11 Student | Computer & ADCA Learner
-</p>
+    <p>Class 11 | Computer & ADCA</p>
 
-<p>
-Mathematics • Photography • Editing • Travelling
-</p>
+    <div class="typing" id="typing"></div>
 
 
-<div class="profile-box">
+    <div class="date-time">
 
-<img src="myphoto.jpg" alt="Anuj Maurya">
+        📅 <span id="date"></span>
 
-</div>
+        <br>
+
+        🕐 <span id="time"></span>
+
+    </div>
 
 
-<div class="btn-box">
+    <div>
 
-<a href="about.html" class="btn">
-👤 About Me
-</a>
+        <a href="about.html" class="btn">
+            👤 About Me
+        </a>
 
-<a href="project.html" class="btn">
-💻 My Projects
-</a>
+        <a href="project.html" class="btn">
+            💻 My Projects
+        </a>
 
-<a href="gallery.html" class="btn">
-📸 View Gallery
-</a>
+        <a href="gallery.html" class="btn">
+            📸 My Gallery
+        </a>
 
-</div>
+    </div>
 
 </div>
 
 
-<!-- About Learning -->
+<!-- QUICK ACCESS -->
 
-<section id="learning">
+<section>
 
-<h2 class="section-title">
-🌟 About My Learning
-</h2>
+    <h2>⚡ Quick Access</h2>
 
-<div class="cards">
+    <div class="quick-grid">
 
+        <div class="quick-card">
 
-<div class="card">
+            <div class="icon">👤</div>
 
-<div class="icon">💻</div>
+            <a href="about.html">
+                About Me
+            </a>
 
-<h3>Computer</h3>
-
-<p>
-I am learning computer skills and practical computer work.
-</p>
-
-</div>
+        </div>
 
 
-<div class="card">
+        <div class="quick-card">
 
-<div class="icon">🌐</div>
+            <div class="icon">💻</div>
 
-<h3>HTML & CSS</h3>
+            <a href="project.html">
+                Projects
+            </a>
 
-<p>
-I am learning how to create and design websites.
-</p>
-
-</div>
+        </div>
 
 
-<div class="card">
+        <div class="quick-card">
 
-<div class="icon">📐</div>
+            <div class="icon">📸</div>
 
-<h3>Mathematics</h3>
+            <a href="gallery.html">
+                Gallery
+            </a>
 
-<p>
-Mathematics is one of my favorite subjects.
-</p>
-
-</div>
+        </div>
 
 
-<div class="card">
+        <div class="quick-card">
 
-<div class="icon">🎬</div>
+            <div class="icon">📞</div>
 
-<h3>Editing</h3>
+            <a href="contact.html">
+                Contact
+            </a>
 
-<p>
-I enjoy photo and video editing and learning new techniques.
-</p>
+        </div>
 
-</div>
 
-</div>
+        <div class="quick-card">
+
+            <div class="icon">⚡</div>
+
+            <a href="#skills">
+                My Skills
+            </a>
+
+        </div>
+
+    </div>
 
 </section>
 
 
-<!-- Skills -->
+<!-- MY LEARNING JOURNEY -->
+
+<section>
+
+    <h2>📚 My Learning Journey</h2>
+
+    <div class="cards">
+
+        <div class="card">
+
+            <div class="icon">💻</div>
+
+            <h3>Computer Learning</h3>
+
+            <p>
+                Learning computer basics,
+                files, internet and practical work.
+            </p>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="icon">🌐</div>
+
+            <h3>HTML & CSS</h3>
+
+            <p>
+                Learning how to create
+                and design websites.
+            </p>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="icon">📸</div>
+
+            <h3>Photography</h3>
+
+            <p>
+                Learning camera settings
+                and photography techniques.
+            </p>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="icon">🎬</div>
+
+            <h3>Photo & Video Editing</h3>
+
+            <p>
+                Learning creative photo
+                and video editing.
+            </p>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="icon">📐</div>
+
+            <h3>Mathematics</h3>
+
+            <p>
+                Improving mathematical
+                concepts and problem solving.
+            </p>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="icon">📚</div>
+
+            <h3>ADCA Learning</h3>
+
+            <p>
+                Learning computer applications
+                and practical skills.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- WHAT I'M LEARNING -->
+
+<section>
+
+    <h2>🎯 What I'm Learning</h2>
+
+    <div class="learning-now">
+
+
+        <div class="learning-now-card">
+
+            <div class="learning-now-icon">💻</div>
+
+            <h3>Computer</h3>
+
+            <p>
+                Computer basics, files,
+                internet and practical computer work.
+            </p>
+
+            <span class="learning-tag">
+                Currently Learning
+            </span>
+
+        </div>
+
+
+        <div class="learning-now-card">
+
+            <div class="learning-now-icon">🌐</div>
+
+            <h3>HTML & CSS</h3>
+
+            <p>
+                Building and styling my
+                own personal website.
+            </p>
+
+            <span class="learning-tag">
+                Currently Learning
+            </span>
+
+        </div>
+
+
+        <div class="learning-now-card">
+
+            <div class="learning-now-icon">📸</div>
+
+            <h3>Photography</h3>
+
+            <p>
+                Learning camera settings
+                and taking better photos.
+            </p>
+
+            <span class="learning-tag">
+                Currently Learning
+            </span>
+
+        </div>
+
+
+        <div class="learning-now-card">
+
+            <div class="learning-now-icon">🎬</div>
+
+            <h3>Photo & Video Editing</h3>
+
+            <p>
+                Learning creative editing
+                for photos and videos.
+            </p>
+
+            <span class="learning-tag">
+                Currently Learning
+            </span>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+<!-- SKILLS -->
 
 <section id="skills">
 
-<h2 class="section-title">
-⚡ My Skills
-</h2>
+    <h2>⚡ My Skills</h2>
 
-<div class="skills-container">
+    <div class="skills">
 
 
-<div class="skill">
+        <div class="skill">
 
-<div class="skill-top">
+            <div class="skill-name">
+                💻 Computer — 85%
+            </div>
 
-<span>💻 Computer</span>
-<span>85%</span>
+            <div class="skill-bar">
 
-</div>
+                <div
+                    class="skill-fill"
+                    style="width: 85%;"
+                ></div>
 
-<div class="skill-bar">
-<div class="skill-fill computer"></div>
-</div>
+            </div>
 
-</div>
-
-
-<div class="skill">
-
-<div class="skill-top">
-
-<span>🌐 HTML & CSS</span>
-<span>75%</span>
-
-</div>
-
-<div class="skill-bar">
-<div class="skill-fill html"></div>
-</div>
-
-</div>
+        </div>
 
 
-<div class="skill">
+        <div class="skill">
 
-<div class="skill-top">
+            <div class="skill-name">
+                🌐 HTML & CSS — 75%
+            </div>
 
-<span>🎬 Photo & Video Editing</span>
-<span>80%</span>
+            <div class="skill-bar">
 
-</div>
+                <div
+                    class="skill-fill"
+                    style="width: 75%;"
+                ></div>
 
-<div class="skill-bar">
-<div class="skill-fill editing"></div>
-</div>
+            </div>
 
-</div>
-
-
-<div class="skill">
-
-<div class="skill-top">
-
-<span>📸 Photography</span>
-<span>70%</span>
-
-</div>
-
-<div class="skill-bar">
-<div class="skill-fill photography"></div>
-</div>
-
-</div>
+        </div>
 
 
-<div class="skill">
+        <div class="skill">
 
-<div class="skill-top">
+            <div class="skill-name">
+                🎬 Photo & Video Editing — 80%
+            </div>
 
-<span>📐 Mathematics</span>
-<span>90%</span>
+            <div class="skill-bar">
 
-</div>
+                <div
+                    class="skill-fill"
+                    style="width: 80%;"
+                ></div>
 
-<div class="skill-bar">
-<div class="skill-fill math"></div>
-</div>
+            </div>
 
-</div>
+        </div>
 
-</div>
+
+        <div class="skill">
+
+            <div class="skill-name">
+                📸 Photography — 70%
+            </div>
+
+            <div class="skill-bar">
+
+                <div
+                    class="skill-fill"
+                    style="width: 70%;"
+                ></div>
+
+            </div>
+
+        </div>
+
+
+        <div class="skill">
+
+            <div class="skill-name">
+                📐 Mathematics — 90%
+            </div>
+
+            <div class="skill-bar">
+
+                <div
+                    class="skill-fill"
+                    style="width: 90%;"
+                ></div>
+
+            </div>
+
+        </div>
+
+
+    </div>
 
 </section>
 
 
-<!-- Learning Journey -->
-
-<section id="journey">
-
-<h2 class="section-title">
-🚀 My Learning Journey
-</h2>
-
-<div class="cards">
-
-
-<div class="card learning-box">
-
-<div class="icon learning-icon">💻</div>
-
-<h3>Computer Learning</h3>
-
-<p>
-Learning computer fundamentals and practical computer work at a computer shop.
-</p>
-
-</div>
-
-
-<div class="card learning-box">
-
-<div class="icon learning-icon">🌐</div>
-
-<h3>HTML & CSS</h3>
-
-<p>
-Creating my own website and learning web design step by step.
-</p>
-
-</div>
-
-
-<div class="card learning-box">
-
-<div class="icon learning-icon">📸</div>
-
-<h3>Photography</h3>
-
-<p>
-Exploring camera settings and improving my photography skills.
-</p>
-
-</div>
-
-
-<div class="card learning-box">
-
-<div class="icon learning-icon">🎬</div>
-
-<h3>Photo & Video Editing</h3>
-
-<p>
-Learning creative editing for photos and videos.
-</p>
-
-</div>
-
-
-<div class="card learning-box">
-
-<div class="icon learning-icon">📐</div>
-
-<h3>Mathematics</h3>
-
-<p>
-Practicing mathematics and improving problem-solving skills.
-</p>
-
-</div>
-
-
-<div class="card learning-box">
-
-<div class="icon learning-icon">📚</div>
-
-<h3>ADCA Learning</h3>
-
-<p>
-Learning computer applications through my ADCA course.
-</p>
-
-</div>
-
-</div>
-
-</section>
-
-
-<!-- Experience -->
-
-<section id="experience">
-
-<h2 class="section-title">
-🏢 My Practical Experience
-</h2>
-
-<div class="card">
-
-<div class="icon">🖥️</div>
-
-<h3>Computer Shop Experience</h3>
-
-<p>
-I am gaining practical computer experience by learning and
-working at a computer shop.
-</p>
-
-</div>
-
-</section>
-
-
-<!-- Stats -->
+<!-- ACHIEVEMENTS -->
 
 <section>
 
-<h2 class="section-title">
-📊 My Website
-</h2>
+    <h2>🏆 My Achievements</h2>
 
-<div class="stats">
+    <div class="achievement-grid">
 
 
-<div class="stat">
+        <div class="achievement">
 
-<div class="stat-number" id="visitorCount">
-0
-</div>
+            <div class="achievement-icon">💻</div>
 
-<div class="stat-label">
-👀 Local Visits
-</div>
+            <h3>Computer Learning</h3>
 
-</div>
+            <p>
+                Developing practical computer skills.
+            </p>
 
-
-<div class="stat">
-
-<div class="stat-number">
-5+
-</div>
-
-<div class="stat-label">
-📄 Website Pages
-</div>
-
-</div>
+        </div>
 
 
-<div class="stat">
+        <div class="achievement">
 
-<div class="stat-number">
-2026
-</div>
+            <div class="achievement-icon">🌐</div>
 
-<div class="stat-label">
-🚀 Website Year
-</div>
+            <h3>My Own Website</h3>
 
-</div>
+            <p>
+                Created my personal website.
+            </p>
 
-</div>
+        </div>
+
+
+        <div class="achievement">
+
+            <div class="achievement-icon">📸</div>
+
+            <h3>Photography</h3>
+
+            <p>
+                Exploring photography and camera work.
+            </p>
+
+        </div>
+
+
+        <div class="achievement">
+
+            <div class="achievement-icon">🎬</div>
+
+            <h3>Editing</h3>
+
+            <p>
+                Learning photo and video editing.
+            </p>
+
+        </div>
+
+
+        <div class="achievement">
+
+            <div class="achievement-icon">📚</div>
+
+            <h3>Class 11 & ADCA</h3>
+
+            <p>
+                Continuing school and computer education.
+            </p>
+
+        </div>
+
+
+        <div class="achievement">
+
+            <div class="achievement-icon">🚀</div>
+
+            <h3>Learning Journey</h3>
+
+            <p>
+                Learning something new every day.
+            </p>
+
+        </div>
+
+
+    </div>
 
 </section>
 
 
-<!-- Quote -->
+<!-- STATS -->
 
 <section>
 
-<div class="quote">
+    <h2>📊 My Website Stats</h2>
 
-💡
+    <div class="stats">
 
-<strong>
-"Learn something new every day and keep improving yourself."
-</strong>
 
-<br><br>
+        <div class="stat">
 
-— My Learning Journey 🚀
+            <h3>5+</h3>
 
-</div>
+            <p>Website Pages</p>
+
+        </div>
+
+
+        <div class="stat">
+
+            <h3>5</h3>
+
+            <p>Gallery Photos</p>
+
+        </div>
+
+
+        <div class="stat">
+
+            <h3 id="visitorCount">0</h3>
+
+            <p>Local Visitors</p>
+
+        </div>
+
+
+    </div>
 
 </section>
 
 
-<!-- Footer -->
+<!-- QUOTE -->
+
+<section>
+
+    <div class="quote">
+
+        “Learning today creates a better tomorrow. 🚀”
+
+    </div>
+
+</section>
+
+
+<!-- FOOTER -->
 
 <footer>
 
-<p>
-© 2026 <strong>My Computer World</strong>
-</p>
+    <p>
+        Made with <span>❤️</span> by Anuj Maurya
+    </p>
 
-<p>
-Made with ❤️ by <strong>Anuj Maurya</strong>
-</p>
+    <p>
+        © 2026 My Computer World
+    </p>
 
 </footer>
 
 
-<!-- Theme -->
+<!-- MODE BUTTON -->
 
 <button
-class="theme-btn"
-id="themeBtn"
-onclick="toggleTheme()">
-
-🌙
-
+    class="mode-btn"
+    onclick="toggleMode()"
+    title="Dark / Light Mode"
+>
+    🌙
 </button>
 
 
-<!-- Top -->
+<!-- TOP BUTTON -->
 
 <button
-id="topBtn"
-onclick="goTop()">
-
-↑
-
+    id="topBtn"
+    onclick="topFunction()"
+    title="Go to top"
+>
+    ↑
 </button>
 
 
 <script>
 
-/* Typing Effect */
 
-const texts=[
+/* TYPING EFFECT */
 
-"💻 Computer Learner",
-"📸 Photography Lover",
-"🎬 Photo & Video Editor",
-"📐 Mathematics Student",
-"🌐 Web Designer"
+const typingTexts = [
+
+    "💻 Computer Learner",
+
+    "📸 Photography Lover",
+
+    "🎬 Photo & Video Editor",
+
+    "📐 Mathematics Student",
+
+    "🌐 Web Designer"
 
 ];
 
-let textIndex=0;
-let charIndex=0;
-let deleting=false;
+let textIndex = 0;
+
+let charIndex = 0;
+
+let deleting = false;
 
 
-function typeEffect(){
+function typingEffect() {
 
-const typingText=
-document.getElementById("typingText");
+    const typingElement =
+        document.getElementById("typing");
 
-const currentText=
-texts[textIndex];
-
-
-if(!deleting){
-
-typingText.textContent=
-currentText.substring(0,charIndex+1);
-
-charIndex++;
+    const currentText =
+        typingTexts[textIndex];
 
 
-if(charIndex===currentText.length){
+    if (!deleting) {
 
-deleting=true;
+        typingElement.textContent =
+            currentText.substring(0, charIndex + 1);
 
-setTimeout(typeEffect,1500);
-
-return;
-
-}
-
-}
-
-else{
-
-typingText.textContent=
-currentText.substring(0,charIndex-1);
-
-charIndex--;
+        charIndex++;
 
 
-if(charIndex===0){
+        if (charIndex === currentText.length) {
 
-deleting=false;
+            deleting = true;
 
-textIndex++;
+            setTimeout(typingEffect, 1200);
 
-if(textIndex>=texts.length){
+            return;
 
-textIndex=0;
+        }
 
-}
+    } else {
 
-}
+        typingElement.textContent =
+            currentText.substring(0, charIndex - 1);
 
-}
+        charIndex--;
 
 
-setTimeout(
-typeEffect,
-deleting?50:90
-);
+        if (charIndex === 0) {
+
+            deleting = false;
+
+            textIndex =
+                (textIndex + 1) % typingTexts.length;
+
+        }
+
+    }
+
+
+    setTimeout(
+        typingEffect,
+        deleting ? 50 : 100
+    );
 
 }
 
 
-typeEffect();
+typingEffect();
 
 
-/* Visitor Counter */
 
-let visits=
-localStorage.getItem("myWebsiteVisits");
+/* SEARCH */
+
+function searchWebsite(event) {
+
+    if (
+        event &&
+        event.key !== "Enter"
+    ) {
+        return;
+    }
 
 
-if(!visits){
+    const input =
+        document.getElementById("searchInput")
+        .value
+        .toLowerCase()
+        .trim();
 
-visits=1;
+
+    const result =
+        document.getElementById("searchResult");
+
+
+    let page = "";
+
+
+    if (
+        input.includes("computer") ||
+        input.includes("html") ||
+        input.includes("css") ||
+        input.includes("mathematics") ||
+        input.includes("math") ||
+        input.includes("adca") ||
+        input.includes("about")
+    ) {
+
+        page = "about.html";
+
+    }
+
+    else if (
+        input.includes("photography") ||
+        input.includes("photo") ||
+        input.includes("editing") ||
+        input.includes("video")
+    ) {
+
+        page = "gallery.html";
+
+    }
+
+    else if (
+        input.includes("project") ||
+        input.includes("projects")
+    ) {
+
+        page = "project.html";
+
+    }
+
+    else if (
+        input.includes("gallery")
+    ) {
+
+        page = "gallery.html";
+
+    }
+
+    else if (
+        input.includes("contact")
+    ) {
+
+        page = "contact.html";
+
+    }
+
+
+    if (page !== "") {
+
+        result.textContent =
+            "✅ Result found! Opening page...";
+
+
+        setTimeout(function() {
+
+            window.location.href = page;
+
+        }, 700);
+
+    }
+
+    else {
+
+        result.textContent =
+            "❌ No result found. Try another keyword.";
+
+    }
 
 }
 
-else{
 
-visits=parseInt(visits)+1;
+
+/* DARK / LIGHT MODE */
+
+function toggleMode() {
+
+    document.body.classList.toggle("light");
+
+
+    if (
+        document.body.classList.contains("light")
+    ) {
+
+        localStorage.setItem(
+            "theme",
+            "light"
+        );
+
+    } else {
+
+        localStorage.setItem(
+            "theme",
+            "dark"
+        );
+
+    }
+
+}
+
+
+if (
+    localStorage.getItem("theme") === "light"
+) {
+
+    document.body.classList.add("light");
+
+}
+
+
+
+/* VISITOR COUNTER */
+
+let visitors =
+    localStorage.getItem("visitorCount");
+
+
+if (!visitors) {
+
+    visitors = 1;
+
+} else {
+
+    visitors =
+        parseInt(visitors) + 1;
 
 }
 
 
 localStorage.setItem(
-"myWebsiteVisits",
-visits
+    "visitorCount",
+    visitors
 );
 
 
 document.getElementById(
-"visitorCount"
-).textContent=visits;
+    "visitorCount"
+).textContent = visitors;
 
 
-/* Dark Light Mode */
 
-const savedMode=
-localStorage.getItem("websiteMode");
+/* DATE & TIME */
 
-const themeBtn=
-document.getElementById("themeBtn");
+function updateDateTime() {
+
+    const now = new Date();
 
 
-if(savedMode==="light"){
+    const dateOptions = {
 
-document.body.classList.add("light");
+        day: "2-digit",
 
-themeBtn.textContent="☀️";
+        month: "long",
+
+        year: "numeric"
+
+    };
+
+
+    document.getElementById("date")
+        .textContent =
+        now.toLocaleDateString(
+            "en-IN",
+            dateOptions
+        );
+
+
+    document.getElementById("time")
+        .textContent =
+        now.toLocaleTimeString(
+            "en-IN"
+        );
 
 }
 
 
-function toggleTheme(){
-
-document.body.classList.toggle("light");
+updateDateTime();
 
 
-if(document.body.classList.contains("light")){
-
-localStorage.setItem(
-"websiteMode",
-"light"
+setInterval(
+    updateDateTime,
+    1000
 );
 
-themeBtn.textContent="☀️";
-
-}
-
-else{
-
-localStorage.setItem(
-"websiteMode",
-"dark"
-);
-
-themeBtn.textContent="🌙";
-
-}
-
-}
 
 
-/* Search */
+/* TOP BUTTON */
 
-function searchWebsite(event){
+window.onscroll = function() {
 
-if(event && event.key==="Enter"){
-
-performSearch();
-
-return;
-
-}
-
-if(event && event.type==="keyup"){
-
-return;
-
-}
-
-performSearch();
-
-}
+    const topBtn =
+        document.getElementById("topBtn");
 
 
-function performSearch(){
+    if (
+        document.body.scrollTop > 300 ||
+        document.documentElement.scrollTop > 300
+    ) {
 
-const input=
-document.getElementById("searchInput");
+        topBtn.style.display = "block";
 
-const result=
-document.getElementById("searchResult");
+    } else {
 
-const query=
-input.value.toLowerCase().trim();
+        topBtn.style.display = "none";
 
-
-if(query===""){
-
-result.style.display="none";
-
-return;
-
-}
-
-
-const pages={
-
-"computer":"about.html",
-"html":"about.html",
-"css":"about.html",
-"mathematics":"about.html",
-"math":"about.html",
-"photography":"gallery.html",
-"photo":"gallery.html",
-"editing":"gallery.html",
-"video":"gallery.html",
-"projects":"project.html",
-"project":"project.html",
-"gallery":"gallery.html",
-"contact":"contact.html",
-"about":"about.html",
-"adca":"about.html"
+    }
 
 };
 
 
-let found=null;
+function topFunction() {
 
-
-for(let key in pages){
-
-if(key.includes(query) || query.includes(key)){
-
-found=pages[key];
-
-break;
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
 
 }
 
-}
-
-
-if(found){
-
-result.style.display="block";
-
-result.innerHTML=
-"✅ Result found! Opening page...";
-
-setTimeout(function(){
-
-window.location.href=found;
-
-},700);
-
-}
-
-else{
-
-result.style.display="block";
-
-result.innerHTML=
-"❌ No result found. Try Computer, Photography, Editing, Projects or Gallery.";
-
-}
-
-}
-
-
-/* Back To Top */
-
-window.onscroll=function(){
-
-const topBtn=
-document.getElementById("topBtn");
-
-
-if(
-document.body.scrollTop>300 ||
-document.documentElement.scrollTop>300
-){
-
-topBtn.style.display="block";
-
-}
-
-else{
-
-topBtn.style.display="none";
-
-}
-
-};
-
-
-function goTop(){
-
-window.scrollTo({
-
-top:0,
-behavior:"smooth"
-
-});
-
-}
 
 </script>
 
