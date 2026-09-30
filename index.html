@@ -3,1168 +3,1393 @@
 
 <head>
 
-    <meta charset="UTF-8">
-
-    <title>My Computer World</title>
-
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <style>
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: Arial, sans-serif;
-            background: linear-gradient(135deg, #141e30, #243b55);
-            color: white;
-            min-height: 100vh;
-            transition: 0.4s;
-            overflow-x: hidden;
-        }
-
-        /* Animated Background */
-
-        .circle {
-            position: fixed;
-            border-radius: 50%;
-            background: rgba(255,255,255,0.06);
-            animation: moveCircle 12s infinite alternate;
-            z-index: -1;
-        }
-
-        .circle1 {
-            width: 250px;
-            height: 250px;
-            top: 10%;
-            left: -80px;
-        }
-
-        .circle2 {
-            width: 300px;
-            height: 300px;
-            bottom: 5%;
-            right: -100px;
-            animation-delay: 2s;
-        }
-
-        @keyframes moveCircle {
-            from {
-                transform: translateY(0) translateX(0);
-            }
-
-            to {
-                transform: translateY(-60px) translateX(40px);
-            }
-        }
-
-        /* Navigation */
-
-        nav {
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            background: rgba(10, 20, 35, 0.92);
-            backdrop-filter: blur(10px);
-            padding: 15px 20px;
-            box-shadow: 0 3px 15px rgba(0,0,0,0.3);
-        }
-
-        nav ul {
-            list-style: none;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 8px;
-            flex-wrap: wrap;
-        }
-
-        nav a {
-            color: white;
-            text-decoration: none;
-            font-weight: bold;
-            padding: 8px 14px;
-            border-radius: 20px;
-            transition: 0.3s;
-        }
-
-        nav a:hover {
-            color: #ffd700;
-            background: rgba(255,255,255,0.1);
-        }
-
-        nav a.active {
-            color: #ffd700;
-            background: rgba(255,215,0,0.15);
-            box-shadow: 0 0 12px rgba(255,215,0,0.25);
-        }
-
-        /* Theme Button */
-
-        .theme-btn {
-            position: fixed;
-            right: 20px;
-            bottom: 75px;
-            border: none;
-            background: linear-gradient(45deg,#ffd700,#ff9800);
-            padding: 12px 15px;
-            border-radius: 50%;
-            cursor: pointer;
-            font-size: 18px;
-            box-shadow: 0 0 15px rgba(255,215,0,0.4);
-            z-index: 999;
-        }
-
-        /* Hero */
-
-        .hero {
-            text-align: center;
-            padding: 70px 20px 50px;
-            animation: fadeIn 1.2s ease;
-        }
-
-        .hero h1 {
-            font-size: 45px;
-            margin-bottom: 15px;
-            color: #ffd700;
-            text-shadow: 0 0 15px rgba(255,215,0,0.3);
-        }
-
-        .hero h2 {
-            font-size: 24px;
-            margin-bottom: 10px;
-        }
-
-        .typing {
-            color: #ff9800;
-            font-size: 21px;
-            font-weight: bold;
-            min-height: 30px;
-            margin: 15px 0;
-        }
-
-        .hero p {
-            font-size: 17px;
-            color: #ddd;
-            line-height: 1.7;
-        }
-
-        /* Profile Photo */
-
-        .profile-box {
-            width: 180px;
-            height: 180px;
-            margin: 30px auto;
-            padding: 6px;
-            border-radius: 50%;
-            background: linear-gradient(45deg,#ffd700,#ff9800,#00c6ff);
-            animation: glow 3s infinite alternate;
-        }
-
-        .profile-box img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 50%;
-            border: 5px solid #141e30;
-        }
-
-        @keyframes glow {
-            from {
-                box-shadow: 0 0 15px rgba(255,215,0,0.3);
-            }
-
-            to {
-                box-shadow: 0 0 35px rgba(255,215,0,0.8);
-            }
-        }
-
-        /* Buttons */
-
-        .btn-box {
-            margin-top: 25px;
-        }
-
-        .btn {
-            display: inline-block;
-            text-decoration: none;
-            color: #111;
-            background: linear-gradient(45deg,#ffd700,#ff9800);
-            padding: 12px 22px;
-            margin: 7px;
-            border-radius: 25px;
-            font-weight: bold;
-            transition: 0.3s;
-            box-shadow: 0 5px 15px rgba(255,152,0,0.25);
-        }
-
-        .btn:hover {
-            transform: translateY(-4px) scale(1.03);
-            box-shadow: 0 8px 20px rgba(255,215,0,0.4);
-        }
-
-        /* Common Section */
-
-        section {
-            max-width: 1100px;
-            margin: auto;
-            padding: 50px 20px;
-        }
-
-        .section-title {
-            text-align: center;
-            color: #ffd700;
-            font-size: 32px;
-            margin-bottom: 30px;
-        }
-
-        /* Cards */
-
-        .cards {
-            display: grid;
-            grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
-            gap: 20px;
-        }
-
-        .card {
-            background: rgba(255,255,255,0.08);
-            border: 1px solid rgba(255,255,255,0.12);
-            border-radius: 18px;
-            padding: 25px;
-            text-align: center;
-            backdrop-filter: blur(8px);
-            transition: 0.3s;
-        }
-
-        .card:hover {
-            transform: translateY(-8px);
-            background: rgba(255,255,255,0.13);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.25);
-        }
-
-        .card .icon {
-            font-size: 42px;
-            margin-bottom: 15px;
-        }
-
-        .card h3 {
-            color: #ffd700;
-            margin-bottom: 10px;
-        }
-
-        .card p {
-            color: #ddd;
-            line-height: 1.6;
-        }
-
-        /* Skills */
-
-        .skills-container {
-            max-width: 850px;
-            margin: auto;
-        }
-
-        .skill {
-            margin-bottom: 25px;
-        }
-
-        .skill-top {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 8px;
-            font-weight: bold;
-        }
-
-        .skill-top span:first-child {
-            color: white;
-        }
-
-        .skill-top span:last-child {
-            color: #ffd700;
-        }
-
-        .skill-bar {
-            width: 100%;
-            height: 14px;
-            background: rgba(255,255,255,0.12);
-            border-radius: 20px;
-            overflow: hidden;
-        }
-
-        .skill-fill {
-            height: 100%;
-            border-radius: 20px;
-            background: linear-gradient(90deg,#ffd700,#ff9800);
-            animation: skillLoad 2s ease;
-            box-shadow: 0 0 10px rgba(255,152,0,0.35);
-        }
-
-        .computer {
-            width: 85%;
-        }
-
-        .html {
-            width: 75%;
-        }
-
-        .editing {
-            width: 80%;
-        }
-
-        .photography {
-            width: 70%;
-        }
-
-        .math {
-            width: 90%;
-        }
-
-        @keyframes skillLoad {
-            from {
-                width: 0;
-            }
-        }
-
-        /* Learning Journey */
-
-        .learning-box {
-            transition: 0.3s;
-        }
-
-        .learning-box:hover {
-            transform: translateY(-8px) scale(1.02);
-        }
-
-        .learning-icon {
-            display: inline-block;
-            animation: floatIcon 2s infinite ease-in-out;
-        }
-
-        @keyframes floatIcon {
-            0%,100% {
-                transform: translateY(0);
-            }
-
-            50% {
-                transform: translateY(-7px);
-            }
-        }
-
-        /* Quote */
-
-        .quote {
-            max-width: 850px;
-            margin: 20px auto;
-            padding: 25px;
-            text-align: center;
-            background: rgba(255,215,0,0.08);
-            border-left: 4px solid #ffd700;
-            border-radius: 12px;
-            color: #eee;
-            font-size: 19px;
-            line-height: 1.6;
-        }
-
-        /* Stats */
-
-        .stats {
-            display: flex;
-            justify-content: center;
-            gap: 25px;
-            flex-wrap: wrap;
-            margin-top: 25px;
-        }
-
-        .stat {
-            min-width: 170px;
-            padding: 20px;
-            text-align: center;
-            background: rgba(255,255,255,0.08);
-            border-radius: 15px;
-        }
-
-        .stat-number {
-            font-size: 27px;
-            color: #ffd700;
-            font-weight: bold;
-        }
-
-        .stat-label {
-            margin-top: 7px;
-            color: #ddd;
-        }
-
-        /* Footer */
-
-        footer {
-            text-align: center;
-            padding: 30px 20px;
-            margin-top: 30px;
-            background: rgba(0,0,0,0.25);
-            color: #ccc;
-        }
-
-        footer strong {
-            color: #ffd700;
-        }
-
-        /* Back To Top */
-
-        #topBtn {
-            display: none;
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            border: none;
-            background: linear-gradient(45deg,#ffd700,#ff9800);
-            color: #111;
-            font-size: 18px;
-            font-weight: bold;
-            width: 45px;
-            height: 45px;
-            border-radius: 50%;
-            cursor: pointer;
-            z-index: 999;
-        }
-
-        /* Light Mode */
-
-        body.light {
-            background: linear-gradient(135deg,#e8f0ff,#ffffff);
-            color: #222;
-        }
-
-        body.light nav {
-            background: rgba(255,255,255,0.94);
-        }
-
-        body.light nav a {
-            color: #222;
-        }
-
-        body.light .hero p,
-        body.light .card p,
-        body.light .quote,
-        body.light .stat-label {
-            color: #333;
-        }
-
-        body.light .card,
-        body.light .stat {
-            background: rgba(0,0,0,0.05);
-            border-color: rgba(0,0,0,0.1);
-        }
-
-        body.light .skill-top span:first-child {
-            color: #222;
-        }
-
-        body.light footer {
-            background: rgba(0,0,0,0.08);
-            color: #333;
-        }
-
-        /* Animation */
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* Mobile */
-
-        @media (max-width: 600px) {
-
-            .hero h1 {
-                font-size: 32px;
-            }
-
-            .hero h2 {
-                font-size: 20px;
-            }
-
-            nav ul {
-                gap: 4px;
-            }
-
-            nav a {
-                font-size: 13px;
-                padding: 7px 9px;
-            }
-
-            .profile-box {
-                width: 150px;
-                height: 150px;
-            }
-
-            .section-title {
-                font-size: 27px;
-            }
-
-            .btn {
-                padding: 10px 16px;
-            }
-
-        }
-
-    </style>
+<meta charset="UTF-8">
+
+<title>My Computer World</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:Arial,sans-serif;
+    background:linear-gradient(135deg,#141e30,#243b55);
+    color:white;
+    min-height:100vh;
+    transition:0.4s;
+    overflow-x:hidden;
+}
+
+/* Background */
+
+.circle{
+    position:fixed;
+    border-radius:50%;
+    background:rgba(255,255,255,0.06);
+    animation:moveCircle 12s infinite alternate;
+    z-index:-1;
+}
+
+.circle1{
+    width:250px;
+    height:250px;
+    top:10%;
+    left:-80px;
+}
+
+.circle2{
+    width:300px;
+    height:300px;
+    bottom:5%;
+    right:-100px;
+}
+
+@keyframes moveCircle{
+
+    from{
+        transform:translateY(0) translateX(0);
+    }
+
+    to{
+        transform:translateY(-60px) translateX(40px);
+    }
+
+}
+
+/* Navigation */
+
+nav{
+    position:sticky;
+    top:0;
+    z-index:1000;
+    background:rgba(10,20,35,0.92);
+    backdrop-filter:blur(10px);
+    padding:15px 20px;
+    box-shadow:0 3px 15px rgba(0,0,0,0.3);
+}
+
+nav ul{
+    list-style:none;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:8px;
+    flex-wrap:wrap;
+}
+
+nav a{
+    color:white;
+    text-decoration:none;
+    font-weight:bold;
+    padding:8px 14px;
+    border-radius:20px;
+    transition:0.3s;
+}
+
+nav a:hover{
+    color:#ffd700;
+    background:rgba(255,255,255,0.1);
+}
+
+nav a.active{
+    color:#ffd700;
+    background:rgba(255,215,0,0.15);
+    box-shadow:0 0 12px rgba(255,215,0,0.25);
+}
+
+/* Search */
+
+.search-box{
+    max-width:650px;
+    margin:25px auto 5px;
+    padding:0 20px;
+    position:relative;
+}
+
+.search-input{
+    width:100%;
+    padding:14px 50px 14px 20px;
+    border:none;
+    outline:none;
+    border-radius:30px;
+    background:rgba(255,255,255,0.12);
+    color:white;
+    font-size:16px;
+    border:1px solid rgba(255,255,255,0.2);
+    box-shadow:0 5px 20px rgba(0,0,0,0.2);
+}
+
+.search-input::placeholder{
+    color:#ccc;
+}
+
+.search-btn{
+    position:absolute;
+    right:25px;
+    top:5px;
+    border:none;
+    background:linear-gradient(45deg,#ffd700,#ff9800);
+    width:42px;
+    height:42px;
+    border-radius:50%;
+    cursor:pointer;
+    font-size:18px;
+}
+
+.search-result{
+    display:none;
+    max-width:610px;
+    margin:10px auto;
+    padding:12px 18px;
+    background:rgba(0,0,0,0.35);
+    border-radius:12px;
+    text-align:center;
+    color:#ffd700;
+}
+
+/* Hero */
+
+.hero{
+    text-align:center;
+    padding:60px 20px 50px;
+    animation:fadeIn 1.2s ease;
+}
+
+.hero h1{
+    font-size:45px;
+    margin-bottom:15px;
+    color:#ffd700;
+    text-shadow:0 0 15px rgba(255,215,0,0.3);
+}
+
+.hero h2{
+    font-size:24px;
+    margin-bottom:10px;
+}
+
+.typing{
+    color:#ff9800;
+    font-size:21px;
+    font-weight:bold;
+    min-height:30px;
+    margin:15px 0;
+}
+
+.hero p{
+    font-size:17px;
+    color:#ddd;
+    line-height:1.7;
+}
+
+/* Profile */
+
+.profile-box{
+    width:180px;
+    height:180px;
+    margin:30px auto;
+    padding:6px;
+    border-radius:50%;
+    background:linear-gradient(45deg,#ffd700,#ff9800,#00c6ff);
+    animation:glow 3s infinite alternate;
+}
+
+.profile-box img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    border-radius:50%;
+    border:5px solid #141e30;
+}
+
+@keyframes glow{
+
+    from{
+        box-shadow:0 0 15px rgba(255,215,0,0.3);
+    }
+
+    to{
+        box-shadow:0 0 35px rgba(255,215,0,0.8);
+    }
+
+}
+
+/* Buttons */
+
+.btn-box{
+    margin-top:25px;
+}
+
+.btn{
+    display:inline-block;
+    text-decoration:none;
+    color:#111;
+    background:linear-gradient(45deg,#ffd700,#ff9800);
+    padding:12px 22px;
+    margin:7px;
+    border-radius:25px;
+    font-weight:bold;
+    transition:0.3s;
+    box-shadow:0 5px 15px rgba(255,152,0,0.25);
+}
+
+.btn:hover{
+    transform:translateY(-4px) scale(1.03);
+    box-shadow:0 8px 20px rgba(255,215,0,0.4);
+}
+
+/* Sections */
+
+section{
+    max-width:1100px;
+    margin:auto;
+    padding:50px 20px;
+}
+
+.section-title{
+    text-align:center;
+    color:#ffd700;
+    font-size:32px;
+    margin-bottom:30px;
+}
+
+/* Cards */
+
+.cards{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:20px;
+}
+
+.card{
+    background:rgba(255,255,255,0.08);
+    border:1px solid rgba(255,255,255,0.12);
+    border-radius:18px;
+    padding:25px;
+    text-align:center;
+    backdrop-filter:blur(8px);
+    transition:0.3s;
+}
+
+.card:hover{
+    transform:translateY(-8px);
+    background:rgba(255,255,255,0.13);
+    box-shadow:0 10px 25px rgba(0,0,0,0.25);
+}
+
+.card .icon{
+    font-size:42px;
+    margin-bottom:15px;
+}
+
+.card h3{
+    color:#ffd700;
+    margin-bottom:10px;
+}
+
+.card p{
+    color:#ddd;
+    line-height:1.6;
+}
+
+/* Skills */
+
+.skills-container{
+    max-width:850px;
+    margin:auto;
+}
+
+.skill{
+    margin-bottom:25px;
+}
+
+.skill-top{
+    display:flex;
+    justify-content:space-between;
+    margin-bottom:8px;
+    font-weight:bold;
+}
+
+.skill-top span:last-child{
+    color:#ffd700;
+}
+
+.skill-bar{
+    width:100%;
+    height:14px;
+    background:rgba(255,255,255,0.12);
+    border-radius:20px;
+    overflow:hidden;
+}
+
+.skill-fill{
+    height:100%;
+    border-radius:20px;
+    background:linear-gradient(90deg,#ffd700,#ff9800);
+    animation:skillLoad 2s ease;
+}
+
+.computer{
+    width:85%;
+}
+
+.html{
+    width:75%;
+}
+
+.editing{
+    width:80%;
+}
+
+.photography{
+    width:70%;
+}
+
+.math{
+    width:90%;
+}
+
+@keyframes skillLoad{
+
+    from{
+        width:0;
+    }
+
+}
+
+/* Learning */
+
+.learning-box:hover{
+    transform:translateY(-8px) scale(1.02);
+}
+
+.learning-icon{
+    display:inline-block;
+    animation:floatIcon 2s infinite ease-in-out;
+}
+
+@keyframes floatIcon{
+
+    0%,100%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(-7px);
+    }
+
+}
+
+/* Stats */
+
+.stats{
+    display:flex;
+    justify-content:center;
+    gap:25px;
+    flex-wrap:wrap;
+}
+
+.stat{
+    min-width:170px;
+    padding:20px;
+    text-align:center;
+    background:rgba(255,255,255,0.08);
+    border-radius:15px;
+}
+
+.stat-number{
+    font-size:27px;
+    color:#ffd700;
+    font-weight:bold;
+}
+
+.stat-label{
+    margin-top:7px;
+    color:#ddd;
+}
+
+/* Quote */
+
+.quote{
+    max-width:850px;
+    margin:20px auto;
+    padding:25px;
+    text-align:center;
+    background:rgba(255,215,0,0.08);
+    border-left:4px solid #ffd700;
+    border-radius:12px;
+    color:#eee;
+    font-size:19px;
+    line-height:1.6;
+}
+
+/* Footer */
+
+footer{
+    text-align:center;
+    padding:30px 20px;
+    margin-top:30px;
+    background:rgba(0,0,0,0.25);
+    color:#ccc;
+}
+
+footer strong{
+    color:#ffd700;
+}
+
+/* Theme */
+
+.theme-btn{
+    position:fixed;
+    right:20px;
+    bottom:75px;
+    border:none;
+    background:linear-gradient(45deg,#ffd700,#ff9800);
+    padding:12px 15px;
+    border-radius:50%;
+    cursor:pointer;
+    font-size:18px;
+    z-index:999;
+}
+
+/* Top Button */
+
+#topBtn{
+    display:none;
+    position:fixed;
+    bottom:20px;
+    right:20px;
+    border:none;
+    background:linear-gradient(45deg,#ffd700,#ff9800);
+    color:#111;
+    font-size:18px;
+    font-weight:bold;
+    width:45px;
+    height:45px;
+    border-radius:50%;
+    cursor:pointer;
+    z-index:999;
+}
+
+/* Light Mode */
+
+body.light{
+    background:linear-gradient(135deg,#e8f0ff,#ffffff);
+    color:#222;
+}
+
+body.light nav{
+    background:rgba(255,255,255,0.94);
+}
+
+body.light nav a{
+    color:#222;
+}
+
+body.light .hero p,
+body.light .card p,
+body.light .quote,
+body.light .stat-label{
+    color:#333;
+}
+
+body.light .card,
+body.light .stat{
+    background:rgba(0,0,0,0.05);
+}
+
+body.light .skill-top span:first-child{
+    color:#222;
+}
+
+body.light footer{
+    background:rgba(0,0,0,0.08);
+    color:#333;
+}
+
+body.light .search-input{
+    color:#222;
+    background:rgba(0,0,0,0.06);
+}
+
+body.light .search-input::placeholder{
+    color:#555;
+}
+
+/* Animation */
+
+@keyframes fadeIn{
+
+    from{
+        opacity:0;
+        transform:translateY(20px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+
+}
+
+/* Mobile */
+
+@media(max-width:600px){
+
+    .hero h1{
+        font-size:32px;
+    }
+
+    .hero h2{
+        font-size:20px;
+    }
+
+    nav ul{
+        gap:4px;
+    }
+
+    nav a{
+        font-size:13px;
+        padding:7px 9px;
+    }
+
+    .profile-box{
+        width:150px;
+        height:150px;
+    }
+
+    .section-title{
+        font-size:27px;
+    }
+
+    .btn{
+        padding:10px 16px;
+    }
+
+}
+
+</style>
 
 </head>
 
 
 <body>
 
-    <!-- Animated Background -->
 
-    <div class="circle circle1"></div>
-    <div class="circle circle2"></div>
+<div class="circle circle1"></div>
+<div class="circle circle2"></div>
 
 
-    <!-- Navigation -->
+<!-- Navigation -->
 
-    <nav>
+<nav>
 
-        <ul>
+<ul>
 
-            <li>
-                <a href="index.html" class="active">🏠 Home</a>
-            </li>
+<li>
+<a href="index.html" class="active">🏠 Home</a>
+</li>
 
-            <li>
-                <a href="about.html">👤 About</a>
-            </li>
+<li>
+<a href="about.html">👤 About</a>
+</li>
 
-            <li>
-                <a href="project.html">💻 Projects</a>
-            </li>
+<li>
+<a href="project.html">💻 Projects</a>
+</li>
 
-            <li>
-                <a href="gallery.html">📸 Gallery</a>
-            </li>
+<li>
+<a href="gallery.html">📸 Gallery</a>
+</li>
 
-            <li>
-                <a href="contact.html">📞 Contact</a>
-            </li>
+<li>
+<a href="contact.html">📞 Contact</a>
+</li>
 
-        </ul>
+</ul>
 
-    </nav>
+</nav>
 
 
-    <!-- Hero Section -->
+<!-- Search -->
 
-    <div class="hero">
+<div class="search-box">
 
-        <h1>Welcome to My Computer World 🚀</h1>
+<input
+type="text"
+id="searchInput"
+class="search-input"
+placeholder="🔍 Search Computer, Photography, Editing..."
+onkeyup="searchWebsite(event)"
+>
 
-        <h2>Hi, I'm Anuj Maurya 👋</h2>
+<button class="search-btn" onclick="searchWebsite()">
+🔍
+</button>
 
-        <div class="typing" id="typingText">
-            💻 Computer Learner
-        </div>
+</div>
 
-        <p>
-            Class 11 Student | Computer & ADCA Learner
-        </p>
+<div id="searchResult" class="search-result"></div>
 
-        <p>
-            Mathematics • Photography • Editing • Travelling
-        </p>
 
+<!-- Hero -->
 
-        <!-- Profile Photo -->
+<div class="hero">
 
-        <div class="profile-box">
+<h1>
+Welcome to My Computer World 🚀
+</h1>
 
-            <img src="myphoto.jpg" alt="Anuj Maurya">
+<h2>
+Hi, I'm Anuj Maurya 👋
+</h2>
 
-        </div>
+<div class="typing" id="typingText">
+💻 Computer Learner
+</div>
 
+<p>
+Class 11 Student | Computer & ADCA Learner
+</p>
 
-        <!-- Buttons -->
+<p>
+Mathematics • Photography • Editing • Travelling
+</p>
 
-        <div class="btn-box">
 
-            <a href="about.html" class="btn">
-                👤 About Me
-            </a>
+<div class="profile-box">
 
-            <a href="project.html" class="btn">
-                💻 My Projects
-            </a>
+<img src="myphoto.jpg" alt="Anuj Maurya">
 
-            <a href="gallery.html" class="btn">
-                📸 View Gallery
-            </a>
+</div>
 
-        </div>
 
-    </div>
+<div class="btn-box">
 
+<a href="about.html" class="btn">
+👤 About Me
+</a>
 
-    <!-- My Introduction -->
+<a href="project.html" class="btn">
+💻 My Projects
+</a>
 
-    <section>
+<a href="gallery.html" class="btn">
+📸 View Gallery
+</a>
 
-        <h2 class="section-title">
-            🌟 About My Learning
-        </h2>
+</div>
 
-        <div class="cards">
+</div>
 
-            <div class="card">
 
-                <div class="icon">💻</div>
+<!-- About Learning -->
 
-                <h3>Computer</h3>
+<section id="learning">
 
-                <p>
-                    I am learning computer skills and practical computer work.
-                </p>
+<h2 class="section-title">
+🌟 About My Learning
+</h2>
 
-            </div>
+<div class="cards">
 
 
-            <div class="card">
+<div class="card">
 
-                <div class="icon">🌐</div>
+<div class="icon">💻</div>
 
-                <h3>HTML & CSS</h3>
+<h3>Computer</h3>
 
-                <p>
-                    I am learning how to create and design websites.
-                </p>
+<p>
+I am learning computer skills and practical computer work.
+</p>
 
-            </div>
+</div>
 
 
-            <div class="card">
+<div class="card">
 
-                <div class="icon">📐</div>
+<div class="icon">🌐</div>
 
-                <h3>Mathematics</h3>
+<h3>HTML & CSS</h3>
 
-                <p>
-                    Mathematics is one of my favorite subjects.
-                </p>
+<p>
+I am learning how to create and design websites.
+</p>
 
-            </div>
+</div>
 
 
-            <div class="card">
+<div class="card">
 
-                <div class="icon">🎬</div>
+<div class="icon">📐</div>
 
-                <h3>Editing</h3>
+<h3>Mathematics</h3>
 
-                <p>
-                    I enjoy photo and video editing and learning new techniques.
-                </p>
+<p>
+Mathematics is one of my favorite subjects.
+</p>
 
-            </div>
+</div>
 
-        </div>
 
-    </section>
+<div class="card">
 
+<div class="icon">🎬</div>
 
-    <!-- My Skills -->
+<h3>Editing</h3>
 
-    <section id="skills">
+<p>
+I enjoy photo and video editing and learning new techniques.
+</p>
 
-        <h2 class="section-title">
-            ⚡ My Skills
-        </h2>
+</div>
 
-        <div class="skills-container">
+</div>
 
+</section>
 
-            <div class="skill">
 
-                <div class="skill-top">
+<!-- Skills -->
 
-                    <span>💻 Computer</span>
+<section id="skills">
 
-                    <span>85%</span>
+<h2 class="section-title">
+⚡ My Skills
+</h2>
 
-                </div>
+<div class="skills-container">
 
-                <div class="skill-bar">
 
-                    <div class="skill-fill computer"></div>
+<div class="skill">
 
-                </div>
+<div class="skill-top">
 
-            </div>
+<span>💻 Computer</span>
+<span>85%</span>
 
+</div>
 
-            <div class="skill">
+<div class="skill-bar">
+<div class="skill-fill computer"></div>
+</div>
 
-                <div class="skill-top">
+</div>
 
-                    <span>🌐 HTML & CSS</span>
 
-                    <span>75%</span>
+<div class="skill">
 
-                </div>
+<div class="skill-top">
 
-                <div class="skill-bar">
+<span>🌐 HTML & CSS</span>
+<span>75%</span>
 
-                    <div class="skill-fill html"></div>
+</div>
 
-                </div>
+<div class="skill-bar">
+<div class="skill-fill html"></div>
+</div>
 
-            </div>
+</div>
 
 
-            <div class="skill">
+<div class="skill">
 
-                <div class="skill-top">
+<div class="skill-top">
 
-                    <span>🎬 Photo & Video Editing</span>
+<span>🎬 Photo & Video Editing</span>
+<span>80%</span>
 
-                    <span>80%</span>
+</div>
 
-                </div>
+<div class="skill-bar">
+<div class="skill-fill editing"></div>
+</div>
 
-                <div class="skill-bar">
+</div>
 
-                    <div class="skill-fill editing"></div>
 
-                </div>
+<div class="skill">
 
-            </div>
+<div class="skill-top">
 
+<span>📸 Photography</span>
+<span>70%</span>
 
-            <div class="skill">
+</div>
 
-                <div class="skill-top">
+<div class="skill-bar">
+<div class="skill-fill photography"></div>
+</div>
 
-                    <span>📸 Photography</span>
+</div>
 
-                    <span>70%</span>
 
-                </div>
+<div class="skill">
 
-                <div class="skill-bar">
+<div class="skill-top">
 
-                    <div class="skill-fill photography"></div>
+<span>📐 Mathematics</span>
+<span>90%</span>
 
-                </div>
+</div>
 
-            </div>
+<div class="skill-bar">
+<div class="skill-fill math"></div>
+</div>
 
+</div>
 
-            <div class="skill">
+</div>
 
-                <div class="skill-top">
+</section>
 
-                    <span>📐 Mathematics</span>
 
-                    <span>90%</span>
+<!-- Learning Journey -->
 
-                </div>
+<section id="journey">
 
-                <div class="skill-bar">
+<h2 class="section-title">
+🚀 My Learning Journey
+</h2>
 
-                    <div class="skill-fill math"></div>
+<div class="cards">
 
-                </div>
 
-            </div>
+<div class="card learning-box">
 
-        </div>
+<div class="icon learning-icon">💻</div>
 
-    </section>
+<h3>Computer Learning</h3>
 
+<p>
+Learning computer fundamentals and practical computer work at a computer shop.
+</p>
 
-    <!-- My Learning Journey -->
+</div>
 
-    <section>
 
-        <h2 class="section-title">
-            🚀 My Learning Journey
-        </h2>
+<div class="card learning-box">
 
+<div class="icon learning-icon">🌐</div>
 
-        <div class="cards">
+<h3>HTML & CSS</h3>
 
+<p>
+Creating my own website and learning web design step by step.
+</p>
 
-            <div class="card learning-box">
+</div>
 
-                <div class="icon learning-icon">💻</div>
 
-                <h3>Computer Learning</h3>
+<div class="card learning-box">
 
-                <p>
-                    Learning computer fundamentals and practical work at a computer shop.
-                </p>
+<div class="icon learning-icon">📸</div>
 
-            </div>
+<h3>Photography</h3>
 
+<p>
+Exploring camera settings and improving my photography skills.
+</p>
 
-            <div class="card learning-box">
+</div>
 
-                <div class="icon learning-icon">🌐</div>
 
-                <h3>HTML & CSS</h3>
+<div class="card learning-box">
 
-                <p>
-                    Creating my own website and learning web design step by step.
-                </p>
+<div class="icon learning-icon">🎬</div>
 
-            </div>
+<h3>Photo & Video Editing</h3>
 
+<p>
+Learning creative editing for photos and videos.
+</p>
 
-            <div class="card learning-box">
+</div>
 
-                <div class="icon learning-icon">📸</div>
 
-                <h3>Photography</h3>
+<div class="card learning-box">
 
-                <p>
-                    Exploring camera settings and improving my photography skills.
-                </p>
+<div class="icon learning-icon">📐</div>
 
-            </div>
+<h3>Mathematics</h3>
 
+<p>
+Practicing mathematics and improving problem-solving skills.
+</p>
 
-            <div class="card learning-box">
+</div>
 
-                <div class="icon learning-icon">🎬</div>
 
-                <h3>Photo & Video Editing</h3>
+<div class="card learning-box">
 
-                <p>
-                    Learning creative editing for photos and videos.
-                </p>
+<div class="icon learning-icon">📚</div>
 
-            </div>
+<h3>ADCA Learning</h3>
 
+<p>
+Learning computer applications through my ADCA course.
+</p>
 
-            <div class="card learning-box">
+</div>
 
-                <div class="icon learning-icon">📐</div>
+</div>
 
-                <h3>Mathematics</h3>
+</section>
 
-                <p>
-                    Practicing mathematics and improving problem-solving skills.
-                </p>
 
-            </div>
+<!-- Experience -->
 
+<section id="experience">
 
-            <div class="card learning-box">
+<h2 class="section-title">
+🏢 My Practical Experience
+</h2>
 
-                <div class="icon learning-icon">📚</div>
+<div class="card">
 
-                <h3>ADCA Learning</h3>
+<div class="icon">🖥️</div>
 
-                <p>
-                    Learning computer applications through my ADCA course.
-                </p>
+<h3>Computer Shop Experience</h3>
 
-            </div>
+<p>
+I am gaining practical computer experience by learning and
+working at a computer shop.
+</p>
 
-        </div>
+</div>
 
-    </section>
+</section>
 
 
-    <!-- Experience -->
+<!-- Stats -->
 
-    <section>
+<section>
 
-        <h2 class="section-title">
-            🏢 My Practical Experience
-        </h2>
+<h2 class="section-title">
+📊 My Website
+</h2>
 
-        <div class="card">
+<div class="stats">
 
-            <div class="icon">🖥️</div>
 
-            <h3>Computer Shop Experience</h3>
+<div class="stat">
 
-            <p>
-                I am gaining practical computer experience by learning and
-                working at a computer shop.
-            </p>
+<div class="stat-number" id="visitorCount">
+0
+</div>
 
-        </div>
+<div class="stat-label">
+👀 Local Visits
+</div>
 
-    </section>
+</div>
 
 
-    <!-- Website Stats -->
+<div class="stat">
 
-    <section>
+<div class="stat-number">
+5+
+</div>
 
-        <h2 class="section-title">
-            📊 My Website
-        </h2>
+<div class="stat-label">
+📄 Website Pages
+</div>
 
-        <div class="stats">
+</div>
 
-            <div class="stat">
 
-                <div class="stat-number" id="visitorCount">
-                    0
-                </div>
+<div class="stat">
 
-                <div class="stat-label">
-                    👀 Local Visits
-                </div>
+<div class="stat-number">
+2026
+</div>
 
-            </div>
+<div class="stat-label">
+🚀 Website Year
+</div>
 
+</div>
 
-            <div class="stat">
+</div>
 
-                <div class="stat-number">
-                    5+
-                </div>
+</section>
 
-                <div class="stat-label">
-                    📄 Website Pages
-                </div>
 
-            </div>
+<!-- Quote -->
 
+<section>
 
-            <div class="stat">
+<div class="quote">
 
-                <div class="stat-number">
-                    2026
-                </div>
+💡
 
-                <div class="stat-label">
-                    🚀 Website Year
-                </div>
+<strong>
+"Learn something new every day and keep improving yourself."
+</strong>
 
-            </div>
+<br><br>
 
-        </div>
+— My Learning Journey 🚀
 
-    </section>
+</div>
 
+</section>
 
-    <!-- Quote -->
 
-    <section>
+<!-- Footer -->
 
-        <div class="quote">
+<footer>
 
-            💡
-            <strong>
-                "Learn something new every day and keep improving yourself."
-            </strong>
+<p>
+© 2026 <strong>My Computer World</strong>
+</p>
 
-            <br><br>
+<p>
+Made with ❤️ by <strong>Anuj Maurya</strong>
+</p>
 
-            — My Learning Journey 🚀
+</footer>
 
-        </div>
 
-    </section>
+<!-- Theme -->
 
+<button
+class="theme-btn"
+id="themeBtn"
+onclick="toggleTheme()">
 
-    <!-- Footer -->
+🌙
 
-    <footer>
+</button>
 
-        <p>
-            © 2026 <strong>My Computer World</strong>
-        </p>
 
-        <p>
-            Made with ❤️ by <strong>Anuj Maurya</strong>
-        </p>
+<!-- Top -->
 
-    </footer>
+<button
+id="topBtn"
+onclick="goTop()">
 
+↑
 
-    <!-- Theme Button -->
+</button>
 
-    <button class="theme-btn" id="themeBtn" onclick="toggleTheme()">
-        🌙
-    </button>
 
+<script>
 
-    <!-- Back To Top -->
+/* Typing Effect */
 
-    <button id="topBtn" onclick="goTop()">
-        ↑
-    </button>
+const texts=[
 
+"💻 Computer Learner",
+"📸 Photography Lover",
+"🎬 Photo & Video Editor",
+"📐 Mathematics Student",
+"🌐 Web Designer"
 
-    <script>
+];
 
-        /* Typing Effect */
+let textIndex=0;
+let charIndex=0;
+let deleting=false;
 
-        const texts = [
-            "💻 Computer Learner",
-            "📸 Photography Lover",
-            "🎬 Photo & Video Editor",
-            "📐 Mathematics Student",
-            "🌐 Web Designer"
-        ];
 
-        let textIndex = 0;
+function typeEffect(){
 
-        let charIndex = 0;
+const typingText=
+document.getElementById("typingText");
 
-        let deleting = false;
+const currentText=
+texts[textIndex];
 
-        function typeEffect() {
 
-            const typingText = document.getElementById("typingText");
+if(!deleting){
 
-            const currentText = texts[textIndex];
+typingText.textContent=
+currentText.substring(0,charIndex+1);
 
-            if (!deleting) {
+charIndex++;
 
-                typingText.textContent =
-                    currentText.substring(0, charIndex + 1);
 
-                charIndex++;
+if(charIndex===currentText.length){
 
-                if (charIndex === currentText.length) {
+deleting=true;
 
-                    deleting = true;
+setTimeout(typeEffect,1500);
 
-                    setTimeout(typeEffect, 1500);
+return;
 
-                    return;
+}
 
-                }
+}
 
-            } else {
+else{
 
-                typingText.textContent =
-                    currentText.substring(0, charIndex - 1);
+typingText.textContent=
+currentText.substring(0,charIndex-1);
 
-                charIndex--;
+charIndex--;
 
-                if (charIndex === 0) {
 
-                    deleting = false;
+if(charIndex===0){
 
-                    textIndex++;
+deleting=false;
 
-                    if (textIndex >= texts.length) {
-                        textIndex = 0;
-                    }
+textIndex++;
 
-                }
+if(textIndex>=texts.length){
 
-            }
+textIndex=0;
 
-            setTimeout(typeEffect, deleting ? 50 : 90);
+}
 
-        }
+}
 
-        typeEffect();
+}
 
 
-        /* Visitor Counter */
+setTimeout(
+typeEffect,
+deleting?50:90
+);
 
-        let visits = localStorage.getItem("myWebsiteVisits");
+}
 
-        if (!visits) {
 
-            visits = 1;
+typeEffect();
 
-        } else {
 
-            visits = parseInt(visits) + 1;
+/* Visitor Counter */
 
-        }
+let visits=
+localStorage.getItem("myWebsiteVisits");
 
-        localStorage.setItem("myWebsiteVisits", visits);
 
-        document.getElementById("visitorCount").textContent = visits;
+if(!visits){
 
+visits=1;
 
-        /* Dark / Light Mode */
+}
 
-        const savedMode = localStorage.getItem("websiteMode");
+else{
 
-        const themeBtn = document.getElementById("themeBtn");
+visits=parseInt(visits)+1;
 
-        if (savedMode === "light") {
+}
 
-            document.body.classList.add("light");
 
-            themeBtn.textContent = "☀️";
+localStorage.setItem(
+"myWebsiteVisits",
+visits
+);
 
-        }
 
+document.getElementById(
+"visitorCount"
+).textContent=visits;
 
-        function toggleTheme() {
 
-            document.body.classList.toggle("light");
+/* Dark Light Mode */
 
-            if (document.body.classList.contains("light")) {
+const savedMode=
+localStorage.getItem("websiteMode");
 
-                localStorage.setItem("websiteMode", "light");
+const themeBtn=
+document.getElementById("themeBtn");
 
-                themeBtn.textContent = "☀️";
 
-            } else {
+if(savedMode==="light"){
 
-                localStorage.setItem("websiteMode", "dark");
+document.body.classList.add("light");
 
-                themeBtn.textContent = "🌙";
+themeBtn.textContent="☀️";
 
-            }
+}
 
-        }
 
+function toggleTheme(){
 
-        /* Back To Top */
+document.body.classList.toggle("light");
 
-        window.onscroll = function() {
 
-            const topBtn = document.getElementById("topBtn");
+if(document.body.classList.contains("light")){
 
-            if (
-                document.body.scrollTop > 300 ||
-                document.documentElement.scrollTop > 300
-            ) {
+localStorage.setItem(
+"websiteMode",
+"light"
+);
 
-                topBtn.style.display = "block";
+themeBtn.textContent="☀️";
 
-            } else {
+}
 
-                topBtn.style.display = "none";
+else{
 
-            }
+localStorage.setItem(
+"websiteMode",
+"dark"
+);
 
-        };
+themeBtn.textContent="🌙";
 
+}
 
-        function goTop() {
+}
 
-            window.scrollTo({
-                top: 0,
-                behavior: "smooth"
-            });
 
-        }
+/* Search */
 
-    </script>
+function searchWebsite(event){
+
+if(event && event.key==="Enter"){
+
+performSearch();
+
+return;
+
+}
+
+if(event && event.type==="keyup"){
+
+return;
+
+}
+
+performSearch();
+
+}
+
+
+function performSearch(){
+
+const input=
+document.getElementById("searchInput");
+
+const result=
+document.getElementById("searchResult");
+
+const query=
+input.value.toLowerCase().trim();
+
+
+if(query===""){
+
+result.style.display="none";
+
+return;
+
+}
+
+
+const pages={
+
+"computer":"about.html",
+"html":"about.html",
+"css":"about.html",
+"mathematics":"about.html",
+"math":"about.html",
+"photography":"gallery.html",
+"photo":"gallery.html",
+"editing":"gallery.html",
+"video":"gallery.html",
+"projects":"project.html",
+"project":"project.html",
+"gallery":"gallery.html",
+"contact":"contact.html",
+"about":"about.html",
+"adca":"about.html"
+
+};
+
+
+let found=null;
+
+
+for(let key in pages){
+
+if(key.includes(query) || query.includes(key)){
+
+found=pages[key];
+
+break;
+
+}
+
+}
+
+
+if(found){
+
+result.style.display="block";
+
+result.innerHTML=
+"✅ Result found! Opening page...";
+
+setTimeout(function(){
+
+window.location.href=found;
+
+},700);
+
+}
+
+else{
+
+result.style.display="block";
+
+result.innerHTML=
+"❌ No result found. Try Computer, Photography, Editing, Projects or Gallery.";
+
+}
+
+}
+
+
+/* Back To Top */
+
+window.onscroll=function(){
+
+const topBtn=
+document.getElementById("topBtn");
+
+
+if(
+document.body.scrollTop>300 ||
+document.documentElement.scrollTop>300
+){
+
+topBtn.style.display="block";
+
+}
+
+else{
+
+topBtn.style.display="none";
+
+}
+
+};
+
+
+function goTop(){
+
+window.scrollTo({
+
+top:0,
+behavior:"smooth"
+
+});
+
+}
+
+</script>
+
 
 </body>
 
